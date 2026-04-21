@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "NzuC1emPB0Qqrmb/S+Z7pkNfkyYYcPI/p/upSeTmVT8=",
+  "Source": "SistemaPontosEscolar",
+  "BasePath": "_content/SistemaPontosEscolar",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SistemaPontosEscolar\\wwwroot",
+      "Source": "SistemaPontosEscolar",
+      "ContentRoot": "C:\\Users\\Fernando J\\Downloads\\sistema-pontos-escolar-atualizado\\backend\\wwwroot\\",
+      "BasePath": "_content/SistemaPontosEscolar",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
