@@ -36,6 +36,8 @@ export default function HomePage({ onLogin }) {
   const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
   const [carregando, setCarregando] = useState(false);
+  const [carregandoPagina, setCarregandoPagina] = useState(true);
+  const [erroCarregamento, setErroCarregamento] = useState('');
 
   useEffect(() => {
     carregarTurmas();
@@ -43,6 +45,7 @@ export default function HomePage({ onLogin }) {
 
   useEffect(() => {
     if (turmas.length === 0) return;
+
     const intervalo = setInterval(() => {
       setIndiceAtual((valorAnterior) =>
         valorAnterior === turmas.length - 1 ? 0 : valorAnterior + 1
@@ -53,18 +56,31 @@ export default function HomePage({ onLogin }) {
   }, [turmas]);
 
   async function carregarTurmas() {
-    const data = await apiGet('/turmas');
+    try {
+      setCarregandoPagina(true);
+      setErroCarregamento('');
 
-    const ordenado = [...data].sort((a, b) => (b.pontuacao || 0) - (a.pontuacao || 0));
+      const data = await apiGet('/turmas');
 
-    const turmasComEstilo = ordenado.map((turma, index) => ({
-      ...turma,
-      cor: coresPadrao[index % coresPadrao.length][0],
-      corSecundaria: coresPadrao[index % coresPadrao.length][1],
-      descricao: `Destaque da turma ${turma.nome}`
-    }));
+      const ordenado = [...data].sort(
+        (a, b) => (b.pontuacao || 0) - (a.pontuacao || 0)
+      );
 
-    setTurmas(turmasComEstilo);
+      const turmasComEstilo = ordenado.map((turma, index) => ({
+        ...turma,
+        cor: coresPadrao[index % coresPadrao.length][0],
+        corSecundaria: coresPadrao[index % coresPadrao.length][1],
+        descricao: `Destaque da turma ${turma.nome}`
+      }));
+
+      setTurmas(turmasComEstilo);
+    } catch (error) {
+      setErroCarregamento(
+        error.message || 'Não foi possível carregar as turmas.'
+      );
+    } finally {
+      setCarregandoPagina(false);
+    }
   }
 
   async function entrar(e) {
@@ -89,12 +105,38 @@ export default function HomePage({ onLogin }) {
 
   const lider = useMemo(() => turmas[0], [turmas]);
 
-  if (!turmaAtual) {
+  if (carregandoPagina) {
     return <div className="container">Carregando página inicial...</div>;
   }
 
+  if (erroCarregamento) {
+    return (
+      <div className="container">
+        <div className="card">
+          <h2>Erro ao carregar a página inicial</h2>
+          <p>{erroCarregamento}</p>
+          <button onClick={carregarTurmas}>Tentar novamente</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!turmaAtual) {
+    return (
+      <div className="container">
+        <div className="card">
+          <h2>Nenhuma turma encontrada</h2>
+          <p>Cadastre turmas no sistema para exibir a página inicial.</p>
+        </div>
+      </div>
+    );
+  }
+
   const medalhaAtual = obterMedalhaTurma(turmaAtual.pontuacao || 0);
-  const conquistaAtual = obterConquistaTurma(indiceAtual, turmaAtual.pontuacao || 0);
+  const conquistaAtual = obterConquistaTurma(
+    indiceAtual,
+    turmaAtual.pontuacao || 0
+  );
 
   return (
     <div className="container">
@@ -156,9 +198,7 @@ export default function HomePage({ onLogin }) {
               </div>
               <div className="feature-box">
                 <span>Medalha</span>
-                <strong>
-                  {medalhaAtual.emoji} {medalhaAtual.nome}
-                </strong>
+                <strong>{medalhaAtual.emoji} {medalhaAtual.nome}</strong>
               </div>
               <div className="feature-box">
                 <span>Ranking</span>
