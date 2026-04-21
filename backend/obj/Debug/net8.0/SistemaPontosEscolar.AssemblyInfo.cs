@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SistemaPontosEscolar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c556ce87178abcd803a54ffe8f3ee8c90b862645")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9322cc9963bf4d593c768b01295d9361aac3df9c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SistemaPontosEscolar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SistemaPontosEscolar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
