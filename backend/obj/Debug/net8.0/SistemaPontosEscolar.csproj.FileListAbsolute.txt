@@ -1,9 +1,3 @@
-C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.csproj.AssemblyReference.cache
-C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.AssemblyInfoInputs.cache
-C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.AssemblyInfo.cs
-C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.csproj.CoreCompileInputs.cache
-C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\bin\Debug\net8.0\appsettings.json
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\bin\Debug\net8.0\SistemaPontosEscolar.staticwebassets.runtime.json
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\bin\Debug\net8.0\SistemaPontosEscolar.exe
@@ -97,7 +91,14 @@ C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\bin\Debu
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.csproj.AssemblyReference.cache
+C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.AssemblyInfoInputs.cache
+C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.AssemblyInfo.cs
+C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.csproj.CoreCompileInputs.cache
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.sourcelink.json
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\staticwebassets\msbuild.SistemaPontosEscolar.Microsoft.AspNetCore.StaticWebAssets.props
@@ -112,4 +113,3 @@ C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debu
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.pdb
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.genruntimeconfig.cache
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\ref\SistemaPontosEscolar.dll
-C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.sourcelink.json
