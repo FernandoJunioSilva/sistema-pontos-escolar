@@ -74,5 +74,14 @@ using (var scope = app.Services.CreateScope())
     db.Database.EnsureCreated();
     DbInitializer.Seed(db);
 }
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("frontend", policy =>
+    {
+        policy.AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowAnyOrigin();
+    });
+});
+app.UseCors("frontend");
 app.Run();

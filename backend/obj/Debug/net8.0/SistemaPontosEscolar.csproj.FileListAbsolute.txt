@@ -112,3 +112,4 @@ C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debu
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.pdb
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.genruntimeconfig.cache
 C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\ref\SistemaPontosEscolar.dll
+C:\Users\Fernando J\Downloads\sistema-pontos-escolar-atualizado\backend\obj\Debug\net8.0\SistemaPontosEscolar.sourcelink.json
