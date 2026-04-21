@@ -70,9 +70,18 @@ app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.EnsureCreated();
-    // DbInitializer.Seed(db);
+    try
+    {
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        db.Database.EnsureCreated();
+        // DbInitializer.Seed(db);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("ERRO AO INICIALIZAR O BANCO:");
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.InnerException?.Message);
+    }
 }
 
 app.Run();
