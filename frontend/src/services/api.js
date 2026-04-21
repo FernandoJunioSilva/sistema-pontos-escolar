@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://sistema-pontos-escolar-3acs.onrender.com/api';
 
 export async function apiGet(endpoint, token) {
   const response = await fetch(`${API_URL}${endpoint}`, {
