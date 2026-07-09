@@ -76,6 +76,8 @@ export default function ProfessorPage() {
   const [editMotivo, setEditMotivo] = useState('');
   const [editSemana, setEditSemana] = useState('');
 
+  const [erroCarregamento, setErroCarregamento] = useState('');
+
   const categoriasIndividuais = agruparPorCategoria(OPCOES_PONTUACAO);
   const categoriasColetivas = agruparPorCategoria(OPCOES_COLETIVAS);
 
@@ -84,32 +86,62 @@ export default function ProfessorPage() {
   }, []);
 
   async function carregarDados() {
-    const [alunosData, turmasData, pontuacoesData] = await Promise.all([
-      apiGet('/alunos', token),
-      apiGet('/turmas', token),
-      apiGet('/pontuacoes', token)
-    ]);
+    setErroCarregamento('');
 
-    setAlunos(alunosData);
-    setTurmas(turmasData);
-    setPontuacoes(pontuacoesData);
+    try {
+      const turmasData = await apiGet('/turmas', token);
+      setTurmas(turmasData);
 
-    if (turmasData.length > 0 && !turmaSelecionada) {
-      setTurmaSelecionada(turmasData[0].nome);
+      if (turmasData.length > 0) {
+        setTurmaSelecionada((valorAtual) => valorAtual || String(turmasData[0].id));
+      }
+    } catch (error) {
+      console.error('Erro ao carregar turmas:', error);
+      setErroCarregamento('Erro ao carregar as turmas.');
+    }
+
+    try {
+      const alunosData = await apiGet('/alunos', token);
+      setAlunos(alunosData);
+    } catch (error) {
+      console.error('Erro ao carregar alunos:', error);
+    }
+
+    try {
+      const pontuacoesData = await apiGet('/pontuacoes', token);
+      setPontuacoes(pontuacoesData);
+    } catch (error) {
+      console.error('Erro ao carregar pontuações:', error);
     }
   }
 
+  const turmaAtual = useMemo(() => {
+    return turmas.find((t) => Number(t.id) === Number(turmaSelecionada));
+  }, [turmas, turmaSelecionada]);
+
   const alunosDaTurma = useMemo(() => {
-    return alunos.filter((a) => a.turma?.nome === turmaSelecionada);
-  }, [alunos, turmaSelecionada]);
+    const turmaId = Number(turmaSelecionada);
+
+    return alunos.filter((a) => {
+      const alunoTurmaId = Number(a.turmaId ?? a.turma?.id);
+      return alunoTurmaId === turmaId || a.turma?.nome === turmaAtual?.nome;
+    });
+  }, [alunos, turmaSelecionada, turmaAtual]);
 
   const historicoFiltrado = useMemo(() => {
-    return pontuacoes.filter(
-      (p) =>
-        p.aluno?.turma?.nome === turmaSelecionada &&
-        (filtroSemanaEdicao ? p.semana === filtroSemanaEdicao : true)
-    );
-  }, [pontuacoes, turmaSelecionada, filtroSemanaEdicao]);
+    const turmaId = Number(turmaSelecionada);
+
+    return pontuacoes.filter((p) => {
+      const pontuacaoTurmaId = Number(p.aluno?.turmaId ?? p.aluno?.turma?.id);
+
+      const mesmaTurma =
+        pontuacaoTurmaId === turmaId || p.aluno?.turma?.nome === turmaAtual?.nome;
+
+      const mesmaSemana = filtroSemanaEdicao ? p.semana === filtroSemanaEdicao : true;
+
+      return mesmaTurma && mesmaSemana;
+    });
+  }, [pontuacoes, turmaSelecionada, turmaAtual, filtroSemanaEdicao]);
 
   function alternarMarcacaoAluno(alunoId, opcaoLabel) {
     setSelecoesPorAluno((prev) => ({
@@ -176,7 +208,7 @@ export default function ProfessorPage() {
         '/pontuacoes',
         {
           alunoId: aluno.id,
-          professorId: usuario.professorId,
+          professorId: usuario?.professorId || usuario?.id,
           pontos,
           motivo,
           semana
@@ -186,7 +218,7 @@ export default function ProfessorPage() {
     }
 
     setPopupDados({
-      aluno: turmaSelecionada,
+      aluno: turmaAtual?.nome || turmaSelecionada,
       turma: semana,
       pontos: alunosComMarcacao.reduce((soma, aluno) => soma + calcularTotalAluno(aluno.id), 0),
       motivo: `Pontuação lançada para ${alunosComMarcacao.length} aluno(s)`
@@ -229,6 +261,7 @@ export default function ProfessorPage() {
     return (
       <div style={{ marginBottom: '12px' }}>
         <h4 style={{ marginBottom: '8px' }}>{titulo}</h4>
+
         <div className="prof-opcoes-grid">
           {opcoes.map((opcao) => {
             const marcado =
@@ -250,6 +283,7 @@ export default function ProfessorPage() {
                       : alternarMarcacaoAluno(alunoId, opcao.label)
                   }
                 />
+
                 <div>
                   <strong>{opcao.pontos > 0 ? `+${opcao.pontos}` : opcao.pontos}</strong>
                   <span>{opcao.label}</span>
@@ -274,12 +308,28 @@ export default function ProfessorPage() {
         <p className="section-subtitle">Painel do professor</p>
         <h2>Lançamento em lote por turma</h2>
 
+        {erroCarregamento && (
+          <p style={{ color: 'red' }}>
+            {erroCarregamento}
+          </p>
+        )}
+
         <div className="grid-2">
           <div>
             <label>Turma</label>
-            <select value={turmaSelecionada} onChange={(e) => setTurmaSelecionada(e.target.value)}>
+
+            <select
+              value={turmaSelecionada}
+              onChange={(e) => {
+                setTurmaSelecionada(e.target.value);
+                setSelecoesPorAluno({});
+                setSelecoesTurma({});
+              }}
+            >
+              <option value="">Selecione uma turma</option>
+
               {turmas.map((turma) => (
-                <option key={turma.id} value={turma.nome}>
+                <option key={turma.id} value={turma.id}>
                   {turma.nome}
                 </option>
               ))}
@@ -288,6 +338,7 @@ export default function ProfessorPage() {
 
           <div>
             <label>Semana da pontuação</label>
+
             <select value={semana} onChange={(e) => setSemana(e.target.value)}>
               {SEMANAS.map((s) => (
                 <option key={s} value={s}>
@@ -302,6 +353,7 @@ export default function ProfessorPage() {
       <div className="card">
         <p className="section-subtitle">Pontuação geral da turma</p>
         <h3>Marcação coletiva</h3>
+
         <p style={{ color: '#64748b' }}>
           Marque aqui para aplicar a opção a todos os alunos da turma.
         </p>
@@ -314,9 +366,15 @@ export default function ProfessorPage() {
 
       <div className="card">
         <p className="section-subtitle">Lista de alunos</p>
-        <h3>Alunos da turma {turmaSelecionada}</h3>
+        <h3>Alunos da turma {turmaAtual?.nome || ''}</h3>
 
-        {alunosDaTurma.length === 0 && <p>Nenhum aluno encontrado para esta turma.</p>}
+        {turmaSelecionada === '' && (
+          <p>Selecione uma turma para visualizar os alunos.</p>
+        )}
+
+        {turmaSelecionada !== '' && alunosDaTurma.length === 0 && (
+          <p>Nenhum aluno encontrado para esta turma.</p>
+        )}
 
         {alunosDaTurma.map((aluno) => (
           <div key={aluno.id} className="prof-aluno-box">
@@ -334,27 +392,34 @@ export default function ProfessorPage() {
             </div>
 
             {renderGrupoOpcoes('Acadêmico', categoriasIndividuais.Acadêmico, 'aluno', aluno.id)}
+
             {renderGrupoOpcoes(
               'Comportamento',
               categoriasIndividuais.Comportamento,
               'aluno',
               aluno.id
             )}
+
             {renderGrupoOpcoes('Extras', categoriasIndividuais.Extras, 'aluno', aluno.id)}
+
             {renderGrupoOpcoes('Negativos', categoriasIndividuais.Negativos, 'aluno', aluno.id)}
           </div>
         ))}
       </div>
 
       <div className="card">
-        <button onClick={lancarPontuacoesLote}>Lançar pontuações da turma</button>
+        <button onClick={lancarPontuacoesLote}>
+          Lançar pontuações da turma
+        </button>
       </div>
 
       <div className="card">
         <p className="section-subtitle">Alterar pontuações de uma semana</p>
+
         <div className="grid-2">
           <div>
             <label>Filtrar semana</label>
+
             <select
               value={filtroSemanaEdicao}
               onChange={(e) => setFiltroSemanaEdicao(e.target.value)}
@@ -378,24 +443,34 @@ export default function ProfessorPage() {
               <th>Ação</th>
             </tr>
           </thead>
+
           <tbody>
             {historicoFiltrado.map((p) => (
               <tr key={p.id}>
                 <td>{p.aluno?.nome}</td>
+
                 <td>
                   {editandoId === p.id ? (
-                    <input value={editPontos} onChange={(e) => setEditPontos(e.target.value)} />
+                    <input
+                      value={editPontos}
+                      onChange={(e) => setEditPontos(e.target.value)}
+                    />
                   ) : (
                     p.pontos
                   )}
                 </td>
+
                 <td>
                   {editandoId === p.id ? (
-                    <input value={editMotivo} onChange={(e) => setEditMotivo(e.target.value)} />
+                    <input
+                      value={editMotivo}
+                      onChange={(e) => setEditMotivo(e.target.value)}
+                    />
                   ) : (
                     p.motivo
                   )}
                 </td>
+
                 <td>
                   {editandoId === p.id ? (
                     <select value={editSemana} onChange={(e) => setEditSemana(e.target.value)}>
@@ -409,17 +484,28 @@ export default function ProfessorPage() {
                     p.semana || '-'
                   )}
                 </td>
+
                 <td>
                   {editandoId === p.id ? (
-                    <button onClick={() => salvarEdicao(p.id)}>Salvar</button>
+                    <button onClick={() => salvarEdicao(p.id)}>
+                      Salvar
+                    </button>
                   ) : (
-                    <button onClick={() => iniciarEdicao(p)}>Editar</button>
+                    <button onClick={() => iniciarEdicao(p)}>
+                      Editar
+                    </button>
                   )}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {historicoFiltrado.length === 0 && (
+          <p style={{ marginTop: '12px', color: '#64748b' }}>
+            Nenhuma pontuação encontrada para esta turma nesta semana.
+          </p>
+        )}
       </div>
     </div>
   );

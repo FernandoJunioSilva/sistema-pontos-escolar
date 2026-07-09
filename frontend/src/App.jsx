@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import RankingTelaoPage from './pages/RankingTelaoPage';
 import { obterUsuario, estaAutenticado, logout } from './services/auth';
 import logo from './assets/logo.png';
+//ola mundo novo
 
 export default function App() {
   const [usuario, setUsuario] = useState(obterUsuario());
