@@ -19,6 +19,7 @@ public class AlunosController : ControllerBase
         _context = context;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Aluno>>> GetAll()
     {
@@ -31,6 +32,7 @@ public class AlunosController : ControllerBase
         return Ok(alunos);
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<Aluno>> GetById(int id)
     {
@@ -70,7 +72,9 @@ public class AlunosController : ControllerBase
     public async Task<ActionResult> Update(int id, Aluno alunoAtualizado)
     {
         var aluno = await _context.Alunos.FindAsync(id);
-        if (aluno == null) return NotFound("Aluno não encontrado.");
+
+        if (aluno == null)
+            return NotFound("Aluno não encontrado.");
 
         aluno.Nome = alunoAtualizado.Nome;
         aluno.Matricula = alunoAtualizado.Matricula;
@@ -79,6 +83,7 @@ public class AlunosController : ControllerBase
         aluno.CasaId = alunoAtualizado.CasaId;
 
         await _context.SaveChangesAsync();
+
         return Ok(aluno);
     }
 
@@ -87,10 +92,13 @@ public class AlunosController : ControllerBase
     public async Task<ActionResult> Delete(int id)
     {
         var aluno = await _context.Alunos.FindAsync(id);
-        if (aluno == null) return NotFound("Aluno não encontrado.");
+
+        if (aluno == null)
+            return NotFound("Aluno não encontrado.");
 
         _context.Alunos.Remove(aluno);
         await _context.SaveChangesAsync();
+
         return Ok(new { mensagem = "Aluno excluído com sucesso." });
     }
 }
