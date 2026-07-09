@@ -21,12 +21,66 @@ public class AlunosController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Aluno>>> GetAll()
+    public async Task<ActionResult> GetAll()
     {
         var alunos = await _context.Alunos
-            .Include(a => a.Turma)
-            .Include(a => a.Casa)
+            .AsNoTracking()
             .OrderBy(a => a.Nome)
+            .Select(a => new
+            {
+                id = a.Id,
+                nome = a.Nome,
+                matricula = a.Matricula,
+                dataNascimento = a.DataNascimento,
+                turmaId = a.TurmaId,
+                casaId = a.CasaId,
+                pontos = a.Pontos,
+                turma = new
+                {
+                    id = a.Turma.Id,
+                    nome = a.Turma.Nome,
+                    turno = a.Turma.Turno
+                },
+                casa = a.Casa == null ? null : new
+                {
+                    id = a.Casa.Id,
+                    nome = a.Casa.Nome
+                }
+            })
+            .ToListAsync();
+
+        return Ok(alunos);
+    }
+
+    [AllowAnonymous]
+    [HttpGet("turma/{turmaId}")]
+    public async Task<ActionResult> GetPorTurma(int turmaId)
+    {
+        var alunos = await _context.Alunos
+            .AsNoTracking()
+            .Where(a => a.TurmaId == turmaId)
+            .OrderBy(a => a.Nome)
+            .Select(a => new
+            {
+                id = a.Id,
+                nome = a.Nome,
+                matricula = a.Matricula,
+                dataNascimento = a.DataNascimento,
+                turmaId = a.TurmaId,
+                casaId = a.CasaId,
+                pontos = a.Pontos,
+                turma = new
+                {
+                    id = a.Turma.Id,
+                    nome = a.Turma.Nome,
+                    turno = a.Turma.Turno
+                },
+                casa = a.Casa == null ? null : new
+                {
+                    id = a.Casa.Id,
+                    nome = a.Casa.Nome
+                }
+            })
             .ToListAsync();
 
         return Ok(alunos);
@@ -34,12 +88,33 @@ public class AlunosController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet("{id}")]
-    public async Task<ActionResult<Aluno>> GetById(int id)
+    public async Task<ActionResult> GetById(int id)
     {
         var aluno = await _context.Alunos
-            .Include(a => a.Turma)
-            .Include(a => a.Casa)
-            .FirstOrDefaultAsync(a => a.Id == id);
+            .AsNoTracking()
+            .Where(a => a.Id == id)
+            .Select(a => new
+            {
+                id = a.Id,
+                nome = a.Nome,
+                matricula = a.Matricula,
+                dataNascimento = a.DataNascimento,
+                turmaId = a.TurmaId,
+                casaId = a.CasaId,
+                pontos = a.Pontos,
+                turma = new
+                {
+                    id = a.Turma.Id,
+                    nome = a.Turma.Nome,
+                    turno = a.Turma.Turno
+                },
+                casa = a.Casa == null ? null : new
+                {
+                    id = a.Casa.Id,
+                    nome = a.Casa.Nome
+                }
+            })
+            .FirstOrDefaultAsync();
 
         if (aluno == null)
             return NotFound("Aluno não encontrado.");
@@ -84,7 +159,19 @@ public class AlunosController : ControllerBase
 
         await _context.SaveChangesAsync();
 
-        return Ok(aluno);
+        return Ok(new
+        {
+            mensagem = "Aluno atualizado com sucesso.",
+            aluno = new
+            {
+                id = aluno.Id,
+                nome = aluno.Nome,
+                matricula = aluno.Matricula,
+                turmaId = aluno.TurmaId,
+                casaId = aluno.CasaId,
+                pontos = aluno.Pontos
+            }
+        });
     }
 
     [HttpDelete("{id}")]
