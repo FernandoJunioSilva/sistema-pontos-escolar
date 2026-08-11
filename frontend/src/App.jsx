@@ -12,12 +12,17 @@ import logo from './assets/logo.png';
 
 export default function App() {
   const [usuario, setUsuario] = useState(obterUsuario());
-  const [pagina, setPagina] = useState('inicio');
+
+  // Agora o site começa abrindo a página da escola
+  const [pagina, setPagina] = useState('site-escola');
 
   function sair() {
     logout();
     setUsuario(null);
-    setPagina('inicio');
+
+    // Depois de sair, volta para a página da escola
+    setPagina('site-escola');
+
     window.location.reload();
   }
 
@@ -40,10 +45,10 @@ export default function App() {
             </div>
 
             <nav className="site-nav">
-              <button onClick={() => setPagina('telao')}>Telão</button>
-              <button onClick={() => setPagina('inicio')}>Início</button>
-              <button onClick={() => setPagina('site-escola')}>Site da Escola</button>
+              <button onClick={() => setPagina('site-escola')}>Início</button>
+              <button onClick={() => setPagina('inicio')}>Sistema de Pontos</button>
               <button onClick={() => setPagina('ranking')}>Ranking</button>
+              <button onClick={() => setPagina('telao')}>Telão</button>
 
               {autenticado && usuario?.tipo === 'professor' && (
                 <button onClick={() => setPagina('professor')}>Professor</button>
@@ -73,9 +78,9 @@ export default function App() {
         </div>
       )}
 
-      {pagina === 'inicio' && <HomePage onLogin={setUsuario} />}
-
       {pagina === 'site-escola' && <SiteEscolaPage />}
+
+      {pagina === 'inicio' && <HomePage onLogin={setUsuario} />}
 
       {pagina === 'professor' && autenticado && usuario?.tipo === 'professor' && (
         <ProtectedRoute role="professor">
@@ -112,7 +117,7 @@ export default function App() {
             <div>
               <h4>Acesso rápido</h4>
               <p>Início</p>
-              <p>Site da Escola</p>
+              <p>Sistema de Pontos</p>
               <p>Ranking</p>
               <p>Painéis por perfil</p>
             </div>
