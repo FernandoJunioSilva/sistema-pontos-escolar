@@ -8,79 +8,66 @@ import ProtectedRoute from './components/ProtectedRoute';
 import RankingTelaoPage from './pages/RankingTelaoPage';
 import SiteEscolaPage from './pages/SiteEscolaPage';
 import { obterUsuario, estaAutenticado, logout } from './services/auth';
-import logo from './assets/logo.png';
 
 export default function App() {
   const [usuario, setUsuario] = useState(obterUsuario());
-
-  // Agora o site começa abrindo a página da escola
   const [pagina, setPagina] = useState('site-escola');
+
+  const autenticado = estaAutenticado();
 
   function sair() {
     logout();
     setUsuario(null);
-
-    // Depois de sair, volta para a página da escola
     setPagina('site-escola');
-
     window.location.reload();
   }
 
-  const autenticado = estaAutenticado();
+  function aoFazerLogin(usuarioLogado) {
+    setUsuario(usuarioLogado);
+
+    if (usuarioLogado?.tipo === 'professor') {
+      setPagina('professor');
+    } else if (usuarioLogado?.tipo === 'aluno') {
+      setPagina('aluno');
+    } else if (usuarioLogado?.tipo === 'admin') {
+      setPagina('admin');
+    } else {
+      setPagina('inicio');
+    }
+  }
 
   return (
     <div>
-      <header className="site-header">
-        <div className="container">
-          <div className="site-header__inner">
-            <div className="site-brand">
-              <div className="site-brand__logo">
-                <img src={logo} alt="Logo da escola" />
-              </div>
-
-              <div>
-                <h1 className="site-brand__title">E.E. Zinha Meira</h1>
-                <p className="site-brand__subtitle">Sistema de Pontos Escolar</p>
-              </div>
-            </div>
-
-            <nav className="site-nav">
-              <button onClick={() => setPagina('site-escola')}>Início</button>
-              <button onClick={() => setPagina('inicio')}>Sistema de Pontos</button>
-              <button onClick={() => setPagina('ranking')}>Ranking</button>
-              <button onClick={() => setPagina('telao')}>Telão</button>
-
-              {autenticado && usuario?.tipo === 'professor' && (
-                <button onClick={() => setPagina('professor')}>Professor</button>
-              )}
-
-              {autenticado && usuario?.tipo === 'aluno' && (
-                <button onClick={() => setPagina('aluno')}>Aluno</button>
-              )}
-
-              {autenticado && usuario?.tipo === 'admin' && (
-                <button onClick={() => setPagina('admin')}>Admin</button>
-              )}
-
-              {autenticado ? <button onClick={sair}>Sair</button> : null}
-            </nav>
-          </div>
-        </div>
-      </header>
-
       {autenticado && (
         <div className="container">
           <div className="user-bar">
             <span>
               Usuário logado: <strong>{usuario?.nome}</strong> ({usuario?.tipo})
             </span>
+
+            <button onClick={() => setPagina('site-escola')}>Site da Escola</button>
+            <button onClick={() => setPagina('inicio')}>Sistema de Pontos</button>
+
+            {usuario?.tipo === 'professor' && (
+              <button onClick={() => setPagina('professor')}>Professor</button>
+            )}
+
+            {usuario?.tipo === 'aluno' && (
+              <button onClick={() => setPagina('aluno')}>Aluno</button>
+            )}
+
+            {usuario?.tipo === 'admin' && (
+              <button onClick={() => setPagina('admin')}>Admin</button>
+            )}
+
+            <button onClick={sair}>Sair</button>
           </div>
         </div>
       )}
 
-      {pagina === 'site-escola' && <SiteEscolaPage />}
+      {pagina === 'site-escola' && <SiteEscolaPage mudarPagina={setPagina} />}
 
-      {pagina === 'inicio' && <HomePage onLogin={setUsuario} />}
+      {pagina === 'inicio' && <HomePage onLogin={aoFazerLogin} />}
 
       {pagina === 'professor' && autenticado && usuario?.tipo === 'professor' && (
         <ProtectedRoute role="professor">
@@ -103,38 +90,6 @@ export default function App() {
       {pagina === 'ranking' && <RankingPublicoPage />}
 
       {pagina === 'telao' && <RankingTelaoPage />}
-
-      <footer className="site-footer">
-        <div className="container">
-          <div className="site-footer__content">
-            <div>
-              <h3>E.E. Zinha Meira</h3>
-              <p>
-                Plataforma de acompanhamento de pontuação, desempenho e destaque das turmas.
-              </p>
-            </div>
-
-            <div>
-              <h4>Acesso rápido</h4>
-              <p>Início</p>
-              <p>Sistema de Pontos</p>
-              <p>Ranking</p>
-              <p>Painéis por perfil</p>
-            </div>
-
-            <div>
-              <h4>Projeto escolar</h4>
-              <p>Gamificação</p>
-              <p>Pontuação por turma</p>
-              <p>Visual moderno e interativo</p>
-            </div>
-          </div>
-
-          <div className="site-footer__bottom">
-            © 2026 - E.E. Zinha Meira - Sistema de Pontos Escolar
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

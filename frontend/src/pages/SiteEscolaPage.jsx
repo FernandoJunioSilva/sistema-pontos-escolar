@@ -25,13 +25,20 @@ const imagensGaleria = [
   foto10
 ];
 
-export default function SiteEscolaPage() {
+export default function SiteEscolaPage({ mudarPagina }) {
   const [abaAtiva, setAbaAtiva] = useState('inicio');
   const [mostrarNovidades, setMostrarNovidades] = useState(false);
 
   function trocarAba(aba) {
     setAbaAtiva(aba);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function abrirPaginaSistema(pagina) {
+    if (typeof mudarPagina === 'function') {
+      mudarPagina(pagina);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   return (
@@ -104,6 +111,18 @@ export default function SiteEscolaPage() {
               onClick={() => trocarAba('contatos')}
             >
               Contatos
+            </button>
+
+            <button type="button" onClick={() => abrirPaginaSistema('inicio')}>
+              Sistema de Pontos
+            </button>
+
+            <button type="button" onClick={() => abrirPaginaSistema('ranking')}>
+              Ranking
+            </button>
+
+            <button type="button" onClick={() => abrirPaginaSistema('telao')}>
+              Telão
             </button>
           </nav>
         </div>
@@ -477,9 +496,7 @@ export default function SiteEscolaPage() {
                 Rua Presidente Juscelino Kubitschek, 615 – Pernambuco, Bocaiúva/MG – CEP 39390-000.
               </p>
 
-              <p>
-                Código INEP: 31079383
-              </p>
+              <p>Código INEP: 31079383</p>
             </section>
           </section>
         )}
