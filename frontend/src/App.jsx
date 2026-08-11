@@ -6,9 +6,9 @@ import RankingPublicoPage from './pages/RankingPublicoPage';
 import HomePage from './pages/HomePage';
 import ProtectedRoute from './components/ProtectedRoute';
 import RankingTelaoPage from './pages/RankingTelaoPage';
+import SiteEscolaPage from './pages/SiteEscolaPage';
 import { obterUsuario, estaAutenticado, logout } from './services/auth';
 import logo from './assets/logo.png';
-//ola mundo novo
 
 export default function App() {
   const [usuario, setUsuario] = useState(obterUsuario());
@@ -30,8 +30,9 @@ export default function App() {
           <div className="site-header__inner">
             <div className="site-brand">
               <div className="site-brand__logo">
-  <img src={logo} alt="Logo da escola" />
-</div>
+                <img src={logo} alt="Logo da escola" />
+              </div>
+
               <div>
                 <h1 className="site-brand__title">E.E. Zinha Meira</h1>
                 <p className="site-brand__subtitle">Sistema de Pontos Escolar</p>
@@ -41,10 +42,21 @@ export default function App() {
             <nav className="site-nav">
               <button onClick={() => setPagina('telao')}>Telão</button>
               <button onClick={() => setPagina('inicio')}>Início</button>
+              <button onClick={() => setPagina('site-escola')}>Site da Escola</button>
               <button onClick={() => setPagina('ranking')}>Ranking</button>
-              {autenticado && usuario?.tipo === 'professor' && <button onClick={() => setPagina('professor')}>Professor</button>}
-              {autenticado && usuario?.tipo === 'aluno' && <button onClick={() => setPagina('aluno')}>Aluno</button>}
-              {autenticado && usuario?.tipo === 'admin' && <button onClick={() => setPagina('admin')}>Admin</button>}
+
+              {autenticado && usuario?.tipo === 'professor' && (
+                <button onClick={() => setPagina('professor')}>Professor</button>
+              )}
+
+              {autenticado && usuario?.tipo === 'aluno' && (
+                <button onClick={() => setPagina('aluno')}>Aluno</button>
+              )}
+
+              {autenticado && usuario?.tipo === 'admin' && (
+                <button onClick={() => setPagina('admin')}>Admin</button>
+              )}
+
               {autenticado ? <button onClick={sair}>Sair</button> : null}
             </nav>
           </div>
@@ -54,16 +66,37 @@ export default function App() {
       {autenticado && (
         <div className="container">
           <div className="user-bar">
-            <span>Usuário logado: <strong>{usuario?.nome}</strong> ({usuario?.tipo})</span>
+            <span>
+              Usuário logado: <strong>{usuario?.nome}</strong> ({usuario?.tipo})
+            </span>
           </div>
         </div>
       )}
 
       {pagina === 'inicio' && <HomePage onLogin={setUsuario} />}
-      {pagina === 'professor' && autenticado && usuario?.tipo === 'professor' && <ProtectedRoute role="professor"><ProfessorPage /></ProtectedRoute>}
-      {pagina === 'aluno' && autenticado && usuario?.tipo === 'aluno' && <ProtectedRoute role="aluno"><AlunoPage /></ProtectedRoute>}
-      {pagina === 'admin' && autenticado && usuario?.tipo === 'admin' && <ProtectedRoute role="admin"><AdminPage /></ProtectedRoute>}
+
+      {pagina === 'site-escola' && <SiteEscolaPage />}
+
+      {pagina === 'professor' && autenticado && usuario?.tipo === 'professor' && (
+        <ProtectedRoute role="professor">
+          <ProfessorPage />
+        </ProtectedRoute>
+      )}
+
+      {pagina === 'aluno' && autenticado && usuario?.tipo === 'aluno' && (
+        <ProtectedRoute role="aluno">
+          <AlunoPage />
+        </ProtectedRoute>
+      )}
+
+      {pagina === 'admin' && autenticado && usuario?.tipo === 'admin' && (
+        <ProtectedRoute role="admin">
+          <AdminPage />
+        </ProtectedRoute>
+      )}
+
       {pagina === 'ranking' && <RankingPublicoPage />}
+
       {pagina === 'telao' && <RankingTelaoPage />}
 
       <footer className="site-footer">
@@ -71,14 +104,19 @@ export default function App() {
           <div className="site-footer__content">
             <div>
               <h3>E.E. Zinha Meira</h3>
-              <p>Plataforma de acompanhamento de pontuação, desempenho e destaque das turmas.</p>
+              <p>
+                Plataforma de acompanhamento de pontuação, desempenho e destaque das turmas.
+              </p>
             </div>
+
             <div>
               <h4>Acesso rápido</h4>
               <p>Início</p>
+              <p>Site da Escola</p>
               <p>Ranking</p>
               <p>Painéis por perfil</p>
             </div>
+
             <div>
               <h4>Projeto escolar</h4>
               <p>Gamificação</p>
@@ -86,7 +124,10 @@ export default function App() {
               <p>Visual moderno e interativo</p>
             </div>
           </div>
-          <div className="site-footer__bottom">© 2026 - E.E. Zinha Meira - Sistema de Pontos Escolar</div>
+
+          <div className="site-footer__bottom">
+            © 2026 - E.E. Zinha Meira - Sistema de Pontos Escolar
+          </div>
         </div>
       </footer>
     </div>

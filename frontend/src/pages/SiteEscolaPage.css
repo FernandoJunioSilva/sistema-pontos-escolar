@@ -1,0 +1,510 @@
+.site-escola-page {
+  background: #f5f8fc;
+  color: #263447;
+  min-height: 100vh;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.site-escola-page * {
+  box-sizing: border-box;
+}
+
+.escola-topo {
+  background: #2d86d6;
+  color: #ffffff;
+  padding: 10px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.escola-topo a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+.escola-topo a:hover {
+  color: #d7ebff;
+}
+
+.escola-topo-info,
+.escola-redes {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.escola-redes a {
+  font-weight: 600;
+}
+
+.escola-cabecalho {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 20px 8%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.escola-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.escola-logo img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.escola-logo h1 {
+  color: #2566b2;
+  font-size: 30px;
+  margin: 0;
+}
+
+.escola-logo p {
+  color: #7c8ca5;
+  font-size: 14px;
+  margin: 0;
+}
+
+.escola-menu-abas {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.escola-menu-abas button {
+  border: 0;
+  background: transparent;
+  color: #255d99;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 8px 0;
+  border-bottom: 3px solid transparent;
+  transition: 0.25s;
+}
+
+.escola-menu-abas button:hover,
+.escola-menu-abas button.ativo {
+  color: #3c9af3;
+  border-bottom-color: #3c9af3;
+}
+
+.escola-aba {
+  animation: escolaFade 0.35s ease;
+}
+
+@keyframes escolaFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.escola-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+.escola-banner {
+  width: 90%;
+  max-width: 1300px;
+  margin: 40px auto;
+}
+
+.escola-banner img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(37, 93, 153, 0.16);
+}
+
+.escola-servicos {
+  width: 90%;
+  max-width: 1200px;
+  margin: 70px auto;
+  text-align: center;
+}
+
+.escola-servicos h2,
+.escola-hero-info h2,
+.escola-texto-card h2 {
+  color: #255d99;
+}
+
+.escola-servicos h2 {
+  font-size: 35px;
+  margin: 0;
+}
+
+.escola-titulo-icone {
+  color: #2d86d6;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.escola-linha {
+  width: 80px;
+  height: 4px;
+  background: #56a8f5;
+  margin: 15px auto 50px;
+  border-radius: 30px;
+}
+
+.escola-cards {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.escola-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.escola-card-servico {
+  width: 330px;
+  padding: 40px 30px;
+  transition: 0.35s;
+}
+
+.escola-card-servico:hover,
+.escola-contato-card:hover {
+  transform: translateY(-8px);
+}
+
+.escola-card-icone {
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  border-radius: 50%;
+  background: #2d86d6;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 auto 25px;
+}
+
+.escola-card h3 {
+  color: #255d99;
+  margin: 0 0 15px;
+}
+
+.escola-card p {
+  color: #5f6c7b;
+  line-height: 1.8;
+}
+
+.escola-novidades-botao {
+  width: 80%;
+  max-width: 900px;
+  margin: 60px auto;
+}
+
+.escola-novidades-botao button {
+  width: 100%;
+  background: #ffffff;
+  border: 0;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  color: #263447;
+}
+
+.escola-novidades-botao button:hover {
+  transform: translateY(-5px);
+  background: #2d86d6;
+  color: #ffffff;
+}
+
+.escola-novidades-botao span {
+  display: block;
+  font-size: 45px;
+  margin-bottom: 12px;
+}
+
+.escola-novidades-botao strong {
+  display: block;
+  color: #2566b2;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.escola-novidades-botao button:hover strong {
+  color: #ffffff;
+}
+
+.escola-novidades-botao small {
+  font-size: 16px;
+}
+
+.escola-novidades {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.escola-novidades h2 {
+  color: #2566b2;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.escola-noticia {
+  padding: 20px;
+  border-left: 5px solid #2d86d6;
+  margin-bottom: 20px;
+  background: #f5f8fc;
+  border-radius: 10px;
+}
+
+.escola-noticia h3 {
+  color: #2566b2;
+  margin-bottom: 10px;
+}
+
+.escola-galeria-destaque {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 35px;
+}
+
+.escola-galeria-destaque img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.escola-texto-card {
+  padding: 35px;
+  margin-bottom: 35px;
+}
+
+.escola-texto-card h2 {
+  margin-top: 0;
+  margin-bottom: 22px;
+  border-left: 6px solid #2d86d6;
+  padding-left: 15px;
+}
+
+.escola-texto-card h3 {
+  color: #255d99;
+  margin-bottom: 12px;
+}
+
+.escola-texto-card p {
+  text-align: justify;
+  margin-bottom: 18px;
+  line-height: 1.9;
+}
+
+.escola-botao {
+  border: 0;
+  background: #2d86d6;
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.escola-botao:hover {
+  background: #2566b2;
+  transform: translateY(-2px);
+}
+
+.escola-lista-blocos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.escola-lista-blocos article {
+  background: #f5f8fc;
+  border-radius: 16px;
+  padding: 20px;
+  border-left: 5px solid #2d86d6;
+}
+
+.escola-lista {
+  margin: 0;
+  padding-left: 22px;
+  color: #5f6c7b;
+  line-height: 1.9;
+}
+
+.escola-hero-info {
+  background: linear-gradient(135deg, #2d86d6, #56a8f5);
+  color: #ffffff;
+  padding: 70px 40px;
+  border-radius: 24px;
+  text-align: center;
+  margin-bottom: 35px;
+  box-shadow: 0 12px 30px rgba(45, 134, 214, 0.25);
+}
+
+.escola-hero-info h2 {
+  color: #ffffff;
+  font-size: 38px;
+  margin: 0 0 15px;
+}
+
+.escola-hero-info p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.escola-timeline {
+  border-left: 4px solid #2d86d6;
+  margin-top: 20px;
+  padding-left: 35px;
+}
+
+.escola-timeline-item {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.escola-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -46px;
+  top: 7px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2d86d6;
+}
+
+.escola-timeline-item span {
+  display: inline-block;
+  background: #2d86d6;
+  color: #ffffff;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.escola-contatos-area {
+  background: #ffffff;
+  padding: 60px 40px 80px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.escola-contato-card {
+  width: 320px;
+  min-height: 260px;
+  padding: 45px 25px;
+  transition: 0.3s;
+}
+
+.escola-contato-icone {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 48px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.escola-contato-icone.instagram {
+  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+}
+
+.escola-contato-icone.telefone,
+.escola-contato-icone.email {
+  background: #2d86d6;
+}
+
+.escola-rodape {
+  margin-top: 70px;
+  background: #2d86d6;
+  color: #ffffff;
+  text-align: center;
+  padding: 25px 8%;
+}
+
+.escola-rodape p {
+  margin: 6px 0;
+}
+
+@media (max-width: 900px) {
+  .escola-topo,
+  .escola-cabecalho {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .escola-logo {
+    justify-content: center;
+  }
+
+  .escola-menu-abas {
+    justify-content: center;
+  }
+
+  .escola-banner img {
+    height: 300px;
+  }
+
+  .escola-servicos h2,
+  .escola-hero-info h2 {
+    font-size: 30px;
+  }
+
+  .escola-card-servico,
+  .escola-contato-card {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .escola-texto-card {
+    padding: 25px;
+  }
+}
