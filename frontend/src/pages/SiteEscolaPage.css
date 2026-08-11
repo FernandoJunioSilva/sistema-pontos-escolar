@@ -1,510 +1,479 @@
-.site-escola-page {
-  background: #f5f8fc;
-  color: #263447;
+/* ============================= */
+/* SITE DA ESCOLA - ZINHA MEIRA  */
+/* ============================= */
+
+.site-escola {
+  width: 100%;
   min-height: 100vh;
-  font-family: 'Poppins', Arial, sans-serif;
+  background: #f4f8fc;
+  color: #1f2937;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.site-escola-page * {
-  box-sizing: border-box;
-}
+/* ============================= */
+/* TOPO                          */
+/* ============================= */
 
-.escola-topo {
-  background: #2d86d6;
+.escola-topo,
+.site-escola .topo {
+  width: 100%;
+  background: #0f5fa8;
   color: #ffffff;
-  padding: 10px 8%;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.escola-topo-conteudo,
+.site-escola .info {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  font-size: 14px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
-.escola-topo a {
+.escola-topo a,
+.site-escola .topo a {
   color: #ffffff;
   text-decoration: none;
-  transition: 0.25s;
-}
-
-.escola-topo a:hover {
-  color: #d7ebff;
-}
-
-.escola-topo-info,
-.escola-redes {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.escola-redes a {
   font-weight: 600;
 }
 
-.escola-cabecalho {
+/* ============================= */
+/* CABEÇALHO                     */
+/* ============================= */
+
+.escola-cabecalho,
+.site-escola .cabecalho {
+  width: 100%;
   background: #ffffff;
+  border-bottom: 1px solid #dbeafe;
+  box-shadow: 0 4px 14px rgba(15, 95, 168, 0.12);
+}
+
+.escola-cabecalho-conteudo {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
-  padding: 20px 8%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 20;
+  gap: 24px;
 }
 
-.escola-logo {
+/* ============================= */
+/* LOGO                          */
+/* ============================= */
+
+.escola-logo-area,
+.site-escola .logo {
   display: flex;
   align-items: center;
-  gap: 15px;
-  border: 0;
+  gap: 14px;
+  border: none;
   background: transparent;
   cursor: pointer;
   text-align: left;
 }
 
-.escola-logo img {
-  width: 72px;
-  height: 72px;
+.escola-logo-area img,
+.site-escola .logo img {
+  width: 70px;
+  height: 70px;
   object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 6px;
+  box-shadow: 0 6px 16px rgba(15, 95, 168, 0.25);
 }
 
-.escola-logo h1 {
-  color: #2566b2;
-  font-size: 30px;
+.escola-logo-area h1,
+.site-escola .logo h1 {
   margin: 0;
+  color: #0f5fa8;
+  font-size: 28px;
+  font-weight: 800;
 }
 
-.escola-logo p {
-  color: #7c8ca5;
+.escola-logo-area p,
+.site-escola .logo p {
+  margin: 4px 0 0;
+  color: #64748b;
   font-size: 14px;
-  margin: 0;
+  font-weight: 600;
 }
 
-.escola-menu-abas {
+/* ============================= */
+/* MENU DE ABAS                  */
+/* ============================= */
+
+.escola-menu-abas,
+.site-escola .menu-abas {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
-  gap: 18px;
-  flex-wrap: wrap;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 22px;
 }
 
-.escola-menu-abas button {
+.escola-menu-abas button,
+.site-escola .menu-abas button,
+.site-escola .aba {
   border: 0;
   background: transparent;
   color: #255d99;
   font-weight: 700;
   cursor: pointer;
   font-size: 15px;
-  padding: 8px 0;
+  padding: 10px 0;
   border-bottom: 3px solid transparent;
   transition: 0.25s;
+  white-space: nowrap;
 }
 
 .escola-menu-abas button:hover,
-.escola-menu-abas button.ativo {
+.escola-menu-abas button.ativo,
+.site-escola .menu-abas button:hover,
+.site-escola .menu-abas button.ativo,
+.site-escola .aba:hover,
+.site-escola .aba.ativa {
   color: #3c9af3;
   border-bottom-color: #3c9af3;
 }
 
-.escola-aba {
-  animation: escolaFade 0.35s ease;
+/* ============================= */
+/* CONTEÚDO PRINCIPAL            */
+/* ============================= */
+
+.site-escola main,
+.escola-conteudo {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 30px 20px;
 }
 
-@keyframes escolaFade {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* ============================= */
+/* BANNER                        */
+/* ============================= */
 
-.escola-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 50px auto;
-}
-
-.escola-banner {
-  width: 90%;
-  max-width: 1300px;
-  margin: 40px auto;
-}
-
-.escola-banner img {
+.escola-banner,
+.site-escola .banner {
   width: 100%;
-  height: 480px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(15, 95, 168, 0.18);
+  margin-bottom: 32px;
+  background: #dbeafe;
+}
+
+.escola-banner img,
+.site-escola .banner img {
+  width: 100%;
+  height: 360px;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(37, 93, 153, 0.16);
-}
-
-.escola-servicos {
-  width: 90%;
-  max-width: 1200px;
-  margin: 70px auto;
-  text-align: center;
-}
-
-.escola-servicos h2,
-.escola-hero-info h2,
-.escola-texto-card h2 {
-  color: #255d99;
-}
-
-.escola-servicos h2 {
-  font-size: 35px;
-  margin: 0;
-}
-
-.escola-titulo-icone {
-  color: #2d86d6;
-  font-size: 25px;
-  margin-top: 10px;
-}
-
-.escola-linha {
-  width: 80px;
-  height: 4px;
-  background: #56a8f5;
-  margin: 15px auto 50px;
-  border-radius: 30px;
-}
-
-.escola-cards {
-  display: flex;
-  justify-content: center;
-  gap: 35px;
-  flex-wrap: wrap;
-}
-
-.escola-card {
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.escola-card-servico {
-  width: 330px;
-  padding: 40px 30px;
-  transition: 0.35s;
-}
-
-.escola-card-servico:hover,
-.escola-contato-card:hover {
-  transform: translateY(-8px);
-}
-
-.escola-card-icone {
-  width: 90px;
-  height: 90px;
-  line-height: 90px;
-  border-radius: 50%;
-  background: #2d86d6;
-  color: #ffffff;
-  font-size: 36px;
-  margin: 0 auto 25px;
-}
-
-.escola-card h3 {
-  color: #255d99;
-  margin: 0 0 15px;
-}
-
-.escola-card p {
-  color: #5f6c7b;
-  line-height: 1.8;
-}
-
-.escola-novidades-botao {
-  width: 80%;
-  max-width: 900px;
-  margin: 60px auto;
-}
-
-.escola-novidades-botao button {
-  width: 100%;
-  background: #ffffff;
-  border: 0;
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-  color: #263447;
-}
-
-.escola-novidades-botao button:hover {
-  transform: translateY(-5px);
-  background: #2d86d6;
-  color: #ffffff;
-}
-
-.escola-novidades-botao span {
   display: block;
-  font-size: 45px;
-  margin-bottom: 12px;
 }
 
-.escola-novidades-botao strong {
-  display: block;
-  color: #2566b2;
-  font-size: 32px;
-  margin-bottom: 10px;
-}
+/* ============================= */
+/* HERO                          */
+/* ============================= */
 
-.escola-novidades-botao button:hover strong {
+.escola-hero,
+.site-escola .hero {
+  background: linear-gradient(135deg, #0f5fa8, #3c9af3);
   color: #ffffff;
-}
-
-.escola-novidades-botao small {
-  font-size: 16px;
-}
-
-.escola-novidades {
-  width: 80%;
-  max-width: 900px;
-  margin: 0 auto 60px;
-  background: #ffffff;
-  padding: 35px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.escola-novidades h2 {
-  color: #2566b2;
+  padding: 45px 30px;
+  border-radius: 24px;
+  margin-bottom: 28px;
   text-align: center;
-  margin-bottom: 30px;
+  box-shadow: 0 14px 35px rgba(15, 95, 168, 0.25);
 }
 
-.escola-noticia {
-  padding: 20px;
-  border-left: 5px solid #2d86d6;
-  margin-bottom: 20px;
-  background: #f5f8fc;
-  border-radius: 10px;
+.escola-hero h2,
+.site-escola .hero h2 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  font-weight: 800;
 }
 
-.escola-noticia h3 {
-  color: #2566b2;
-  margin-bottom: 10px;
+.escola-hero p,
+.site-escola .hero p {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.7;
 }
 
-.escola-galeria-destaque {
+/* ============================= */
+/* TÍTULOS                       */
+/* ============================= */
+
+.site-escola h2 {
+  color: #0f5fa8;
+  font-size: 28px;
+  margin: 0 0 18px;
+}
+
+.site-escola h3 {
+  color: #1e3a8a;
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+.site-escola p {
+  line-height: 1.7;
+}
+
+/* ============================= */
+/* CARDS                         */
+/* ============================= */
+
+.escola-cards,
+.site-escola .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-bottom: 35px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin: 22px 0 34px;
 }
 
-.escola-galeria-destaque img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.escola-card,
+.site-escola .card,
+.site-escola .card-servico,
+.site-escola .texto-card,
+.site-escola .noticia {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 95, 168, 0.12);
+  border: 1px solid #e0f2fe;
 }
 
-.escola-texto-card {
-  padding: 35px;
-  margin-bottom: 35px;
-}
-
-.escola-texto-card h2 {
-  margin-top: 0;
-  margin-bottom: 22px;
-  border-left: 6px solid #2d86d6;
-  padding-left: 15px;
-}
-
-.escola-texto-card h3 {
-  color: #255d99;
-  margin-bottom: 12px;
-}
-
-.escola-texto-card p {
-  text-align: justify;
-  margin-bottom: 18px;
-  line-height: 1.9;
-}
-
-.escola-botao {
-  border: 0;
-  background: #2d86d6;
-  color: #ffffff;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  cursor: pointer;
+.site-escola .card-servico {
   transition: 0.25s;
 }
 
-.escola-botao:hover {
-  background: #2566b2;
-  transform: translateY(-2px);
+.site-escola .card-servico:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(15, 95, 168, 0.2);
 }
 
-.escola-lista-blocos {
+.site-escola .texto-card {
+  margin-bottom: 24px;
+}
+
+/* ============================= */
+/* SERVIÇOS E NOVIDADES          */
+/* ============================= */
+
+.site-escola .servicos,
+.site-escola .novidades {
+  margin-bottom: 35px;
+}
+
+.site-escola .noticia {
+  margin-bottom: 16px;
+}
+
+/* ============================= */
+/* GALERIA                       */
+/* ============================= */
+
+.gallery-container,
+.escola-galeria {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
+  margin-bottom: 28px;
 }
 
-.escola-lista-blocos article {
-  background: #f5f8fc;
-  border-radius: 16px;
-  padding: 20px;
-  border-left: 5px solid #2d86d6;
+.gallery-container img,
+.escola-galeria img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(15, 95, 168, 0.18);
 }
 
-.escola-lista {
-  margin: 0;
-  padding-left: 22px;
-  color: #5f6c7b;
-  line-height: 1.9;
-}
+/* ============================= */
+/* LINHA DO TEMPO                */
+/* ============================= */
 
-.escola-hero-info {
-  background: linear-gradient(135deg, #2d86d6, #56a8f5);
-  color: #ffffff;
-  padding: 70px 40px;
-  border-radius: 24px;
-  text-align: center;
-  margin-bottom: 35px;
-  box-shadow: 0 12px 30px rgba(45, 134, 214, 0.25);
-}
-
-.escola-hero-info h2 {
-  color: #ffffff;
-  font-size: 38px;
-  margin: 0 0 15px;
-}
-
-.escola-hero-info p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 18px;
-  line-height: 1.8;
-}
-
+.timeline,
 .escola-timeline {
-  border-left: 4px solid #2d86d6;
-  margin-top: 20px;
-  padding-left: 35px;
-}
-
-.escola-timeline-item {
-  position: relative;
-  margin-bottom: 35px;
-}
-
-.escola-timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -46px;
-  top: 7px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #2d86d6;
-}
-
-.escola-timeline-item span {
-  display: inline-block;
-  background: #2d86d6;
-  color: #ffffff;
-  padding: 6px 18px;
-  border-radius: 30px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.escola-contatos-area {
-  background: #ffffff;
-  padding: 60px 40px 80px;
-  border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-}
-
-.escola-contato-card {
-  width: 320px;
-  min-height: 260px;
-  padding: 45px 25px;
-  transition: 0.3s;
-}
-
-.escola-contato-icone {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 25px;
-  border-radius: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 48px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  gap: 16px;
 }
 
-.escola-contato-icone.instagram {
-  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+.timeline .item,
+.escola-timeline .item {
+  background: #f0f9ff;
+  border-left: 5px solid #3c9af3;
+  padding: 16px 18px;
+  border-radius: 12px;
 }
 
-.escola-contato-icone.telefone,
-.escola-contato-icone.email {
-  background: #2d86d6;
+.timeline .item span,
+.escola-timeline .item span {
+  color: #0f5fa8;
+  font-weight: 800;
+  font-size: 18px;
 }
 
-.escola-rodape {
-  margin-top: 70px;
-  background: #2d86d6;
+.timeline .item p,
+.escola-timeline .item p {
+  margin: 6px 0 0;
+}
+
+/* ============================= */
+/* CONTATOS                      */
+/* ============================= */
+
+.escola-contatos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.escola-contato-item {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid #dbeafe;
+  box-shadow: 0 8px 22px rgba(15, 95, 168, 0.1);
+}
+
+/* ============================= */
+/* RODAPÉ                        */
+/* ============================= */
+
+.escola-rodape,
+.site-escola .rodape {
+  background: #0f5fa8;
   color: #ffffff;
   text-align: center;
-  padding: 25px 8%;
+  padding: 28px 20px;
+  margin-top: 30px;
 }
 
-.escola-rodape p {
+.escola-rodape p,
+.site-escola .rodape p {
   margin: 6px 0;
+  line-height: 1.6;
 }
 
-@media (max-width: 900px) {
-  .escola-topo,
-  .escola-cabecalho {
+.escola-copy {
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.escola-creditos {
+  max-width: 1000px;
+  margin: 18px auto 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.escola-creditos p {
+  margin: 5px 0;
+}
+
+.escola-creditos strong {
+  color: #ffffff;
+}
+
+/* ============================= */
+/* RESPONSIVO                    */
+/* ============================= */
+
+@media (max-width: 1000px) {
+  .escola-cabecalho-conteudo {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
-  .escola-logo {
+  .escola-logo-area,
+  .site-escola .logo {
     justify-content: center;
+    text-align: center;
   }
 
-  .escola-menu-abas {
+  .escola-cards,
+  .site-escola .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-container,
+  .escola-galeria {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .escola-contatos {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .escola-menu-abas,
+  .site-escola .menu-abas {
+    flex-direction: row;
     justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
-  .escola-banner img {
-    height: 300px;
+  .escola-menu-abas button,
+  .site-escola .menu-abas button,
+  .site-escola .aba {
+    font-size: 14px;
   }
 
-  .escola-servicos h2,
-  .escola-hero-info h2 {
-    font-size: 30px;
+  .escola-logo-area h1,
+  .site-escola .logo h1 {
+    font-size: 23px;
   }
 
-  .escola-card-servico,
-  .escola-contato-card {
-    width: 100%;
-    max-width: 340px;
+  .escola-logo-area img,
+  .site-escola .logo img {
+    width: 60px;
+    height: 60px;
   }
 
-  .escola-texto-card {
-    padding: 25px;
+  .escola-banner img,
+  .site-escola .banner img {
+    height: 230px;
+  }
+
+  .escola-hero,
+  .site-escola .hero {
+    padding: 32px 20px;
+  }
+
+  .escola-hero h2,
+  .site-escola .hero h2 {
+    font-size: 26px;
+  }
+
+  .escola-cards,
+  .site-escola .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-container,
+  .escola-galeria {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-container img,
+  .escola-galeria img {
+    height: 220px;
   }
 }
