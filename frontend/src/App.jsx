@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
+
 import ProfessorPage from './pages/ProfessorPage';
 import AlunoPage from './pages/AlunoPage';
 import AdminPage from './pages/AdminPage';
 import RankingPublicoPage from './pages/RankingPublicoPage';
 import HomePage from './pages/HomePage';
-import ProtectedRoute from './components/ProtectedRoute';
 import RankingTelaoPage from './pages/RankingTelaoPage';
 import SiteEscolaPage from './pages/SiteEscolaPage';
-import { obterUsuario, estaAutenticado, logout } from './services/auth';
+
+import ProtectedRoute from './components/ProtectedRoute';
+
+import {
+  obterUsuario,
+  estaAutenticado,
+  logout
+} from './services/auth';
 
 export default function App() {
   const [usuario, setUsuario] = useState(obterUsuario());
+
+  // Página da escola abre primeiro
   const [pagina, setPagina] = useState('site-escola');
 
   const autenticado = estaAutenticado();
@@ -27,69 +36,111 @@ export default function App() {
 
     if (usuarioLogado?.tipo === 'professor') {
       setPagina('professor');
-    } else if (usuarioLogado?.tipo === 'aluno') {
-      setPagina('aluno');
-    } else if (usuarioLogado?.tipo === 'admin') {
-      setPagina('admin');
-    } else {
-      setPagina('inicio');
+      return;
     }
+
+    if (usuarioLogado?.tipo === 'aluno') {
+      setPagina('aluno');
+      return;
+    }
+
+    if (usuarioLogado?.tipo === 'admin') {
+      setPagina('admin');
+      return;
+    }
+
+    setPagina('inicio');
   }
 
   return (
     <div>
-      {autenticado && (
-        <div className="container">
-          <div className="user-bar">
-            <span>
-              Usuário logado: <strong>{usuario?.nome}</strong> ({usuario?.tipo})
-            </span>
+      {/* SITE INSTITUCIONAL */}
+      {pagina === 'site-escola' && (
+        <SiteEscolaPage mudarPagina={setPagina} />
+      )}
 
-            <button onClick={() => setPagina('site-escola')}>Site da Escola</button>
-            <button onClick={() => setPagina('inicio')}>Sistema de Pontos</button>
+      {/* SISTEMA DE PONTOS / LOGIN */}
+      {pagina === 'inicio' && (
+        <HomePage onLogin={aoFazerLogin} />
+      )}
 
-            {usuario?.tipo === 'professor' && (
-              <button onClick={() => setPagina('professor')}>Professor</button>
-            )}
+      {/* PROFESSOR */}
+      {pagina === 'professor' &&
+        autenticado &&
+        usuario?.tipo === 'professor' && (
+          <ProtectedRoute role="professor">
+            <ProfessorPage />
+          </ProtectedRoute>
+        )}
 
-            {usuario?.tipo === 'aluno' && (
-              <button onClick={() => setPagina('aluno')}>Aluno</button>
-            )}
+      {/* ALUNO */}
+      {pagina === 'aluno' &&
+        autenticado &&
+        usuario?.tipo === 'aluno' && (
+          <ProtectedRoute role="aluno">
+            <AlunoPage />
+          </ProtectedRoute>
+        )}
 
-            {usuario?.tipo === 'admin' && (
-              <button onClick={() => setPagina('admin')}>Admin</button>
-            )}
+      {/* ADMINISTRADOR */}
+      {pagina === 'admin' &&
+        autenticado &&
+        usuario?.tipo === 'admin' && (
+          <ProtectedRoute role="admin">
+            <AdminPage />
+          </ProtectedRoute>
+        )}
 
-            <button onClick={sair}>Sair</button>
-          </div>
+      {/* RANKING */}
+      {pagina === 'ranking' && (
+        <RankingPublicoPage />
+      )}
+
+      {/* TELÃO */}
+      {pagina === 'telao' && (
+        <RankingTelaoPage />
+      )}
+
+      {/* BOTÃO PARA VOLTAR AO SITE QUANDO ESTIVER LOGADO */}
+      {pagina !== 'site-escola' && autenticado && (
+        <div
+          style={{
+            position: 'fixed',
+            right: '18px',
+            bottom: '18px',
+            zIndex: 9999
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setPagina('site-escola')}
+            style={{
+              padding: '10px 16px',
+              border: 'none',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              fontWeight: '700'
+            }}
+          >
+            ← Site da Escola
+          </button>
+
+          <button
+            type="button"
+            onClick={sair}
+            style={{
+              marginLeft: '8px',
+              padding: '10px 16px',
+              border: 'none',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              fontWeight: '700'
+            }}
+          >
+            Sair
+          </button>
         </div>
       )}
-
-      {pagina === 'site-escola' && <SiteEscolaPage mudarPagina={setPagina} />}
-
-      {pagina === 'inicio' && <HomePage onLogin={aoFazerLogin} />}
-
-      {pagina === 'professor' && autenticado && usuario?.tipo === 'professor' && (
-        <ProtectedRoute role="professor">
-          <ProfessorPage />
-        </ProtectedRoute>
-      )}
-
-      {pagina === 'aluno' && autenticado && usuario?.tipo === 'aluno' && (
-        <ProtectedRoute role="aluno">
-          <AlunoPage />
-        </ProtectedRoute>
-      )}
-
-      {pagina === 'admin' && autenticado && usuario?.tipo === 'admin' && (
-        <ProtectedRoute role="admin">
-          <AdminPage />
-        </ProtectedRoute>
-      )}
-
-      {pagina === 'ranking' && <RankingPublicoPage />}
-
-      {pagina === 'telao' && <RankingTelaoPage />}
     </div>
   );
 }
