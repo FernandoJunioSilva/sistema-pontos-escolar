@@ -19,7 +19,7 @@ import {
 export default function App() {
   const [usuario, setUsuario] = useState(obterUsuario());
 
-  // Página da escola abre primeiro
+  // O site institucional abre primeiro
   const [pagina, setPagina] = useState('site-escola');
 
   const autenticado = estaAutenticado();
@@ -28,7 +28,6 @@ export default function App() {
     logout();
     setUsuario(null);
     setPagina('site-escola');
-    window.location.reload();
   }
 
   function aoFazerLogin(usuarioLogado) {
@@ -82,7 +81,7 @@ export default function App() {
           </ProtectedRoute>
         )}
 
-      {/* ADMINISTRADOR */}
+      {/* ADMIN */}
       {pagina === 'admin' &&
         autenticado &&
         usuario?.tipo === 'admin' && (
@@ -101,44 +100,26 @@ export default function App() {
         <RankingTelaoPage />
       )}
 
-      {/* BOTÃO PARA VOLTAR AO SITE QUANDO ESTIVER LOGADO */}
-      {pagina !== 'site-escola' && autenticado && (
-        <div
-          style={{
-            position: 'fixed',
-            right: '18px',
-            bottom: '18px',
-            zIndex: 9999
-          }}
-        >
+      {/* VOLTAR PARA O SITE */}
+      {pagina !== 'site-escola' && (
+        <div className="botao-voltar-site-area">
           <button
             type="button"
+            className="botao-voltar-site"
             onClick={() => setPagina('site-escola')}
-            style={{
-              padding: '10px 16px',
-              border: 'none',
-              borderRadius: '10px',
-              cursor: 'pointer',
-              fontWeight: '700'
-            }}
           >
             ← Site da Escola
           </button>
 
-          <button
-            type="button"
-            onClick={sair}
-            style={{
-              marginLeft: '8px',
-              padding: '10px 16px',
-              border: 'none',
-              borderRadius: '10px',
-              cursor: 'pointer',
-              fontWeight: '700'
-            }}
-          >
-            Sair
-          </button>
+          {autenticado && (
+            <button
+              type="button"
+              className="botao-sair-sistema"
+              onClick={sair}
+            >
+              Sair
+            </button>
+          )}
         </div>
       )}
     </div>
