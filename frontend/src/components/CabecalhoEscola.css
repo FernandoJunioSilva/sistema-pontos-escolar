@@ -1,0 +1,367 @@
+/* =====================================================
+   BARRA AZUL SUPERIOR
+===================================================== */
+
+.cabecalho-topo {
+  width: 100%;
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  background: #2d86d6;
+  color: #ffffff;
+
+  position: relative;
+  z-index: 1001;
+}
+
+.cabecalho-topo-conteudo {
+  width: calc(100% - 150px);
+  max-width: 1630px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  font-size: 14px;
+}
+
+.cabecalho-topo-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.cabecalho-topo-direita {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cabecalho-topo a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.cabecalho-topo a:hover {
+  opacity: 0.75;
+}
+
+
+/* =====================================================
+   CABEÇALHO PRINCIPAL
+===================================================== */
+
+.cabecalho-principal {
+  width: 100%;
+  min-height: 112px;
+
+  display: flex;
+  align-items: center;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  position: relative;
+  z-index: 1000;
+}
+
+.cabecalho-principal-conteudo {
+  width: calc(100% - 150px);
+  max-width: 1630px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.cabecalho-logo-area {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.cabecalho-logo {
+  width: 69px;
+  height: 69px;
+
+  object-fit: contain;
+}
+
+.cabecalho-identificacao h1 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 23px;
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+.cabecalho-identificacao p {
+  margin: 5px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+.cabecalho-menu {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.cabecalho-menu button {
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  padding: 13px 16px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color: #334155;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.cabecalho-menu button:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.cabecalho-menu button:active {
+  transform: scale(0.97);
+}
+
+
+/* ITEM ATIVO */
+
+.cabecalho-menu .menu-ativo {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.menu-seta {
+  margin-left: 5px;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   DROPDOWN
+===================================================== */
+
+.menu-dropdown {
+  position: relative;
+}
+
+.menu-dropdown-conteudo {
+  position: absolute;
+
+  top: calc(100% + 4px);
+  left: 0;
+
+  width: 215px;
+
+  padding: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  box-shadow:
+    0 20px 40px rgba(15, 23, 42, 0.15);
+
+  z-index: 9999;
+}
+
+.menu-dropdown-conteudo::before {
+  content: "";
+
+  position: absolute;
+
+  top: -8px;
+  left: 0;
+
+  width: 100%;
+  height: 10px;
+}
+
+.menu-dropdown-conteudo button {
+  display: block;
+
+  width: 100%;
+
+  padding: 12px 13px;
+
+  text-align: left;
+
+  border-radius: 9px;
+
+  font-size: 14px;
+}
+
+.menu-dropdown-conteudo button:hover {
+  background: #eff6ff;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1050px) {
+
+  .cabecalho-topo-conteudo,
+  .cabecalho-principal-conteudo {
+    width: calc(100% - 50px);
+  }
+
+  .cabecalho-identificacao h1 {
+    font-size: 19px;
+  }
+
+  .cabecalho-menu {
+    gap: 2px;
+  }
+
+  .cabecalho-menu button {
+    padding: 11px 10px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .cabecalho-topo {
+    padding: 10px 0;
+  }
+
+  .cabecalho-topo-conteudo {
+    width: calc(100% - 30px);
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    text-align: center;
+  }
+
+  .cabecalho-topo-esquerda {
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+  .cabecalho-principal {
+    padding: 15px 0;
+  }
+
+  .cabecalho-principal-conteudo {
+    width: calc(100% - 30px);
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .cabecalho-logo-area {
+    justify-content: center;
+  }
+
+  .cabecalho-menu {
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+  .menu-dropdown-conteudo {
+    left: 50%;
+
+    transform: translateX(-50%);
+  }
+}
+
+
+/* =====================================================
+   CELULAR PEQUENO
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .cabecalho-logo {
+    width: 58px;
+    height: 58px;
+  }
+
+  .cabecalho-identificacao h1 {
+    font-size: 17px;
+  }
+
+  .cabecalho-identificacao p {
+    font-size: 11px;
+  }
+
+  .cabecalho-menu button {
+    padding: 9px 8px;
+
+    font-size: 12px;
+  }
+
+  .cabecalho-topo-direita {
+    gap: 12px;
+  }
+}

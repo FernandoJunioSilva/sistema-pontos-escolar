@@ -1,403 +1,50 @@
-/* ===================================================== */
-/* E.E. ZINHA MEIRA - SITE INSTITUCIONAL                 */
-/* ===================================================== */
+/* =========================================================
+   SITE INSTITUCIONAL - E.E. ZINHA MEIRA
+   SiteEscolaPage.css
+
+   IMPORTANTE:
+   O cabeçalho agora está em:
+   src/components/CabecalhoEscola.css
+
+   Portanto este arquivo começa pelo conteúdo da página.
+========================================================= */
+
+
+/* =========================================================
+   CONFIGURAÇÃO GERAL
+========================================================= */
 
 .site-escola {
   width: 100%;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
 
-  background: #f5f8fc;
-  color: #333333;
+  background: #f4f7fb;
 
-  font-family: Arial, Helvetica, sans-serif;
+  color: #172033;
+
+  overflow-x: hidden;
 }
 
-.site-escola * {
+.site-escola *,
+.site-escola *::before,
+.site-escola *::after {
   box-sizing: border-box;
 }
 
 
-/* ===================================================== */
-/* BARRA SUPERIOR                                        */
-/* ===================================================== */
-
-.escola-topo {
-  width: 100%;
-  height: 48px;
-
-  background: #2d86d6;
-  color: #ffffff;
-}
-
-.escola-topo-conteudo {
-  width: calc(100% - 150px);
-  max-width: 1630px;
-  height: 48px;
-
-  margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-/* LADO ESQUERDO */
-
-.escola-topo-esquerda {
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-
-  gap: 28px;
-}
-
-.escola-topo-item {
-  display: inline-flex;
-  align-items: center;
-
-  gap: 4px;
-
-  color: #ffffff;
-
-  font-size: 14px;
-  font-weight: 500;
-
-  text-decoration: none;
-}
-
-.escola-topo-item:hover {
-  color: #ffffff;
-  opacity: 0.9;
-}
-
-.icone-topo {
-  width: 15px;
-  height: 15px;
-}
-
-
-/* ===================================================== */
-/* REDES SOCIAIS                                         */
-/* ===================================================== */
-
-.escola-redes {
-  display: flex;
-  align-items: center;
-
-  gap: 17px;
-}
-
-.escola-redes a {
-  width: 18px;
-  height: 18px;
-
-  color: #ffffff;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-decoration: none;
-
-  transition:
-    transform 0.2s,
-    opacity 0.2s;
-}
-
-.escola-redes a:hover {
-  transform: translateY(-2px);
-  opacity: 0.8;
-}
-
-.escola-redes svg {
-  width: 17px;
-  height: 17px;
-}
-
-
-/* ===================================================== */
-/* CABEÇALHO PRINCIPAL                                   */
-/* ===================================================== */
-
-.escola-cabecalho {
-  width: 100%;
-  height: 112px;
-
-  background: #ffffff;
-
-  border-bottom: 1px solid #e7ebf0;
-
-  position: relative;
-
-  z-index: 100;
-}
-
-.escola-cabecalho-conteudo {
-  width: calc(100% - 150px);
-  max-width: 1630px;
-
-  height: 111px;
-
-  margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-/* ===================================================== */
-/* LOGO                                                  */
-/* ===================================================== */
-
-.escola-logo-area {
-  display: flex;
-  align-items: center;
-
-  gap: 16px;
-
-  border: none;
-
-  background: transparent;
-
-  margin: 0;
-  padding: 0;
-
-  cursor: pointer;
-
-  text-align: left;
-}
-
-.escola-logo-area:hover {
-  background: transparent;
-}
-
-.escola-logo-area img {
-  width: 69px;
-  height: 69px;
-
-  object-fit: contain;
-
-  border: none;
-  border-radius: 50%;
-
-  padding: 0;
-
-  background: transparent;
-
-  box-shadow: none;
-}
-
-.escola-identidade {
-  display: flex;
-  flex-direction: column;
-
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.escola-logo-area h1 {
-  margin: 0;
-
-  color: #2362ad;
-
-  font-size: 31px;
-  font-weight: 700;
-
-  line-height: 1.1;
-}
-
-.escola-logo-area p {
-  margin: 7px 0 0;
-
-  color: #7c83a1;
-
-  font-size: 15px;
-  font-weight: 400;
-
-  line-height: 1;
-}
-
-
-/* ===================================================== */
-/* MENU                                                  */
-/* ===================================================== */
-
-.escola-menu-abas {
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  gap: 38px;
-}
-
-.escola-menu-abas > button,
-.menu-sistema-botao {
-  margin: 0;
-
-  padding: 8px 0;
-
-  border: none;
-  border-bottom: 3px solid transparent;
-
-  border-radius: 0;
-
-  background: transparent;
-
-  color: #074e96;
-
-  font-size: 15px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  white-space: nowrap;
-
-  transition:
-    color 0.2s,
-    border-color 0.2s;
-}
-
-.escola-menu-abas > button:hover,
-.menu-sistema-botao:hover {
-  color: #2d86d6;
-
-  background: transparent;
-
-  border-bottom-color: #2d86d6;
-}
-
-.escola-menu-abas > button.ativo {
-  color: #2d86d6;
-
-  border-bottom-color: #2d86d6;
-}
-
-
-/* ===================================================== */
-/* SISTEMA DE PONTOS                                     */
-/* ===================================================== */
-
-.menu-sistema-container {
-  position: relative;
-
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-}
-
-.menu-sistema-botao {
-  display: flex;
-  align-items: center;
-
-  gap: 6px;
-}
-
-.seta-menu {
-  font-size: 8px;
-
-  transition: transform 0.2s;
-}
-
-.menu-sistema-container:hover .seta-menu {
-  transform: rotate(180deg);
-}
-
-
-/* ===================================================== */
-/* SUBMENU                                               */
-/* ===================================================== */
-
-.submenu-sistema {
-  position: absolute;
-
-  top: 77px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  min-width: 175px;
-
-  padding: 7px;
-
-  background: #ffffff;
-
-  border: 1px solid #e2e8f0;
-  border-radius: 9px;
-
-  box-shadow:
-    0 12px 28px rgba(23, 76, 125, 0.16);
-
-  z-index: 9999;
-}
-
-.escola-menu-abas .submenu-sistema button {
-  width: 100%;
-
-  padding: 11px 13px;
-
-  border: none;
-  border-radius: 6px;
-
-  background: transparent;
-
-  color: #074e96;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  text-align: left;
-
-  cursor: pointer;
-}
-
-.escola-menu-abas .submenu-sistema button:hover {
-  background: #edf6ff;
-
-  color: #2d86d6;
-}
-
-
-/* ===================================================== */
-/* CONTEÚDO GERAL                                        */
-/* ===================================================== */
-
-.escola-conteudo {
-  width: 100%;
-  max-width: 1160px;
-
-  margin: 0 auto;
-
-  padding: 34px 20px 70px;
-}
-
-
-/* ===================================================== */
-/* IMAGEM PRINCIPAL                                      */
-/* ALINHADA COM A LOGO E O FINAL DO MENU                 */
-/* ===================================================== */
+/* =========================================================
+   BANNER PRINCIPAL / CARROSSEL
+========================================================= */
 
 .escola-banner-principal {
-  /*
-    Usa praticamente a mesma largura do cabeçalho.
-    Assim a imagem começa alinhada com a logo da escola
-    e termina próxima ao final da aba Sobre Nós.
-  */
   width: calc(100vw - 150px);
   max-width: 1630px;
 
   height: 415px;
 
   position: relative;
-  left: 50%;
 
+  left: 50%;
   transform: translateX(-50%);
 
   margin-top: 0;
@@ -408,9 +55,15 @@
   border-radius: 18px;
 
   background: #e8edf3;
+
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.12);
 }
 
-.escola-banner-principal img {
+
+/* IMAGEM */
+
+.escola-banner-principal > img {
   width: 100%;
   height: 100%;
 
@@ -418,737 +71,1011 @@
   object-position: center;
 
   display: block;
+
+  transition: transform 0.7s ease;
+}
+
+.escola-banner-principal:hover > img {
+  transform: scale(1.02);
 }
 
 
-/* ===================================================== */
-/* SERVIÇOS OFERECIDOS                                   */
-/* ===================================================== */
+/* SOMBRA SOBRE A IMAGEM */
 
-.secao-servicos {
-  width: 100%;
+.escola-banner-overlay {
+  position: absolute;
 
-  text-align: center;
+  inset: 0;
 
-  padding-bottom: 57px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.80) 0%,
+      rgba(15, 23, 42, 0.55) 40%,
+      rgba(15, 23, 42, 0.15) 75%,
+      rgba(15, 23, 42, 0.05) 100%
+    );
+
+  pointer-events: none;
 }
 
 
-/* ===================================================== */
-/* TÍTULO SERVIÇOS                                       */
-/* ===================================================== */
+/* TEXTO DO BANNER */
 
-.titulo-secao-servicos {
-  width: 100%;
+.escola-banner-conteudo {
+  position: absolute;
 
-  display: flex;
-  flex-direction: column;
+  top: 50%;
+  left: 65px;
 
-  align-items: center;
-  justify-content: center;
+  transform: translateY(-50%);
 
-  margin-bottom: 45px;
+  max-width: 600px;
+
+  z-index: 3;
+
+  color: #ffffff;
 }
 
-.site-escola .titulo-secao-servicos h2 {
-  margin: 0 0 18px;
+.escola-banner-tag {
+  display: inline-block;
 
-  color: #2765ad;
+  margin-bottom: 14px;
 
-  font-size: 34px;
+  padding: 7px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  border: 1px solid rgba(255, 255, 255, 0.30);
+
+  backdrop-filter: blur(8px);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+}
+
+.escola-banner-conteudo h1 {
+  margin: 0 0 14px;
+
+  font-size: 42px;
+  line-height: 1.1;
+
   font-weight: 800;
 
-  line-height: 1.15;
-
-  text-align: center;
+  color: #ffffff;
 }
 
-.titulo-icone-livro {
-  width: 31px;
-  height: 31px;
+.escola-banner-conteudo p {
+  max-width: 550px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 0 25px;
 
-  color: #2d86d6;
+  font-size: 17px;
+  line-height: 1.7;
 
-  margin-bottom: 13px;
-}
-
-.titulo-icone-livro svg {
-  width: 29px;
-  height: 29px;
-}
-
-.titulo-linha {
-  width: 70px;
-  height: 3px;
-
-  background: #5aaaf4;
-
-  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 
-/* ===================================================== */
-/* GRID DOS SERVIÇOS                                     */
-/* ===================================================== */
+/* BOTÃO DO BANNER */
 
-.servicos-grid {
-  width: 100%;
-  max-width: 920px;
+.escola-banner-botao {
+  border: none;
+  outline: none;
 
-  margin: 0 auto;
+  padding: 14px 23px;
 
-  display: grid;
+  border-radius: 11px;
 
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 28px;
-}
-
-
-/* ===================================================== */
-/* CARDS DOS SERVIÇOS                                    */
-/* ===================================================== */
-
-.servico-card {
-  min-height: 280px;
-
-  padding: 34px 26px 28px;
-
-  border: 1px solid transparent;
-  border-radius: 18px;
-
-  background: #ffffff;
-
-  box-shadow:
-    0 9px 24px rgba(28, 65, 100, 0.10);
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: flex-start;
-
-  text-align: center;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.servico-card:hover {
-  transform: translateY(-9px);
-
-  border-color: rgba(45, 134, 214, 0.22);
-
-  box-shadow:
-    0 20px 38px rgba(29, 91, 150, 0.18);
-}
-
-
-/* ===================================================== */
-/* ÍCONES DOS CARDS                                      */
-/* ===================================================== */
-
-.servico-icone {
-  width: 76px;
-  height: 76px;
-
-  margin-bottom: 24px;
-
-  border-radius: 50%;
-
-  background: #2d86d6;
+  background: #2563eb;
 
   color: #ffffff;
 
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.escola-banner-botao:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(37, 99, 235, 0.42);
+}
+
+
+/* =========================================================
+   SETAS DO CARROSSEL
+========================================================= */
+
+.escola-banner-seta {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 46px;
+  height: 46px;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
-}
+  border: none;
 
-.servico-icone svg {
-  width: 37px;
-  height: 37px;
-}
+  border-radius: 50%;
 
-.servico-card:hover .servico-icone {
-  transform: scale(1.09);
+  background: rgba(255, 255, 255, 0.88);
 
-  background: #246fba;
+  color: #172033;
+
+  font-size: 34px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  z-index: 5;
 
   box-shadow:
-    0 10px 22px rgba(45, 134, 214, 0.30);
+    0 8px 25px rgba(15, 23, 42, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.escola-banner-seta:hover {
+  background: #ffffff;
+
+  transform:
+    translateY(-50%)
+    scale(1.08);
+}
+
+.escola-banner-seta-esquerda {
+  left: 18px;
+}
+
+.escola-banner-seta-direita {
+  right: 18px;
 }
 
 
-/* ===================================================== */
-/* TEXTOS DOS CARDS                                      */
-/* ===================================================== */
+/* =========================================================
+   INDICADORES DO CARROSSEL
+========================================================= */
 
-.site-escola .servico-card h3 {
-  margin: 0 0 15px;
+.escola-banner-indicadores {
+  position: absolute;
 
-  color: #18579b;
+  left: 50%;
+  bottom: 18px;
 
-  font-size: 17px;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  z-index: 5;
+}
+
+.escola-banner-indicador {
+  width: 10px;
+  height: 10px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    border-radius 0.25s ease,
+    background 0.25s ease;
+}
+
+.escola-banner-indicador.ativo {
+  width: 28px;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   SEÇÕES
+========================================================= */
+
+.escola-secao {
+  width: calc(100% - 150px);
+  max-width: 1400px;
+
+  margin: 0 auto 80px;
+}
+
+
+/* =========================================================
+   TÍTULO DAS SEÇÕES
+========================================================= */
+
+.escola-titulo-secao {
+  width: 100%;
+
+  margin-bottom: 35px;
+
+  text-align: center;
+}
+
+.escola-titulo-icone {
+  width: 58px;
+  height: 58px;
+
+  margin: 0 auto 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf3ff;
+
+  font-size: 27px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.escola-titulo-secao:hover .escola-titulo-icone {
+  transform: scale(1.08);
+
+  background: #dbeafe;
+}
+
+.escola-titulo-secao h2 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 31px;
+  font-weight: 800;
+}
+
+.escola-titulo-linha {
+  width: 70px;
+  height: 4px;
+
+  margin: 13px auto 16px;
+
+  border-radius: 10px;
+
+  background: #2d86d6;
+}
+
+.escola-titulo-secao p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   SERVIÇOS
+========================================================= */
+
+.escola-servicos {
+  padding-top: 5px;
+}
+
+.escola-servicos-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.escola-servico-card {
+  min-height: 250px;
+
+  padding: 35px 28px;
+
+  background: #ffffff;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.07);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border 0.25s ease;
+}
+
+.escola-servico-card:hover {
+  transform: translateY(-7px);
+
+  border-color: #dbeafe;
+
+  box-shadow:
+    0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+.escola-servico-icone {
+  width: 76px;
+  height: 76px;
+
+  margin: 0 auto 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eaf3ff,
+      #dbeafe
+    );
+
+  font-size: 34px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.escola-servico-card:hover
+.escola-servico-icone {
+  transform:
+    scale(1.1)
+    rotate(-3deg);
+}
+
+.escola-servico-card h3 {
+  margin: 0 0 12px;
+
+  color: #172033;
+
+  font-size: 20px;
+}
+
+.escola-servico-card p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   CARD DO SISTEMA DE PONTOS
+========================================================= */
+
+.escola-sistema-card {
+  min-height: 180px;
+
+  padding: 32px 38px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1d4ed8,
+      #2d86d6
+    );
+
+  border-radius: 22px;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 18px 40px rgba(37, 99, 235, 0.25);
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.escola-sistema-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  right: -100px;
+  top: -120px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.escola-sistema-icone {
+  width: 90px;
+  height: 90px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  border: 1px solid rgba(255, 255, 255, 0.23);
+
+  font-size: 43px;
+
+  z-index: 2;
+}
+
+.escola-sistema-texto {
+  flex: 1;
+
+  z-index: 2;
+}
+
+.escola-mini-titulo {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #2563eb;
+
+  font-size: 12px;
   font-weight: 800;
 
-  transition: color 0.3s;
+  text-transform: uppercase;
+
+  letter-spacing: 0.7px;
 }
 
-.site-escola .servico-card p {
-  max-width: 240px;
+.escola-sistema-texto
+.escola-mini-titulo {
+  color: #bfdbfe;
+}
+
+.escola-sistema-texto h2 {
+  margin: 0 0 8px;
+
+  font-size: 27px;
+
+  color: #ffffff;
+}
+
+.escola-sistema-texto p {
+  max-width: 650px;
 
   margin: 0;
 
-  color: #555555;
+  color: rgba(255, 255, 255, 0.90);
 
-  font-size: 15px;
-
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
-.servico-card:hover h3 {
-  color: #2d86d6;
+.escola-sistema-botao {
+  position: relative;
+
+  z-index: 2;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  padding: 14px 22px;
+
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  color: #1d4ed8;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.escola-sistema-botao:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.16);
 }
 
 
-/* ===================================================== */
-/* NOVIDADES                                             */
-/* ===================================================== */
+/* =========================================================
+   NOVIDADES
+========================================================= */
 
-.secao-novidades {
-  width: 100%;
-
-  padding: 5px 0 35px;
+.escola-novidades {
+  padding-top: 5px;
 }
 
-.novidades-card {
-  width: min(780px, 100%);
-  min-height: 190px;
+.escola-novidade-card {
+  max-width: 900px;
 
   margin: 0 auto;
 
   padding: 30px 35px;
 
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+
   background: #ffffff;
 
-  border: 1px solid transparent;
+  border: 1px solid #edf0f4;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.escola-novidade-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+.escola-novidade-icone {
+  width: 78px;
+  height: 78px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 18px;
 
-  box-shadow:
-    0 9px 24px rgba(28, 65, 100, 0.10);
+  background: #eaf3ff;
 
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  font-family: inherit;
-
-  cursor: pointer;
+  font-size: 35px;
 
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.25s ease;
 }
 
-.novidades-card:hover {
-  transform: translateY(-7px);
-
-  border-color: rgba(45, 134, 214, 0.22);
-
-  box-shadow:
-    0 19px 37px rgba(29, 91, 150, 0.17);
+.escola-novidade-card:hover
+.escola-novidade-icone {
+  transform: scale(1.08);
 }
 
+.escola-novidade-card h3 {
+  margin: 3px 0 8px;
 
-/* ===================================================== */
-/* ÍCONE NOVIDADES                                       */
-/* ===================================================== */
+  font-size: 21px;
 
-.novidades-icone {
-  width: 45px;
-  height: 45px;
-
-  margin-bottom: 12px;
-
-  color: #2d86d6;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition:
-    transform 0.3s ease,
-    color 0.3s ease;
+  color: #172033;
 }
 
-.novidades-icone svg {
-  width: 42px;
-  height: 42px;
-}
-
-.novidades-card:hover .novidades-icone {
-  transform: scale(1.10);
-
-  color: #246fba;
-}
-
-.site-escola .novidades-card h2 {
-  margin: 0 0 11px;
-
-  color: #2563aa;
-
-  font-size: 28px;
-  font-weight: 800;
-}
-
-.site-escola .novidades-card p {
+.escola-novidade-card p {
   margin: 0;
 
-  color: #555555;
+  color: #64748b;
 
-  font-size: 15px;
-}
-
-
-/* ===================================================== */
-/* LISTA DE NOVIDADES                                    */
-/* ===================================================== */
-
-.novidades-lista {
-  width: min(780px, 100%);
-
-  margin: 18px auto 0;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 12px;
-}
-
-.novidade-item {
-  padding: 20px 23px;
-
-  background: #ffffff;
-
-  border: 1px solid #e6edf5;
-  border-radius: 13px;
-
-  box-shadow:
-    0 5px 18px rgba(30, 70, 110, 0.08);
-
-  animation:
-    aparecerNoticia 0.3s ease;
-}
-
-.site-escola .novidade-item h3 {
-  margin: 0 0 8px;
-
-  color: #2563aa;
-}
-
-.site-escola .novidade-item p {
-  margin: 0;
-
-  color: #555555;
-}
-
-
-/* ===================================================== */
-/* TÍTULOS GERAIS                                        */
-/* ===================================================== */
-
-.site-escola h2 {
-  color: #2563aa;
-}
-
-.site-escola h3 {
-  color: #19589b;
-}
-
-.site-escola p {
   line-height: 1.7;
 }
 
 
-/* ===================================================== */
-/* CARDS GERAIS                                          */
-/* ===================================================== */
+/* =========================================================
+   SOBRE NÓS
+========================================================= */
 
-.escola-card {
-  background: #ffffff;
-
-  border: 1px solid #e5edf5;
-
-  border-radius: 18px;
-
-  padding: 24px;
-
-  box-shadow:
-    0 8px 22px rgba(24, 62, 98, 0.09);
+#sobre {
+  scroll-margin-top: 30px;
 }
 
-.escola-texto-card {
-  margin-bottom: 24px;
+.escola-sobre {
+  padding-top: 10px;
 }
 
-
-/* ===================================================== */
-/* HERO                                                  */
-/* ===================================================== */
-
-.escola-hero {
-  padding: 40px 30px;
-
-  margin-bottom: 28px;
-
-  border-radius: 20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #2366ad,
-      #3d9bea
-    );
-
-  color: #ffffff;
-
-  text-align: center;
-}
-
-.site-escola .escola-hero h2 {
-  color: #ffffff;
-
-  margin-top: 0;
-}
-
-.site-escola .escola-hero p {
-  color: #ffffff;
-
-  max-width: 800px;
-
-  margin: 0 auto;
-}
-
-
-/* ===================================================== */
-/* CARDS DE CONTATO                                      */
-/* ===================================================== */
-
-.escola-cards {
+.escola-sobre-grid {
   display: grid;
 
   grid-template-columns:
-    repeat(3, 1fr);
+    1.1fr 0.9fr;
 
-  gap: 22px;
+  align-items: center;
 
-  margin: 22px 0 32px;
+  gap: 45px;
+
+  padding: 40px;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 12px 40px rgba(15, 23, 42, 0.08);
 }
 
-.escola-card a {
-  color: #2563aa;
+.escola-sobre-texto h2 {
+  margin: 5px 0 20px;
 
+  color: #172033;
+
+  font-size: 29px;
+}
+
+.escola-sobre-texto > p {
+  margin: 0 0 15px;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* DADOS DA ESCOLA */
+
+.escola-sobre-dados {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+.escola-sobre-dados > div {
+  padding: 16px;
+
+  border-radius: 12px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e9eef5;
+}
+
+.escola-sobre-dados strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #2563eb;
+
+  font-size: 13px;
+}
+
+.escola-sobre-dados span {
+  color: #475569;
+
+  font-size: 13px;
+}
+
+
+/* IMAGEM SOBRE */
+
+.escola-sobre-imagem {
+  width: 100%;
+  height: 380px;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background: #e8edf3;
+
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.10);
+}
+
+.escola-sobre-imagem img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.5s ease;
+}
+
+.escola-sobre-imagem:hover img {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   CONTATOS
+========================================================= */
+
+#contatos {
+  scroll-margin-top: 30px;
+}
+
+.escola-contatos {
+  padding-top: 10px;
+}
+
+.escola-contatos-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.escola-contato-card {
+  min-height: 225px;
+
+  padding: 28px 22px;
+
+  background: #ffffff;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 17px;
+
+  text-align: center;
+
+  box-shadow:
+    0 8px 28px rgba(15, 23, 42, 0.06);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.escola-contato-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 18px 38px rgba(15, 23, 42, 0.11);
+}
+
+.escola-contato-icone {
+  width: 62px;
+  height: 62px;
+
+  margin: 0 auto 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf3ff;
+
+  font-size: 28px;
+}
+
+.escola-contato-card h3 {
+  margin: 0 0 12px;
+
+  color: #172033;
+
+  font-size: 18px;
+}
+
+.escola-contato-card p {
+  margin: 5px 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+.escola-contato-card a {
+  display: inline-block;
+
+  margin-top: 10px;
+
+  color: #2563eb;
+
+  font-size: 13px;
   font-weight: 700;
 
   text-decoration: none;
 }
 
-.escola-card a:hover {
+.escola-contato-card a:hover {
   text-decoration: underline;
 }
 
 
-/* ===================================================== */
-/* GALERIA                                               */
-/* ===================================================== */
+/* REDES SOCIAIS */
 
-.escola-galeria {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 18px;
-
-  margin-bottom: 28px;
-}
-
-.escola-galeria img {
-  width: 100%;
-  height: 225px;
-
-  object-fit: cover;
-
-  border-radius: 16px;
-
-  box-shadow:
-    0 7px 20px rgba(25, 66, 105, 0.14);
-
-  transition: transform 0.3s;
-}
-
-.escola-galeria img:hover {
-  transform: scale(1.025);
-}
-
-
-/* ===================================================== */
-/* LISTAS                                                */
-/* ===================================================== */
-
-.escola-lista {
-  color: #4b5563;
-
-  line-height: 1.9;
-}
-
-
-/* ===================================================== */
-/* LINHA DO TEMPO                                        */
-/* ===================================================== */
-
-.escola-timeline {
+.escola-redes {
   display: flex;
   flex-direction: column;
 
-  gap: 14px;
-}
+  align-items: center;
 
-.escola-timeline .item {
-  padding: 15px 18px;
-
-  border-left: 5px solid #2d86d6;
-
-  border-radius: 10px;
-
-  background: #eff8ff;
-}
-
-.escola-timeline .item span {
-  color: #2563aa;
-
-  font-size: 18px;
-  font-weight: 800;
+  gap: 4px;
 }
 
 
-/* ===================================================== */
-/* RODAPÉ                                                */
-/* ===================================================== */
+/* =========================================================
+   RODAPÉ
+========================================================= */
 
-.escola-rodape {
+.escola-footer {
   width: 100%;
 
-  padding: 30px 20px;
+  margin-top: 100px;
 
-  background: #2568ad;
+  background: #15243b;
 
   color: #ffffff;
+}
+
+.escola-footer-conteudo {
+  width: calc(100% - 150px);
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  padding: 55px 0 45px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.25fr 1fr 1fr 1fr;
+
+  gap: 45px;
+}
+
+.escola-footer-coluna h3 {
+  margin: 0 0 17px;
+
+  font-size: 17px;
+
+  color: #ffffff;
+}
+
+.escola-footer-coluna p {
+  margin: 7px 0;
+
+  color: #cbd5e1;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* PARTE FINAL DO RODAPÉ */
+
+.escola-footer-final {
+  width: calc(100% - 150px);
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  padding: 20px 0;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.10);
 
   text-align: center;
 }
 
-.escola-rodape p {
-  margin: 5px 0;
+.escola-footer-final p {
+  margin: 0;
 
-  color: #ffffff;
-}
+  color: #94a3b8;
 
-.escola-copy {
-  margin-top: 14px !important;
-
-  font-weight: 700;
-}
-
-.escola-creditos {
-  max-width: 1000px;
-
-  margin: 18px auto 0;
-
-  padding-top: 15px;
-
-  border-top:
-    1px solid rgba(255, 255, 255, 0.35);
-
-  font-size: 14px;
+  font-size: 12px;
 }
 
 
-/* ===================================================== */
-/* BOTÕES VOLTAR / SAIR                                  */
-/* ===================================================== */
-
-.botao-voltar-site-area {
-  position: fixed;
-
-  right: 18px;
-  bottom: 18px;
-
-  z-index: 99999;
-
-  display: flex;
-
-  gap: 8px;
-}
-
-.botao-voltar-site,
-.botao-sair-sistema {
-  padding: 10px 15px;
-
-  border: none;
-
-  border-radius: 9px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 5px 16px rgba(0, 0, 0, 0.15);
-}
-
-.botao-voltar-site {
-  background: #ffffff;
-
-  color: #2563aa;
-}
-
-.botao-sair-sistema {
-  background: #2563aa;
-
-  color: #ffffff;
-}
-
-
-/* ===================================================== */
-/* ANIMAÇÕES                                             */
-/* ===================================================== */
-
-@keyframes aparecerNoticia {
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(-8px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(0);
-  }
-}
-
-
-/* ===================================================== */
-/* TELAS ATÉ 1100PX                                      */
-/* ===================================================== */
+/* =========================================================
+   TABLETS GRANDES
+========================================================= */
 
 @media (max-width: 1100px) {
 
-  .escola-topo-conteudo,
-  .escola-cabecalho-conteudo {
-    width: calc(100% - 50px);
-  }
-
-  .escola-menu-abas {
-    gap: 22px;
-  }
-
-  /*
-    Continua alinhada com o cabeçalho,
-    que também passa a usar 50px de margem total.
-  */
   .escola-banner-principal {
     width: calc(100vw - 50px);
 
     height: 380px;
   }
 
+  .escola-secao {
+    width: calc(100% - 50px);
+  }
+
+  .escola-footer-conteudo,
+  .escola-footer-final {
+    width: calc(100% - 50px);
+  }
+
+  .escola-banner-conteudo {
+    left: 50px;
+  }
+
+  .escola-banner-conteudo h1 {
+    font-size: 36px;
+  }
+
+  .escola-contatos-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .escola-footer-conteudo {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
 }
 
 
-/* ===================================================== */
-/* TABLET                                                */
-/* ===================================================== */
+/* =========================================================
+   TABLETS / CELULAR
+========================================================= */
 
 @media (max-width: 850px) {
-
-  .escola-topo {
-    height: auto;
-  }
-
-  .escola-topo-conteudo {
-    width: calc(100% - 30px);
-
-    min-height: 48px;
-
-    height: auto;
-
-    padding: 8px 0;
-  }
-
-  .escola-topo-esquerda {
-    flex-wrap: wrap;
-
-    gap: 12px;
-  }
-
-  .escola-cabecalho {
-    height: auto;
-  }
-
-  .escola-cabecalho-conteudo {
-    width: calc(100% - 30px);
-
-    height: auto;
-
-    padding: 15px 0;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    gap: 17px;
-  }
-
-  .escola-menu-abas {
-    width: 100%;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 12px 22px;
-  }
-
-  .menu-sistema-container {
-    height: auto;
-  }
-
-  .submenu-sistema {
-    top: calc(100% + 8px);
-  }
 
   .escola-banner-principal {
     width: calc(100vw - 30px);
@@ -1156,75 +1083,89 @@
     height: 320px;
 
     margin-bottom: 55px;
+
+    border-radius: 14px;
   }
 
-  .servicos-grid {
-    max-width: 620px;
+  .escola-banner-conteudo {
+    left: 35px;
 
+    max-width: 70%;
+  }
+
+  .escola-banner-conteudo h1 {
+    font-size: 30px;
+  }
+
+  .escola-banner-conteudo p {
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+  .escola-banner-botao {
+    padding: 11px 17px;
+
+    font-size: 13px;
+  }
+
+  .escola-banner-seta {
+    width: 39px;
+    height: 39px;
+
+    font-size: 28px;
+  }
+
+  .escola-secao {
+    width: calc(100% - 30px);
+
+    margin-bottom: 60px;
+  }
+
+  .escola-servicos-grid {
     grid-template-columns: 1fr;
   }
 
-  .servico-card {
+  .escola-servico-card {
     min-height: auto;
   }
 
-  .escola-cards {
-    grid-template-columns: 1fr;
+  .escola-sistema-card {
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 30px 25px;
   }
 
-  .escola-galeria {
-    grid-template-columns:
-      1fr 1fr;
+  .escola-sistema-texto p {
+    margin: 0 auto;
+  }
+
+  .escola-novidade-card {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .escola-sobre-grid {
+    grid-template-columns: 1fr;
+
+    padding: 30px;
+  }
+
+  .escola-sobre-imagem {
+    height: 320px;
   }
 
 }
 
 
-/* ===================================================== */
-/* CELULAR                                               */
-/* ===================================================== */
+/* =========================================================
+   CELULAR
+========================================================= */
 
 @media (max-width: 600px) {
-
-  .escola-topo-conteudo {
-    flex-direction: column;
-
-    justify-content: center;
-
-    gap: 8px;
-  }
-
-  .escola-topo-esquerda {
-    justify-content: center;
-  }
-
-  .escola-redes {
-    padding-bottom: 5px;
-  }
-
-  .escola-logo-area img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .escola-logo-area h1 {
-    font-size: 24px;
-  }
-
-  .escola-logo-area p {
-    font-size: 13px;
-  }
-
-  .escola-menu-abas > button,
-  .menu-sistema-botao {
-    font-size: 13px;
-  }
-
-  .escola-conteudo {
-    padding:
-      22px 13px
-      45px;
-  }
 
   .escola-banner-principal {
     width: calc(100vw - 26px);
@@ -1232,74 +1173,246 @@
     height: 235px;
 
     margin-bottom: 45px;
-
-    border-radius: 14px;
   }
 
-  .site-escola .titulo-secao-servicos h2 {
-    font-size: 27px;
+  .escola-banner-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(15, 23, 42, 0.76),
+        rgba(15, 23, 42, 0.30)
+      );
   }
 
-  .titulo-secao-servicos {
-    margin-bottom: 34px;
+  .escola-banner-conteudo {
+    left: 25px;
+
+    max-width: calc(100% - 75px);
   }
 
-  .servico-card {
-    padding: 32px 22px;
+  .escola-banner-tag {
+    padding: 5px 9px;
+
+    margin-bottom: 8px;
+
+    font-size: 10px;
   }
 
-  .servico-icone {
-    width: 75px;
-    height: 75px;
+  .escola-banner-conteudo h1 {
+    margin-bottom: 8px;
+
+    font-size: 23px;
   }
 
-  .novidades-card {
-    min-height: 180px;
+  .escola-banner-conteudo p {
+    margin-bottom: 13px;
 
-    padding: 28px 20px;
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
   }
 
-  .site-escola .novidades-card h2 {
+  .escola-banner-botao {
+    padding: 9px 12px;
+
+    font-size: 11px;
+
+    border-radius: 8px;
+  }
+
+  .escola-banner-seta {
+    width: 32px;
+    height: 32px;
+
+    font-size: 22px;
+  }
+
+  .escola-banner-seta-esquerda {
+    left: 8px;
+  }
+
+  .escola-banner-seta-direita {
+    right: 8px;
+  }
+
+  .escola-banner-indicadores {
+    bottom: 9px;
+  }
+
+  .escola-banner-indicador {
+    width: 7px;
+    height: 7px;
+  }
+
+  .escola-banner-indicador.ativo {
+    width: 20px;
+  }
+
+
+  /* TÍTULOS */
+
+  .escola-titulo-icone {
+    width: 50px;
+    height: 50px;
+
+    font-size: 23px;
+  }
+
+  .escola-titulo-secao h2 {
     font-size: 25px;
   }
 
-  .escola-galeria {
+  .escola-titulo-secao p {
+    font-size: 13px;
+  }
+
+
+  /* SERVIÇOS */
+
+  .escola-servico-card {
+    padding: 28px 22px;
+  }
+
+
+  /* SISTEMA */
+
+  .escola-sistema-card {
+    border-radius: 17px;
+  }
+
+  .escola-sistema-icone {
+    width: 75px;
+    height: 75px;
+
+    font-size: 36px;
+  }
+
+  .escola-sistema-texto h2 {
+    font-size: 23px;
+  }
+
+  .escola-sistema-texto p {
+    font-size: 13px;
+  }
+
+
+  /* SOBRE */
+
+  .escola-sobre-grid {
+    padding: 23px;
+
+    border-radius: 17px;
+  }
+
+  .escola-sobre-texto h2 {
+    font-size: 24px;
+  }
+
+  .escola-sobre-texto > p {
+    font-size: 13px;
+  }
+
+  .escola-sobre-dados {
     grid-template-columns: 1fr;
   }
 
-  .escola-galeria img {
-    height: 220px;
+  .escola-sobre-imagem {
+    height: 240px;
   }
 
-  .botao-voltar-site-area {
-    right: 10px;
-    bottom: 10px;
+
+  /* CONTATOS */
+
+  .escola-contatos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .escola-contato-card {
+    min-height: auto;
+  }
+
+
+  /* RODAPÉ */
+
+  .escola-footer {
+    margin-top: 70px;
+  }
+
+  .escola-footer-conteudo {
+    width: calc(100% - 40px);
+
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+
+    padding: 40px 0 30px;
+  }
+
+  .escola-footer-final {
+    width: calc(100% - 40px);
   }
 
 }
 
 
-/* ===================================================== */
-/* CELULARES PEQUENOS                                    */
-/* ===================================================== */
+/* =========================================================
+   CELULAR PEQUENO
+========================================================= */
 
 @media (max-width: 420px) {
-
-  .escola-menu-abas {
-    gap: 8px 12px;
-  }
-
-  .escola-menu-abas > button,
-  .menu-sistema-botao {
-    font-size: 12px;
-  }
-
-  .seta-menu {
-    font-size: 7px;
-  }
 
   .escola-banner-principal {
     height: 200px;
   }
 
+  .escola-banner-conteudo {
+    left: 20px;
+
+    max-width: calc(100% - 55px);
+  }
+
+  .escola-banner-conteudo h1 {
+    font-size: 20px;
+  }
+
+  .escola-banner-conteudo p {
+    display: none;
+  }
+
+  .escola-banner-tag {
+    font-size: 9px;
+  }
+
+  .escola-banner-botao {
+    margin-top: 3px;
+  }
+
+  .escola-banner-seta {
+    display: none;
+  }
+
+  .escola-secao {
+    width: calc(100% - 24px);
+  }
+
+  .escola-titulo-secao h2 {
+    font-size: 22px;
+  }
+
+}
+
+
+/* =========================================================
+   ROLAGEM
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
 }
