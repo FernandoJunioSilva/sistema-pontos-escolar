@@ -28,7 +28,6 @@
   height: 48px;
 
   background: #2d86d6;
-
   color: #ffffff;
 }
 
@@ -45,19 +44,21 @@
 }
 
 
-/* ESQUERDA */
+/* LADO ESQUERDO */
 
 .escola-topo-esquerda {
+  height: 100%;
+
   display: flex;
   align-items: center;
-  gap: 28px;
 
-  height: 100%;
+  gap: 28px;
 }
 
 .escola-topo-item {
   display: inline-flex;
   align-items: center;
+
   gap: 4px;
 
   color: #ffffff;
@@ -68,13 +69,20 @@
   text-decoration: none;
 }
 
+.escola-topo-item:hover {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
 .icone-topo {
   width: 15px;
   height: 15px;
 }
 
 
-/* REDES SOCIAIS */
+/* ===================================================== */
+/* REDES SOCIAIS                                         */
+/* ===================================================== */
 
 .escola-redes {
   display: flex;
@@ -92,6 +100,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  text-decoration: none;
 
   transition:
     transform 0.2s,
@@ -151,6 +161,7 @@
   gap: 16px;
 
   border: none;
+
   background: transparent;
 
   margin: 0;
@@ -159,6 +170,10 @@
   cursor: pointer;
 
   text-align: left;
+}
+
+.escola-logo-area:hover {
+  background: transparent;
 }
 
 .escola-logo-area img {
@@ -171,6 +186,8 @@
   border-radius: 50%;
 
   padding: 0;
+
+  background: transparent;
 
   box-shadow: none;
 }
@@ -211,13 +228,13 @@
 /* ===================================================== */
 
 .escola-menu-abas {
+  height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
   gap: 38px;
-
-  height: 100%;
 }
 
 .escola-menu-abas > button,
@@ -294,7 +311,9 @@
 }
 
 
-/* SUBMENU */
+/* ===================================================== */
+/* SUBMENU                                               */
+/* ===================================================== */
 
 .submenu-sistema {
   position: absolute;
@@ -347,7 +366,7 @@
 
 
 /* ===================================================== */
-/* CONTEÚDO                                              */
+/* CONTEÚDO GERAL                                        */
 /* ===================================================== */
 
 .escola-conteudo {
@@ -362,13 +381,27 @@
 
 /* ===================================================== */
 /* IMAGEM PRINCIPAL                                      */
+/* ALINHADA COM A LOGO E O FINAL DO MENU                 */
 /* ===================================================== */
 
 .escola-banner-principal {
-  width: 100%;
+  /*
+    Usa praticamente a mesma largura do cabeçalho.
+    Assim a imagem começa alinhada com a logo da escola
+    e termina próxima ao final da aba Sobre Nós.
+  */
+  width: calc(100vw - 150px);
+  max-width: 1630px;
+
   height: 415px;
 
-  margin: 0 auto 73px;
+  position: relative;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  margin-top: 0;
+  margin-bottom: 73px;
 
   overflow: hidden;
 
@@ -389,7 +422,7 @@
 
 
 /* ===================================================== */
-/* SERVIÇOS                                             */
+/* SERVIÇOS OFERECIDOS                                   */
 /* ===================================================== */
 
 .secao-servicos {
@@ -401,13 +434,18 @@
 }
 
 
-/* TÍTULO */
+/* ===================================================== */
+/* TÍTULO SERVIÇOS                                       */
+/* ===================================================== */
 
 .titulo-secao-servicos {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
 
   align-items: center;
+  justify-content: center;
 
   margin-bottom: 45px;
 }
@@ -454,7 +492,7 @@
 
 
 /* ===================================================== */
-/* CARDS DOS SERVIÇOS                                    */
+/* GRID DOS SERVIÇOS                                     */
 /* ===================================================== */
 
 .servicos-grid {
@@ -470,6 +508,11 @@
 
   gap: 28px;
 }
+
+
+/* ===================================================== */
+/* CARDS DOS SERVIÇOS                                    */
+/* ===================================================== */
 
 .servico-card {
   min-height: 280px;
@@ -488,6 +531,7 @@
   flex-direction: column;
 
   align-items: center;
+  justify-content: flex-start;
 
   text-align: center;
 
@@ -508,7 +552,9 @@
 }
 
 
-/* ÍCONES */
+/* ===================================================== */
+/* ÍCONES DOS CARDS                                      */
+/* ===================================================== */
 
 .servico-icone {
   width: 76px;
@@ -547,7 +593,9 @@
 }
 
 
-/* TEXTOS */
+/* ===================================================== */
+/* TEXTOS DOS CARDS                                      */
+/* ===================================================== */
 
 .site-escola .servico-card h3 {
   margin: 0 0 15px;
@@ -556,6 +604,8 @@
 
   font-size: 17px;
   font-weight: 800;
+
+  transition: color 0.3s;
 }
 
 .site-escola .servico-card p {
@@ -580,6 +630,8 @@
 /* ===================================================== */
 
 .secao-novidades {
+  width: 100%;
+
   padding: 5px 0 35px;
 }
 
@@ -605,6 +657,8 @@
   align-items: center;
   justify-content: center;
 
+  text-align: center;
+
   font-family: inherit;
 
   cursor: pointer;
@@ -625,7 +679,9 @@
 }
 
 
-/* ÍCONE */
+/* ===================================================== */
+/* ÍCONE NOVIDADES                                       */
+/* ===================================================== */
 
 .novidades-icone {
   width: 45px;
@@ -650,7 +706,7 @@
 }
 
 .novidades-card:hover .novidades-icone {
-  transform: scale(1.1);
+  transform: scale(1.10);
 
   color: #246fba;
 }
@@ -673,7 +729,9 @@
 }
 
 
-/* LISTA DE NOTÍCIAS */
+/* ===================================================== */
+/* LISTA DE NOVIDADES                                    */
+/* ===================================================== */
 
 .novidades-lista {
   width: min(780px, 100%);
@@ -697,7 +755,8 @@
   box-shadow:
     0 5px 18px rgba(30, 70, 110, 0.08);
 
-  animation: aparecerNoticia 0.3s ease;
+  animation:
+    aparecerNoticia 0.3s ease;
 }
 
 .site-escola .novidade-item h3 {
@@ -714,7 +773,7 @@
 
 
 /* ===================================================== */
-/* TÍTULOS DAS OUTRAS PÁGINAS                            */
+/* TÍTULOS GERAIS                                        */
 /* ===================================================== */
 
 .site-escola h2 {
@@ -738,6 +797,7 @@
   background: #ffffff;
 
   border: 1px solid #e5edf5;
+
   border-radius: 18px;
 
   padding: 24px;
@@ -852,7 +912,7 @@
 
 
 /* ===================================================== */
-/* LISTA                                                 */
+/* LISTAS                                                */
 /* ===================================================== */
 
 .escola-lista {
@@ -946,6 +1006,7 @@
   z-index: 99999;
 
   display: flex;
+
   gap: 8px;
 }
 
@@ -954,6 +1015,7 @@
   padding: 10px 15px;
 
   border: none;
+
   border-radius: 9px;
 
   font-weight: 700;
@@ -982,25 +1044,27 @@
 /* ===================================================== */
 
 @keyframes aparecerNoticia {
-
   from {
     opacity: 0;
-    transform: translateY(-8px);
+
+    transform:
+      translateY(-8px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
 
+    transform:
+      translateY(0);
+  }
 }
 
 
 /* ===================================================== */
-/* TABLET                                                */
+/* TELAS ATÉ 1100PX                                      */
 /* ===================================================== */
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
 
   .escola-topo-conteudo,
   .escola-cabecalho-conteudo {
@@ -1011,11 +1075,13 @@
     gap: 22px;
   }
 
-  .escola-conteudo {
-    max-width: 950px;
-  }
-
+  /*
+    Continua alinhada com o cabeçalho,
+    que também passa a usar 50px de margem total.
+  */
   .escola-banner-principal {
+    width: calc(100vw - 50px);
+
     height: 380px;
   }
 
@@ -1023,7 +1089,7 @@
 
 
 /* ===================================================== */
-/* TABLET MENOR                                          */
+/* TABLET                                                */
 /* ===================================================== */
 
 @media (max-width: 850px) {
@@ -1036,6 +1102,8 @@
     width: calc(100% - 30px);
 
     min-height: 48px;
+
+    height: auto;
 
     padding: 8px 0;
   }
@@ -1059,6 +1127,8 @@
 
     flex-direction: column;
 
+    justify-content: center;
+
     gap: 17px;
   }
 
@@ -1081,6 +1151,8 @@
   }
 
   .escola-banner-principal {
+    width: calc(100vw - 30px);
+
     height: 320px;
 
     margin-bottom: 55px;
@@ -1101,7 +1173,8 @@
   }
 
   .escola-galeria {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+      1fr 1fr;
   }
 
 }
@@ -1154,6 +1227,8 @@
   }
 
   .escola-banner-principal {
+    width: calc(100vw - 26px);
+
     height: 235px;
 
     margin-bottom: 45px;
@@ -1199,6 +1274,32 @@
   .botao-voltar-site-area {
     right: 10px;
     bottom: 10px;
+  }
+
+}
+
+
+/* ===================================================== */
+/* CELULARES PEQUENOS                                    */
+/* ===================================================== */
+
+@media (max-width: 420px) {
+
+  .escola-menu-abas {
+    gap: 8px 12px;
+  }
+
+  .escola-menu-abas > button,
+  .menu-sistema-botao {
+    font-size: 12px;
+  }
+
+  .seta-menu {
+    font-size: 7px;
+  }
+
+  .escola-banner-principal {
+    height: 200px;
   }
 
 }
