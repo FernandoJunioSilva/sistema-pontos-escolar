@@ -1,93 +1,146 @@
-/* =====================================================
-   PÁGINA INSTITUCIONAL
-===================================================== */
+/* ===================================================== */
+/* E.E. ZINHA MEIRA - SITE INSTITUCIONAL                 */
+/* ===================================================== */
 
-.site-escola-page {
+.site-escola {
+  width: 100%;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 
-  background: #f5f7fb;
+  background: #f5f8fc;
+  color: #333333;
 
-  color: #172033;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.site-escola * {
+  box-sizing: border-box;
 }
 
 
-/* =====================================================
-   BARRA SUPERIOR
-===================================================== */
+/* ===================================================== */
+/* BARRA SUPERIOR                                        */
+/* ===================================================== */
 
-.escola-topbar {
+.escola-topo {
   width: 100%;
   height: 48px;
 
   background: #2d86d6;
-  color: white;
-
-  display: flex;
-  align-items: center;
+  color: #ffffff;
 }
 
-.escola-topbar-container {
+.escola-topo-conteudo {
   width: calc(100% - 150px);
   max-width: 1630px;
+  height: 48px;
 
   margin: 0 auto;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-.escola-topbar-left {
+
+/* LADO ESQUERDO */
+
+.escola-topo-esquerda {
+  height: 100%;
+
   display: flex;
+  align-items: center;
 
-  gap: 25px;
-
-  font-size: 13px;
+  gap: 28px;
 }
 
-.escola-topbar-right {
+.escola-topo-item {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 4px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  text-decoration: none;
+}
+
+.escola-topo-item:hover {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.icone-topo {
+  width: 15px;
+  height: 15px;
+}
+
+
+/* ===================================================== */
+/* REDES SOCIAIS                                         */
+/* ===================================================== */
+
+.escola-redes {
   display: flex;
+  align-items: center;
 
-  gap: 20px;
+  gap: 17px;
 }
 
-.escola-topbar a {
-  color: white;
+.escola-redes a {
+  width: 18px;
+  height: 18px;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   text-decoration: none;
 
-  font-size: 13px;
-  font-weight: 600;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
 }
 
-.escola-topbar a:hover {
-  text-decoration: underline;
+.escola-redes a:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+.escola-redes svg {
+  width: 17px;
+  height: 17px;
 }
 
 
-/* =====================================================
-   CABEÇALHO
-===================================================== */
+/* ===================================================== */
+/* CABEÇALHO PRINCIPAL                                   */
+/* ===================================================== */
 
-.escola-header {
+.escola-cabecalho {
   width: 100%;
   height: 112px;
 
-  background: white;
+  background: #ffffff;
 
-  display: flex;
-  align-items: center;
-
-  border-bottom: 1px solid #edf0f5;
+  border-bottom: 1px solid #e7ebf0;
 
   position: relative;
 
-  z-index: 1000;
+  z-index: 100;
 }
 
-.escola-header-container {
+.escola-cabecalho-conteudo {
   width: calc(100% - 150px);
   max-width: 1630px;
+
+  height: 111px;
 
   margin: 0 auto;
 
@@ -97,146 +150,252 @@
 }
 
 
-/* =====================================================
-   LOGO
-===================================================== */
+/* ===================================================== */
+/* LOGO                                                  */
+/* ===================================================== */
 
 .escola-logo-area {
   display: flex;
   align-items: center;
 
-  gap: 15px;
+  gap: 16px;
+
+  border: none;
+
+  background: transparent;
+
+  margin: 0;
+  padding: 0;
 
   cursor: pointer;
+
+  text-align: left;
 }
 
-.escola-logo {
+.escola-logo-area:hover {
+  background: transparent;
+}
+
+.escola-logo-area img {
   width: 69px;
   height: 69px;
 
   object-fit: contain;
+
+  border: none;
+  border-radius: 50%;
+
+  padding: 0;
+
+  background: transparent;
+
+  box-shadow: none;
+}
+
+.escola-identidade {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .escola-logo-area h1 {
   margin: 0;
 
-  color: #182235;
+  color: #2362ad;
 
-  font-size: 23px;
-  font-weight: 800;
+  font-size: 31px;
+  font-weight: 700;
+
+  line-height: 1.1;
 }
 
 .escola-logo-area p {
-  margin: 4px 0 0;
+  margin: 7px 0 0;
 
-  color: #718096;
+  color: #7c83a1;
 
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1;
 }
 
 
-/* =====================================================
-   MENU
-===================================================== */
+/* ===================================================== */
+/* MENU                                                  */
+/* ===================================================== */
 
-.escola-menu {
+.escola-menu-abas {
+  height: 100%;
+
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 
-  gap: 5px;
+  gap: 38px;
 }
 
-.escola-menu button {
+.escola-menu-abas > button,
+.menu-sistema-botao {
+  margin: 0;
+
+  padding: 8px 0;
+
   border: none;
+  border-bottom: 3px solid transparent;
+
+  border-radius: 0;
 
   background: transparent;
 
-  color: #334155;
+  color: #074e96;
 
-  padding: 12px 15px;
+  font-size: 15px;
+  font-weight: 700;
 
-  border-radius: 8px;
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.escola-menu-abas > button:hover,
+.menu-sistema-botao:hover {
+  color: #2d86d6;
+
+  background: transparent;
+
+  border-bottom-color: #2d86d6;
+}
+
+.escola-menu-abas > button.ativo {
+  color: #2d86d6;
+
+  border-bottom-color: #2d86d6;
+}
+
+
+/* ===================================================== */
+/* SISTEMA DE PONTOS                                     */
+/* ===================================================== */
+
+.menu-sistema-container {
+  position: relative;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.menu-sistema-botao {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.seta-menu {
+  font-size: 8px;
+
+  transition: transform 0.2s;
+}
+
+.menu-sistema-container:hover .seta-menu {
+  transform: rotate(180deg);
+}
+
+
+/* ===================================================== */
+/* SUBMENU                                               */
+/* ===================================================== */
+
+.submenu-sistema {
+  position: absolute;
+
+  top: 77px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  min-width: 175px;
+
+  padding: 7px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+
+  box-shadow:
+    0 12px 28px rgba(23, 76, 125, 0.16);
+
+  z-index: 9999;
+}
+
+.escola-menu-abas .submenu-sistema button {
+  width: 100%;
+
+  padding: 11px 13px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: #074e96;
 
   font-size: 14px;
   font-weight: 600;
 
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.escola-menu button:hover {
-  background: #eff6ff;
-
-  color: #2563eb;
-}
-
-
-/* =====================================================
-   SUBMENU
-===================================================== */
-
-.escola-menu-dropdown {
-  position: relative;
-}
-
-.escola-menu-seta {
-  margin-left: 5px;
-}
-
-.escola-submenu {
-  position: absolute;
-
-  top: 44px;
-  left: 0;
-
-  width: 175px;
-
-  padding: 8px;
-
-  background: white;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 12px;
-
-  box-shadow:
-    0 15px 35px rgba(15, 23, 42, 0.15);
-
-  z-index: 5000;
-}
-
-.escola-submenu::before {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  top: -10px;
-
-  width: 100%;
-  height: 12px;
-}
-
-.escola-submenu button {
-  width: 100%;
-
   text-align: left;
+
+  cursor: pointer;
+}
+
+.escola-menu-abas .submenu-sistema button:hover {
+  background: #edf6ff;
+
+  color: #2d86d6;
 }
 
 
-/* =====================================================
-   BANNER PRINCIPAL
-===================================================== */
+/* ===================================================== */
+/* CONTEÚDO GERAL                                        */
+/* ===================================================== */
+
+.escola-conteudo {
+  width: 100%;
+  max-width: 1160px;
+
+  margin: 0 auto;
+
+  padding: 34px 20px 70px;
+}
+
+
+/* ===================================================== */
+/* IMAGEM PRINCIPAL                                      */
+/* ALINHADA COM A LOGO E O FINAL DO MENU                 */
+/* ===================================================== */
 
 .escola-banner-principal {
+  /*
+    Usa praticamente a mesma largura do cabeçalho.
+    Assim a imagem começa alinhada com a logo da escola
+    e termina próxima ao final da aba Sobre Nós.
+  */
   width: calc(100vw - 150px);
   max-width: 1630px;
 
   height: 415px;
 
   position: relative;
-
   left: 50%;
 
   transform: translateX(-50%);
@@ -249,9 +408,6 @@
   border-radius: 18px;
 
   background: #e8edf3;
-
-  box-shadow:
-    0 12px 35px rgba(15, 23, 42, 0.08);
 }
 
 .escola-banner-principal img {
@@ -265,685 +421,885 @@
 }
 
 
-/* =====================================================
-   INDICADORES DO BANNER
-===================================================== */
+/* ===================================================== */
+/* SERVIÇOS OFERECIDOS                                   */
+/* ===================================================== */
 
-.escola-banner-dots {
-  position: absolute;
+.secao-servicos {
+  width: 100%;
 
-  bottom: 17px;
-  left: 50%;
+  text-align: center;
 
-  transform: translateX(-50%);
+  padding-bottom: 57px;
+}
+
+
+/* ===================================================== */
+/* TÍTULO SERVIÇOS                                       */
+/* ===================================================== */
+
+.titulo-secao-servicos {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 45px;
+}
+
+.site-escola .titulo-secao-servicos h2 {
+  margin: 0 0 18px;
+
+  color: #2765ad;
+
+  font-size: 34px;
+  font-weight: 800;
+
+  line-height: 1.15;
+
+  text-align: center;
+}
+
+.titulo-icone-livro {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #2d86d6;
+
+  margin-bottom: 13px;
+}
+
+.titulo-icone-livro svg {
+  width: 29px;
+  height: 29px;
+}
+
+.titulo-linha {
+  width: 70px;
+  height: 3px;
+
+  background: #5aaaf4;
+
+  border-radius: 20px;
+}
+
+
+/* ===================================================== */
+/* GRID DOS SERVIÇOS                                     */
+/* ===================================================== */
+
+.servicos-grid {
+  width: 100%;
+  max-width: 920px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 28px;
+}
+
+
+/* ===================================================== */
+/* CARDS DOS SERVIÇOS                                    */
+/* ===================================================== */
+
+.servico-card {
+  min-height: 280px;
+
+  padding: 34px 26px 28px;
+
+  border: 1px solid transparent;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 9px 24px rgba(28, 65, 100, 0.10);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  text-align: center;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.servico-card:hover {
+  transform: translateY(-9px);
+
+  border-color: rgba(45, 134, 214, 0.22);
+
+  box-shadow:
+    0 20px 38px rgba(29, 91, 150, 0.18);
+}
+
+
+/* ===================================================== */
+/* ÍCONES DOS CARDS                                      */
+/* ===================================================== */
+
+.servico-icone {
+  width: 76px;
+  height: 76px;
+
+  margin-bottom: 24px;
+
+  border-radius: 50%;
+
+  background: #2d86d6;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.servico-icone svg {
+  width: 37px;
+  height: 37px;
+}
+
+.servico-card:hover .servico-icone {
+  transform: scale(1.09);
+
+  background: #246fba;
+
+  box-shadow:
+    0 10px 22px rgba(45, 134, 214, 0.30);
+}
+
+
+/* ===================================================== */
+/* TEXTOS DOS CARDS                                      */
+/* ===================================================== */
+
+.site-escola .servico-card h3 {
+  margin: 0 0 15px;
+
+  color: #18579b;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  transition: color 0.3s;
+}
+
+.site-escola .servico-card p {
+  max-width: 240px;
+
+  margin: 0;
+
+  color: #555555;
+
+  font-size: 15px;
+
+  line-height: 1.65;
+}
+
+.servico-card:hover h3 {
+  color: #2d86d6;
+}
+
+
+/* ===================================================== */
+/* NOVIDADES                                             */
+/* ===================================================== */
+
+.secao-novidades {
+  width: 100%;
+
+  padding: 5px 0 35px;
+}
+
+.novidades-card {
+  width: min(780px, 100%);
+  min-height: 190px;
+
+  margin: 0 auto;
+
+  padding: 30px 35px;
+
+  background: #ffffff;
+
+  border: 1px solid transparent;
+  border-radius: 18px;
+
+  box-shadow:
+    0 9px 24px rgba(28, 65, 100, 0.10);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.novidades-card:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(45, 134, 214, 0.22);
+
+  box-shadow:
+    0 19px 37px rgba(29, 91, 150, 0.17);
+}
+
+
+/* ===================================================== */
+/* ÍCONE NOVIDADES                                       */
+/* ===================================================== */
+
+.novidades-icone {
+  width: 45px;
+  height: 45px;
+
+  margin-bottom: 12px;
+
+  color: #2d86d6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.novidades-icone svg {
+  width: 42px;
+  height: 42px;
+}
+
+.novidades-card:hover .novidades-icone {
+  transform: scale(1.10);
+
+  color: #246fba;
+}
+
+.site-escola .novidades-card h2 {
+  margin: 0 0 11px;
+
+  color: #2563aa;
+
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.site-escola .novidades-card p {
+  margin: 0;
+
+  color: #555555;
+
+  font-size: 15px;
+}
+
+
+/* ===================================================== */
+/* LISTA DE NOVIDADES                                    */
+/* ===================================================== */
+
+.novidades-lista {
+  width: min(780px, 100%);
+
+  margin: 18px auto 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.novidade-item {
+  padding: 20px 23px;
+
+  background: #ffffff;
+
+  border: 1px solid #e6edf5;
+  border-radius: 13px;
+
+  box-shadow:
+    0 5px 18px rgba(30, 70, 110, 0.08);
+
+  animation:
+    aparecerNoticia 0.3s ease;
+}
+
+.site-escola .novidade-item h3 {
+  margin: 0 0 8px;
+
+  color: #2563aa;
+}
+
+.site-escola .novidade-item p {
+  margin: 0;
+
+  color: #555555;
+}
+
+
+/* ===================================================== */
+/* TÍTULOS GERAIS                                        */
+/* ===================================================== */
+
+.site-escola h2 {
+  color: #2563aa;
+}
+
+.site-escola h3 {
+  color: #19589b;
+}
+
+.site-escola p {
+  line-height: 1.7;
+}
+
+
+/* ===================================================== */
+/* CARDS GERAIS                                          */
+/* ===================================================== */
+
+.escola-card {
+  background: #ffffff;
+
+  border: 1px solid #e5edf5;
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  box-shadow:
+    0 8px 22px rgba(24, 62, 98, 0.09);
+}
+
+.escola-texto-card {
+  margin-bottom: 24px;
+}
+
+
+/* ===================================================== */
+/* HERO                                                  */
+/* ===================================================== */
+
+.escola-hero {
+  padding: 40px 30px;
+
+  margin-bottom: 28px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2366ad,
+      #3d9bea
+    );
+
+  color: #ffffff;
+
+  text-align: center;
+}
+
+.site-escola .escola-hero h2 {
+  color: #ffffff;
+
+  margin-top: 0;
+}
+
+.site-escola .escola-hero p {
+  color: #ffffff;
+
+  max-width: 800px;
+
+  margin: 0 auto;
+}
+
+
+/* ===================================================== */
+/* CARDS DE CONTATO                                      */
+/* ===================================================== */
+
+.escola-cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 22px;
+
+  margin: 22px 0 32px;
+}
+
+.escola-card a {
+  color: #2563aa;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.escola-card a:hover {
+  text-decoration: underline;
+}
+
+
+/* ===================================================== */
+/* GALERIA                                               */
+/* ===================================================== */
+
+.escola-galeria {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 28px;
+}
+
+.escola-galeria img {
+  width: 100%;
+  height: 225px;
+
+  object-fit: cover;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 7px 20px rgba(25, 66, 105, 0.14);
+
+  transition: transform 0.3s;
+}
+
+.escola-galeria img:hover {
+  transform: scale(1.025);
+}
+
+
+/* ===================================================== */
+/* LISTAS                                                */
+/* ===================================================== */
+
+.escola-lista {
+  color: #4b5563;
+
+  line-height: 1.9;
+}
+
+
+/* ===================================================== */
+/* LINHA DO TEMPO                                        */
+/* ===================================================== */
+
+.escola-timeline {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.escola-timeline .item {
+  padding: 15px 18px;
+
+  border-left: 5px solid #2d86d6;
+
+  border-radius: 10px;
+
+  background: #eff8ff;
+}
+
+.escola-timeline .item span {
+  color: #2563aa;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+
+/* ===================================================== */
+/* RODAPÉ                                                */
+/* ===================================================== */
+
+.escola-rodape {
+  width: 100%;
+
+  padding: 30px 20px;
+
+  background: #2568ad;
+
+  color: #ffffff;
+
+  text-align: center;
+}
+
+.escola-rodape p {
+  margin: 5px 0;
+
+  color: #ffffff;
+}
+
+.escola-copy {
+  margin-top: 14px !important;
+
+  font-weight: 700;
+}
+
+.escola-creditos {
+  max-width: 1000px;
+
+  margin: 18px auto 0;
+
+  padding-top: 15px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.35);
+
+  font-size: 14px;
+}
+
+
+/* ===================================================== */
+/* BOTÕES VOLTAR / SAIR                                  */
+/* ===================================================== */
+
+.botao-voltar-site-area {
+  position: fixed;
+
+  right: 18px;
+  bottom: 18px;
+
+  z-index: 99999;
 
   display: flex;
 
   gap: 8px;
 }
 
-.escola-banner-dot {
-  width: 9px;
-  height: 9px;
-
-  padding: 0;
+.botao-voltar-site,
+.botao-sair-sistema {
+  padding: 10px 15px;
 
   border: none;
 
-  border-radius: 50%;
+  border-radius: 9px;
 
-  background:
-    rgba(255, 255, 255, 0.58);
+  font-weight: 700;
 
   cursor: pointer;
 
-  transition: 0.2s;
-}
-
-.escola-banner-dot.ativo {
-  width: 27px;
-
-  border-radius: 20px;
-
-  background: white;
-}
-
-
-/* =====================================================
-   TÍTULOS
-===================================================== */
-
-.escola-section-title {
-  text-align: center;
-
-  margin-bottom: 32px;
-}
-
-.escola-section-icon {
-  width: 58px;
-  height: 58px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin: 0 auto 13px;
-
-  border-radius: 50%;
-
-  background: #eaf3ff;
-
-  font-size: 26px;
-
-  transition:
-    transform 0.25s ease;
-}
-
-.escola-section-title:hover
-.escola-section-icon {
-  transform: scale(1.08);
-}
-
-.escola-section-title h2 {
-  margin: 0;
-
-  color: #172033;
-
-  font-size: 30px;
-}
-
-.escola-section-line {
-  width: 70px;
-  height: 4px;
-
-  margin: 13px auto 0;
-
-  border-radius: 10px;
-
-  background: #2d86d6;
-}
-
-
-/* =====================================================
-   SERVIÇOS
-===================================================== */
-
-.escola-servicos {
-  width: calc(100% - 150px);
-  max-width: 1400px;
-
-  margin: 0 auto 80px;
-}
-
-.escola-servicos-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 25px;
-}
-
-.escola-servico-card {
-  padding: 35px 28px;
-
-  background: white;
-
-  border-radius: 18px;
-
-  text-align: center;
-
-  border: 1px solid #eef1f5;
-
   box-shadow:
-    0 8px 28px rgba(15, 23, 42, 0.07);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    0 5px 16px rgba(0, 0, 0, 0.15);
 }
 
-.escola-servico-card:hover {
-  transform: translateY(-7px);
+.botao-voltar-site {
+  background: #ffffff;
 
-  box-shadow:
-    0 18px 40px rgba(15, 23, 42, 0.12);
+  color: #2563aa;
 }
 
-.escola-servico-icon {
-  width: 75px;
-  height: 75px;
+.botao-sair-sistema {
+  background: #2563aa;
 
-  margin: 0 auto 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: #eaf3ff;
-
-  font-size: 33px;
-
-  transition:
-    transform 0.25s ease;
-}
-
-.escola-servico-card:hover
-.escola-servico-icon {
-  transform: scale(1.1);
-}
-
-.escola-servico-card h3 {
-  margin: 0 0 10px;
-
-  font-size: 19px;
-
-  color: #172033;
-}
-
-.escola-servico-card p {
-  margin: 0;
-
-  color: #64748b;
-
-  font-size: 14px;
-
-  line-height: 1.7;
+  color: #ffffff;
 }
 
 
-/* =====================================================
-   NOVIDADES
-===================================================== */
+/* ===================================================== */
+/* ANIMAÇÕES                                             */
+/* ===================================================== */
 
-.escola-novidades {
-  width: calc(100% - 150px);
-  max-width: 1400px;
+@keyframes aparecerNoticia {
+  from {
+    opacity: 0;
 
-  margin: 0 auto 80px;
-}
+    transform:
+      translateY(-8px);
+  }
 
-.escola-novidades-card {
-  max-width: 900px;
+  to {
+    opacity: 1;
 
-  margin: 0 auto;
-
-  padding: 30px 35px;
-
-  display: flex;
-  align-items: center;
-
-  gap: 25px;
-
-  background: white;
-
-  border-radius: 18px;
-
-  border: 1px solid #eef1f5;
-
-  box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.07);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.escola-novidades-card:hover {
-  transform: translateY(-5px);
-
-  box-shadow:
-    0 18px 40px rgba(15, 23, 42, 0.12);
-}
-
-.escola-novidades-icon {
-  width: 74px;
-  height: 74px;
-
-  flex-shrink: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 18px;
-
-  background: #eaf3ff;
-
-  font-size: 33px;
-}
-
-.escola-novidades-card h3 {
-  margin: 0 0 8px;
-
-  color: #172033;
-
-  font-size: 20px;
-}
-
-.escola-novidades-card p {
-  margin: 0;
-
-  color: #64748b;
-
-  line-height: 1.7;
+    transform:
+      translateY(0);
+  }
 }
 
 
-/* =====================================================
-   SOBRE NÓS
-===================================================== */
-
-.escola-sobre {
-  width: calc(100% - 150px);
-  max-width: 1400px;
-
-  margin: 0 auto 80px;
-
-  scroll-margin-top: 25px;
-}
-
-.escola-sobre-card {
-  padding: 38px;
-
-  display: grid;
-
-  grid-template-columns:
-    1.1fr 0.9fr;
-
-  align-items: center;
-
-  gap: 40px;
-
-  background: white;
-
-  border-radius: 20px;
-
-  box-shadow:
-    0 10px 35px rgba(15, 23, 42, 0.08);
-}
-
-.escola-sobre-texto h2 {
-  margin-top: 0;
-
-  color: #172033;
-
-  font-size: 28px;
-}
-
-.escola-sobre-texto p {
-  color: #64748b;
-
-  line-height: 1.8;
-
-  font-size: 14px;
-}
-
-.escola-info-grid {
-  margin-top: 25px;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 12px;
-}
-
-.escola-info-grid div {
-  padding: 15px;
-
-  background: #f8fafc;
-
-  border-radius: 11px;
-
-  border: 1px solid #edf1f5;
-}
-
-.escola-info-grid span {
-  display: block;
-
-  margin-bottom: 5px;
-
-  color: #2563eb;
-
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.escola-info-grid strong {
-  color: #475569;
-
-  font-size: 13px;
-}
-
-.escola-sobre-foto {
-  height: 330px;
-
-  overflow: hidden;
-
-  border-radius: 16px;
-}
-
-.escola-sobre-foto img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  transition:
-    transform 0.4s ease;
-}
-
-.escola-sobre-foto:hover img {
-  transform: scale(1.04);
-}
-
-
-/* =====================================================
-   CONTATOS
-===================================================== */
-
-.escola-contatos {
-  width: calc(100% - 150px);
-  max-width: 1400px;
-
-  margin: 0 auto 80px;
-
-  scroll-margin-top: 25px;
-}
-
-.escola-contatos-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  gap: 20px;
-}
-
-.escola-contato-card {
-  padding: 27px 20px;
-
-  background: white;
-
-  text-align: center;
-
-  border-radius: 16px;
-
-  border: 1px solid #eef1f5;
-
-  box-shadow:
-    0 8px 25px rgba(15, 23, 42, 0.06);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.escola-contato-card:hover {
-  transform: translateY(-5px);
-
-  box-shadow:
-    0 17px 35px rgba(15, 23, 42, 0.11);
-}
-
-.escola-contato-icon {
-  width: 60px;
-  height: 60px;
-
-  margin: 0 auto 15px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: #eaf3ff;
-
-  font-size: 27px;
-}
-
-.escola-contato-card h3 {
-  margin: 0 0 10px;
-
-  color: #172033;
-}
-
-.escola-contato-card p {
-  margin: 5px 0;
-
-  color: #64748b;
-
-  font-size: 13px;
-
-  line-height: 1.5;
-}
-
-.escola-contato-card a {
-  color: #2563eb;
-
-  text-decoration: none;
-
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.escola-contato-card a:hover {
-  text-decoration: underline;
-}
-
-
-/* =====================================================
-   RODAPÉ
-===================================================== */
-
-.escola-footer {
-  margin-top: 100px;
-
-  background: #15243b;
-
-  color: white;
-}
-
-.escola-footer-container {
-  width: calc(100% - 150px);
-  max-width: 1400px;
-
-  margin: 0 auto;
-
-  padding: 52px 0 42px;
-
-  display: grid;
-
-  grid-template-columns:
-    1.2fr 1fr 1fr 1fr;
-
-  gap: 40px;
-}
-
-.escola-footer h3 {
-  margin-top: 0;
-
-  font-size: 16px;
-}
-
-.escola-footer p {
-  margin: 7px 0;
-
-  color: #cbd5e1;
-
-  font-size: 13px;
-
-  line-height: 1.5;
-}
-
-.escola-footer-bottom {
-  width: calc(100% - 150px);
-  max-width: 1400px;
-
-  margin: auto;
-
-  padding: 20px 0;
-
-  border-top:
-    1px solid rgba(255, 255, 255, 0.1);
-
-  text-align: center;
-
-  color: #94a3b8;
-
-  font-size: 12px;
-}
-
-
-/* =====================================================
-   RESPONSIVO
-===================================================== */
+/* ===================================================== */
+/* TELAS ATÉ 1100PX                                      */
+/* ===================================================== */
 
 @media (max-width: 1100px) {
 
-  .escola-topbar-container,
-  .escola-header-container,
-  .escola-servicos,
-  .escola-novidades,
-  .escola-sobre,
-  .escola-contatos,
-  .escola-footer-container,
-  .escola-footer-bottom {
+  .escola-topo-conteudo,
+  .escola-cabecalho-conteudo {
     width: calc(100% - 50px);
   }
 
+  .escola-menu-abas {
+    gap: 22px;
+  }
+
+  /*
+    Continua alinhada com o cabeçalho,
+    que também passa a usar 50px de margem total.
+  */
   .escola-banner-principal {
     width: calc(100vw - 50px);
 
     height: 380px;
   }
 
-  .escola-contatos-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
-
-  .escola-footer-container {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
 }
 
 
+/* ===================================================== */
+/* TABLET                                                */
+/* ===================================================== */
+
 @media (max-width: 850px) {
+
+  .escola-topo {
+    height: auto;
+  }
+
+  .escola-topo-conteudo {
+    width: calc(100% - 30px);
+
+    min-height: 48px;
+
+    height: auto;
+
+    padding: 8px 0;
+  }
+
+  .escola-topo-esquerda {
+    flex-wrap: wrap;
+
+    gap: 12px;
+  }
+
+  .escola-cabecalho {
+    height: auto;
+  }
+
+  .escola-cabecalho-conteudo {
+    width: calc(100% - 30px);
+
+    height: auto;
+
+    padding: 15px 0;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 17px;
+  }
+
+  .escola-menu-abas {
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px 22px;
+  }
+
+  .menu-sistema-container {
+    height: auto;
+  }
+
+  .submenu-sistema {
+    top: calc(100% + 8px);
+  }
 
   .escola-banner-principal {
     width: calc(100vw - 30px);
 
     height: 320px;
+
+    margin-bottom: 55px;
   }
 
-  .escola-header {
-    height: auto;
+  .servicos-grid {
+    max-width: 620px;
 
-    padding: 15px 0;
-  }
-
-  .escola-header-container {
-    flex-direction: column;
-
-    gap: 15px;
-  }
-
-  .escola-menu {
-    flex-wrap: wrap;
-
-    justify-content: center;
-  }
-
-  .escola-servicos-grid {
     grid-template-columns: 1fr;
   }
 
-  .escola-sobre-card {
+  .servico-card {
+    min-height: auto;
+  }
+
+  .escola-cards {
     grid-template-columns: 1fr;
   }
+
+  .escola-galeria {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
 }
 
 
+/* ===================================================== */
+/* CELULAR                                               */
+/* ===================================================== */
+
 @media (max-width: 600px) {
 
-  .escola-topbar {
-    height: auto;
-
-    padding: 10px 0;
-  }
-
-  .escola-topbar-container {
+  .escola-topo-conteudo {
     flex-direction: column;
+
+    justify-content: center;
 
     gap: 8px;
   }
 
-  .escola-topbar-left {
-    flex-direction: column;
+  .escola-topo-esquerda {
+    justify-content: center;
+  }
 
-    gap: 4px;
+  .escola-redes {
+    padding-bottom: 5px;
+  }
 
-    text-align: center;
+  .escola-logo-area img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .escola-logo-area h1 {
+    font-size: 24px;
+  }
+
+  .escola-logo-area p {
+    font-size: 13px;
+  }
+
+  .escola-menu-abas > button,
+  .menu-sistema-botao {
+    font-size: 13px;
+  }
+
+  .escola-conteudo {
+    padding:
+      22px 13px
+      45px;
   }
 
   .escola-banner-principal {
     width: calc(100vw - 26px);
 
     height: 235px;
+
+    margin-bottom: 45px;
+
+    border-radius: 14px;
   }
 
-  .escola-servicos,
-  .escola-novidades,
-  .escola-sobre,
-  .escola-contatos {
-    width: calc(100% - 26px);
+  .site-escola .titulo-secao-servicos h2 {
+    font-size: 27px;
   }
 
-  .escola-novidades-card {
-    flex-direction: column;
-
-    text-align: center;
+  .titulo-secao-servicos {
+    margin-bottom: 34px;
   }
 
-  .escola-info-grid {
+  .servico-card {
+    padding: 32px 22px;
+  }
+
+  .servico-icone {
+    width: 75px;
+    height: 75px;
+  }
+
+  .novidades-card {
+    min-height: 180px;
+
+    padding: 28px 20px;
+  }
+
+  .site-escola .novidades-card h2 {
+    font-size: 25px;
+  }
+
+  .escola-galeria {
     grid-template-columns: 1fr;
   }
 
-  .escola-contatos-grid {
-    grid-template-columns: 1fr;
+  .escola-galeria img {
+    height: 220px;
   }
 
-  .escola-footer-container {
-    width: calc(100% - 40px);
-
-    grid-template-columns: 1fr;
+  .botao-voltar-site-area {
+    right: 10px;
+    bottom: 10px;
   }
 
-  .escola-footer-bottom {
-    width: calc(100% - 40px);
-  }
 }
 
 
+/* ===================================================== */
+/* CELULARES PEQUENOS                                    */
+/* ===================================================== */
+
 @media (max-width: 420px) {
+
+  .escola-menu-abas {
+    gap: 8px 12px;
+  }
+
+  .escola-menu-abas > button,
+  .menu-sistema-botao {
+    font-size: 12px;
+  }
+
+  .seta-menu {
+    font-size: 7px;
+  }
 
   .escola-banner-principal {
     height: 200px;
   }
 
-  .escola-logo {
-    width: 58px;
-    height: 58px;
-  }
-
-  .escola-logo-area h1 {
-    font-size: 18px;
-  }
 }
