@@ -32,9 +32,8 @@ export default function SiteEscolaPage({ mudarPagina }) {
   const [menuSistemaAberto, setMenuSistemaAberto] = useState(false);
 
   function trocarAba(aba) {
-    setAbaAtiva(aba);
     setMenuSistemaAberto(false);
-
+    setAbaAtiva(aba);
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -42,6 +41,8 @@ export default function SiteEscolaPage({ mudarPagina }) {
   }
 
   function abrirPaginaSistema(pagina) {
+    setMenuSistemaAberto(false);
+
     if (typeof mudarPagina === 'function') {
       mudarPagina(pagina);
 
@@ -222,51 +223,15 @@ export default function SiteEscolaPage({ mudarPagina }) {
               Início
             </button>
 
+            {/* SOBRE NÓS */}
 
-            {/* SISTEMA DE PONTOS */}
-
-            <div
-              className="menu-sistema-container"
-              onMouseEnter={() => setMenuSistemaAberto(true)}
-              onMouseLeave={() => setMenuSistemaAberto(false)}
+            <button
+              type="button"
+              className={abaAtiva === 'sobre' ? 'ativo' : ''}
+              onClick={() => trocarAba('sobre')}
             >
-
-              <button
-                type="button"
-                className="menu-sistema-botao"
-                onClick={() => abrirPaginaSistema('inicio')}
-              >
-                Sistema de Pontos
-
-                <span className="seta-menu">
-                  ▼
-                </span>
-              </button>
-
-
-              {menuSistemaAberto && (
-
-                <div className="submenu-sistema">
-
-                  <button
-                    type="button"
-                    onClick={() => abrirPaginaSistema('ranking')}
-                  >
-                    🏆 Ranking
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => abrirPaginaSistema('telao')}
-                  >
-                    📺 Telão
-                  </button>
-
-                </div>
-
-              )}
-
-            </div>
+              Sobre Nós
+            </button>
 
 
             {/* CONTATOS */}
@@ -279,16 +244,47 @@ export default function SiteEscolaPage({ mudarPagina }) {
               Contatos
             </button>
 
+            {/* SISTEMA ESCOLAR */}
 
-            {/* SOBRE NÓS */}
-
-            <button
-              type="button"
-              className={abaAtiva === 'sobre' ? 'ativo' : ''}
-              onClick={() => trocarAba('sobre')}
+            <div
+              className={`escola-menu-sistema ${menuSistemaAberto ? 'aberto' : ''}`}
             >
-              Sobre Nós
-            </button>
+              <button
+                type="button"
+                className="escola-menu-sistema-botao"
+                onClick={() => setMenuSistemaAberto((aberto) => !aberto)}
+                aria-expanded={menuSistemaAberto}
+                aria-haspopup="true"
+              >
+                Sistema Escolar
+                <span className="escola-menu-seta" aria-hidden="true">
+                  ▾
+                </span>
+              </button>
+
+              <div className="escola-submenu-sistema">
+                <button
+                  type="button"
+                  onClick={() => abrirPaginaSistema('inicio')}
+                >
+                  Acessar Sistema
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => abrirPaginaSistema('ranking')}
+                >
+                  Ranking
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => abrirPaginaSistema('telao')}
+                >
+                  Telão
+                </button>
+              </div>
+            </div>
 
           </nav>
 
@@ -637,6 +633,17 @@ export default function SiteEscolaPage({ mudarPagina }) {
               </p>
 
             </section>
+
+
+            <div className="acesso-sistema-area">
+              <button
+                type="button"
+                className="acesso-sistema-botao"
+                onClick={() => abrirPaginaSistema('inicio')}
+              >
+                Acessar Sistema de Pontos
+              </button>
+            </div>
 
           </section>
 
@@ -987,38 +994,6 @@ export default function SiteEscolaPage({ mudarPagina }) {
         <p className="escola-copy">
           © 2026 Escola Estadual Zinha Meira - Bocaiúva/MG
         </p>
-
-
-        <div className="escola-creditos">
-
-          <p>
-            <strong>Criadores:</strong>{' '}
-            Beatriz G. Cardoso, Bruna E. M. Silva,
-            Lara Bragança C. Rosa e Thalisson R.A. Rosa.
-          </p>
-
-          <p>
-            <strong>Professor do Projeto:</strong>{' '}
-            Jader Leal.
-          </p>
-
-          <p>
-            <strong>Coordenação:</strong>{' '}
-            Fernando J. Silva, Amanda K. D. Werneck.
-          </p>
-
-          <p>
-            <strong>Vice Direção:</strong>{' '}
-            Elizeth C. O. Montes, Helbert E. C. Souza,
-            Cristiane C. Alves.
-          </p>
-
-          <p>
-            <strong>Direção:</strong>{' '}
-            Janiny J. D. Oliveira.
-          </p>
-
-        </div>
 
       </footer>
 
