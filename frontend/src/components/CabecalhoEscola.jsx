@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import './CabecalhoEscola.css';
 
 import logoEscola from '../assets/zinha/imagens/logo escola.png';
@@ -9,11 +10,22 @@ export default function CabecalhoEscola({
 }) {
   const [menuAberto, setMenuAberto] = useState(false);
 
-  function irParaSecao(secao) {
+  function abrirInicio() {
     mudarPagina('site-escola');
 
     setTimeout(() => {
-      const elemento = document.getElementById(secao);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+  }
+
+  function irParaSecao(id) {
+    mudarPagina('site-escola');
+
+    setTimeout(() => {
+      const elemento = document.getElementById(id);
 
       if (elemento) {
         elemento.scrollIntoView({
@@ -26,13 +38,13 @@ export default function CabecalhoEscola({
 
   return (
     <>
-      {/* =========================================
-          BARRA AZUL SUPERIOR
-      ========================================== */}
+      {/* BARRA SUPERIOR */}
       <div className="cabecalho-topo">
+
         <div className="cabecalho-topo-conteudo">
 
           <div className="cabecalho-topo-esquerda">
+
             <span>
               ✉ Escola.79383@educacao.mg.gov.br
             </span>
@@ -40,7 +52,9 @@ export default function CabecalhoEscola({
             <span>
               📍 Bocaiúva - MG
             </span>
+
           </div>
+
 
           <div className="cabecalho-topo-direita">
 
@@ -63,20 +77,20 @@ export default function CabecalhoEscola({
           </div>
 
         </div>
+
       </div>
 
 
-      {/* =========================================
-          CABEÇALHO PRINCIPAL
-      ========================================== */}
+      {/* CABEÇALHO PRINCIPAL */}
       <header className="cabecalho-principal">
 
         <div className="cabecalho-principal-conteudo">
 
-          {/* LOGO E NOME */}
+
+          {/* LOGO */}
           <div
             className="cabecalho-logo-area"
-            onClick={() => mudarPagina('site-escola')}
+            onClick={abrirInicio}
           >
 
             <img
@@ -85,7 +99,7 @@ export default function CabecalhoEscola({
               className="cabecalho-logo"
             />
 
-            <div className="cabecalho-identificacao">
+            <div>
 
               <h1>
                 E.E. Zinha Meira
@@ -100,28 +114,22 @@ export default function CabecalhoEscola({
           </div>
 
 
-          {/* =========================================
-              MENU
-          ========================================== */}
+          {/* MENU */}
           <nav className="cabecalho-menu">
+
 
             {/* INÍCIO */}
             <button
               type="button"
-              className={
-                paginaAtual === 'site-escola'
-                  ? 'menu-ativo'
-                  : ''
-              }
-              onClick={() => mudarPagina('site-escola')}
+              onClick={abrirInicio}
             >
               Início
             </button>
 
 
-            {/* SISTEMA DE PONTOS */}
+            {/* SISTEMA */}
             <div
-              className="menu-dropdown"
+              className="cabecalho-dropdown"
               onMouseEnter={() => setMenuAberto(true)}
               onMouseLeave={() => setMenuAberto(false)}
             >
@@ -132,13 +140,13 @@ export default function CabecalhoEscola({
                   paginaAtual === 'inicio' ||
                   paginaAtual === 'ranking' ||
                   paginaAtual === 'telao'
-                    ? 'menu-ativo'
+                    ? 'cabecalho-menu-ativo'
                     : ''
                 }
                 onClick={() => mudarPagina('inicio')}
               >
                 Sistema de Pontos
-                <span className="menu-seta">
+                <span className="cabecalho-seta">
                   ▾
                 </span>
               </button>
@@ -146,7 +154,7 @@ export default function CabecalhoEscola({
 
               {menuAberto && (
 
-                <div className="menu-dropdown-conteudo">
+                <div className="cabecalho-submenu">
 
                   <button
                     type="button"
@@ -158,6 +166,7 @@ export default function CabecalhoEscola({
                     🏠 Sistema de Pontos
                   </button>
 
+
                   <button
                     type="button"
                     onClick={() => {
@@ -167,6 +176,7 @@ export default function CabecalhoEscola({
                   >
                     🏆 Ranking
                   </button>
+
 
                   <button
                     type="button"

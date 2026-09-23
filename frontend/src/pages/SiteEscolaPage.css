@@ -1,40 +1,233 @@
-/* =========================================================
-   SITE INSTITUCIONAL - E.E. ZINHA MEIRA
-   SiteEscolaPage.css
+/* =====================================================
+   PÁGINA INSTITUCIONAL
+===================================================== */
 
-   IMPORTANTE:
-   O cabeçalho agora está em:
-   src/components/CabecalhoEscola.css
-
-   Portanto este arquivo começa pelo conteúdo da página.
-========================================================= */
-
-
-/* =========================================================
-   CONFIGURAÇÃO GERAL
-========================================================= */
-
-.site-escola {
-  width: 100%;
+.site-escola-page {
   min-height: 100vh;
 
-  background: #f4f7fb;
+  background: #f5f7fb;
 
   color: #172033;
-
-  overflow-x: hidden;
-}
-
-.site-escola *,
-.site-escola *::before,
-.site-escola *::after {
-  box-sizing: border-box;
 }
 
 
-/* =========================================================
-   BANNER PRINCIPAL / CARROSSEL
-========================================================= */
+/* =====================================================
+   BARRA SUPERIOR
+===================================================== */
+
+.escola-topbar {
+  width: 100%;
+  height: 48px;
+
+  background: #2d86d6;
+  color: white;
+
+  display: flex;
+  align-items: center;
+}
+
+.escola-topbar-container {
+  width: calc(100% - 150px);
+  max-width: 1630px;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.escola-topbar-left {
+  display: flex;
+
+  gap: 25px;
+
+  font-size: 13px;
+}
+
+.escola-topbar-right {
+  display: flex;
+
+  gap: 20px;
+}
+
+.escola-topbar a {
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.escola-topbar a:hover {
+  text-decoration: underline;
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+.escola-header {
+  width: 100%;
+  height: 112px;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid #edf0f5;
+
+  position: relative;
+
+  z-index: 1000;
+}
+
+.escola-header-container {
+  width: calc(100% - 150px);
+  max-width: 1630px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.escola-logo-area {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  cursor: pointer;
+}
+
+.escola-logo {
+  width: 69px;
+  height: 69px;
+
+  object-fit: contain;
+}
+
+.escola-logo-area h1 {
+  margin: 0;
+
+  color: #182235;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.escola-logo-area p {
+  margin: 4px 0 0;
+
+  color: #718096;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+.escola-menu {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.escola-menu button {
+  border: none;
+
+  background: transparent;
+
+  color: #334155;
+
+  padding: 12px 15px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.escola-menu button:hover {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+
+/* =====================================================
+   SUBMENU
+===================================================== */
+
+.escola-menu-dropdown {
+  position: relative;
+}
+
+.escola-menu-seta {
+  margin-left: 5px;
+}
+
+.escola-submenu {
+  position: absolute;
+
+  top: 44px;
+  left: 0;
+
+  width: 175px;
+
+  padding: 8px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.15);
+
+  z-index: 5000;
+}
+
+.escola-submenu::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: -10px;
+
+  width: 100%;
+  height: 12px;
+}
+
+.escola-submenu button {
+  width: 100%;
+
+  text-align: left;
+}
+
+
+/* =====================================================
+   BANNER PRINCIPAL
+===================================================== */
 
 .escola-banner-principal {
   width: calc(100vw - 150px);
@@ -45,6 +238,7 @@
   position: relative;
 
   left: 50%;
+
   transform: translateX(-50%);
 
   margin-top: 0;
@@ -57,13 +251,10 @@
   background: #e8edf3;
 
   box-shadow:
-    0 18px 45px rgba(15, 23, 42, 0.12);
+    0 12px 35px rgba(15, 23, 42, 0.08);
 }
 
-
-/* IMAGEM */
-
-.escola-banner-principal > img {
+.escola-banner-principal img {
   width: 100%;
   height: 100%;
 
@@ -71,215 +262,29 @@
   object-position: center;
 
   display: block;
-
-  transition: transform 0.7s ease;
-}
-
-.escola-banner-principal:hover > img {
-  transform: scale(1.02);
 }
 
 
-/* SOMBRA SOBRE A IMAGEM */
+/* =====================================================
+   INDICADORES DO BANNER
+===================================================== */
 
-.escola-banner-overlay {
+.escola-banner-dots {
   position: absolute;
 
-  inset: 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(15, 23, 42, 0.80) 0%,
-      rgba(15, 23, 42, 0.55) 40%,
-      rgba(15, 23, 42, 0.15) 75%,
-      rgba(15, 23, 42, 0.05) 100%
-    );
-
-  pointer-events: none;
-}
-
-
-/* TEXTO DO BANNER */
-
-.escola-banner-conteudo {
-  position: absolute;
-
-  top: 50%;
-  left: 65px;
-
-  transform: translateY(-50%);
-
-  max-width: 600px;
-
-  z-index: 3;
-
-  color: #ffffff;
-}
-
-.escola-banner-tag {
-  display: inline-block;
-
-  margin-bottom: 14px;
-
-  padding: 7px 14px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.16);
-
-  border: 1px solid rgba(255, 255, 255, 0.30);
-
-  backdrop-filter: blur(8px);
-
-  font-size: 13px;
-  font-weight: 700;
-
-  letter-spacing: 0.4px;
-}
-
-.escola-banner-conteudo h1 {
-  margin: 0 0 14px;
-
-  font-size: 42px;
-  line-height: 1.1;
-
-  font-weight: 800;
-
-  color: #ffffff;
-}
-
-.escola-banner-conteudo p {
-  max-width: 550px;
-
-  margin: 0 0 25px;
-
-  font-size: 17px;
-  line-height: 1.7;
-
-  color: rgba(255, 255, 255, 0.92);
-}
-
-
-/* BOTÃO DO BANNER */
-
-.escola-banner-botao {
-  border: none;
-  outline: none;
-
-  padding: 14px 23px;
-
-  border-radius: 11px;
-
-  background: #2563eb;
-
-  color: #ffffff;
-
-  font-size: 15px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 10px 25px rgba(37, 99, 235, 0.35);
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.escola-banner-botao:hover {
-  background: #1d4ed8;
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 14px 30px rgba(37, 99, 235, 0.42);
-}
-
-
-/* =========================================================
-   SETAS DO CARROSSEL
-========================================================= */
-
-.escola-banner-seta {
-  position: absolute;
-
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  width: 46px;
-  height: 46px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: none;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.88);
-
-  color: #172033;
-
-  font-size: 34px;
-  line-height: 1;
-
-  cursor: pointer;
-
-  z-index: 5;
-
-  box-shadow:
-    0 8px 25px rgba(15, 23, 42, 0.18);
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease;
-}
-
-.escola-banner-seta:hover {
-  background: #ffffff;
-
-  transform:
-    translateY(-50%)
-    scale(1.08);
-}
-
-.escola-banner-seta-esquerda {
-  left: 18px;
-}
-
-.escola-banner-seta-direita {
-  right: 18px;
-}
-
-
-/* =========================================================
-   INDICADORES DO CARROSSEL
-========================================================= */
-
-.escola-banner-indicadores {
-  position: absolute;
-
+  bottom: 17px;
   left: 50%;
-  bottom: 18px;
 
   transform: translateX(-50%);
 
   display: flex;
-  align-items: center;
 
   gap: 8px;
-
-  z-index: 5;
 }
 
-.escola-banner-indicador {
-  width: 10px;
-  height: 10px;
+.escola-banner-dot {
+  width: 9px;
+  height: 9px;
 
   padding: 0;
 
@@ -287,54 +292,129 @@
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.55);
+  background:
+    rgba(255, 255, 255, 0.58);
 
   cursor: pointer;
 
+  transition: 0.2s;
+}
+
+.escola-banner-dot.ativo {
+  width: 27px;
+
+  border-radius: 20px;
+
+  background: white;
+}
+
+
+/* =====================================================
+   TÍTULOS
+===================================================== */
+
+.escola-section-title {
+  text-align: center;
+
+  margin-bottom: 32px;
+}
+
+.escola-section-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 13px;
+
+  border-radius: 50%;
+
+  background: #eaf3ff;
+
+  font-size: 26px;
+
   transition:
-    width 0.25s ease,
-    border-radius 0.25s ease,
-    background 0.25s ease;
+    transform 0.25s ease;
 }
 
-.escola-banner-indicador.ativo {
-  width: 28px;
+.escola-section-title:hover
+.escola-section-icon {
+  transform: scale(1.08);
+}
 
-  border-radius: 999px;
+.escola-section-title h2 {
+  margin: 0;
 
-  background: #ffffff;
+  color: #172033;
+
+  font-size: 30px;
+}
+
+.escola-section-line {
+  width: 70px;
+  height: 4px;
+
+  margin: 13px auto 0;
+
+  border-radius: 10px;
+
+  background: #2d86d6;
 }
 
 
-/* =========================================================
-   SEÇÕES
-========================================================= */
+/* =====================================================
+   SERVIÇOS
+===================================================== */
 
-.escola-secao {
+.escola-servicos {
   width: calc(100% - 150px);
   max-width: 1400px;
 
   margin: 0 auto 80px;
 }
 
+.escola-servicos-grid {
+  display: grid;
 
-/* =========================================================
-   TÍTULO DAS SEÇÕES
-========================================================= */
+  grid-template-columns:
+    repeat(3, 1fr);
 
-.escola-titulo-secao {
-  width: 100%;
-
-  margin-bottom: 35px;
-
-  text-align: center;
+  gap: 25px;
 }
 
-.escola-titulo-icone {
-  width: 58px;
-  height: 58px;
+.escola-servico-card {
+  padding: 35px 28px;
 
-  margin: 0 auto 13px;
+  background: white;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  border: 1px solid #eef1f5;
+
+  box-shadow:
+    0 8px 28px rgba(15, 23, 42, 0.07);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.escola-servico-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.escola-servico-icon {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 20px;
 
   display: flex;
   align-items: center;
@@ -344,137 +424,23 @@
 
   background: #eaf3ff;
 
-  font-size: 27px;
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease;
-}
-
-.escola-titulo-secao:hover .escola-titulo-icone {
-  transform: scale(1.08);
-
-  background: #dbeafe;
-}
-
-.escola-titulo-secao h2 {
-  margin: 0;
-
-  color: #172033;
-
-  font-size: 31px;
-  font-weight: 800;
-}
-
-.escola-titulo-linha {
-  width: 70px;
-  height: 4px;
-
-  margin: 13px auto 16px;
-
-  border-radius: 10px;
-
-  background: #2d86d6;
-}
-
-.escola-titulo-secao p {
-  max-width: 700px;
-
-  margin: 0 auto;
-
-  color: #64748b;
-
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-
-/* =========================================================
-   SERVIÇOS
-========================================================= */
-
-.escola-servicos {
-  padding-top: 5px;
-}
-
-.escola-servicos-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: 25px;
-}
-
-.escola-servico-card {
-  min-height: 250px;
-
-  padding: 35px 28px;
-
-  background: #ffffff;
-
-  border: 1px solid #edf0f4;
-
-  border-radius: 18px;
-
-  text-align: center;
-
-  box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.07);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border 0.25s ease;
-}
-
-.escola-servico-card:hover {
-  transform: translateY(-7px);
-
-  border-color: #dbeafe;
-
-  box-shadow:
-    0 20px 45px rgba(15, 23, 42, 0.12);
-}
-
-.escola-servico-icone {
-  width: 76px;
-  height: 76px;
-
-  margin: 0 auto 22px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #eaf3ff,
-      #dbeafe
-    );
-
-  font-size: 34px;
+  font-size: 33px;
 
   transition:
     transform 0.25s ease;
 }
 
 .escola-servico-card:hover
-.escola-servico-icone {
-  transform:
-    scale(1.1)
-    rotate(-3deg);
+.escola-servico-icon {
+  transform: scale(1.1);
 }
 
 .escola-servico-card h3 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
+
+  font-size: 19px;
 
   color: #172033;
-
-  font-size: 20px;
 }
 
 .escola-servico-card p {
@@ -483,168 +449,23 @@
   color: #64748b;
 
   font-size: 14px;
+
   line-height: 1.7;
 }
 
 
-/* =========================================================
-   CARD DO SISTEMA DE PONTOS
-========================================================= */
-
-.escola-sistema-card {
-  min-height: 180px;
-
-  padding: 32px 38px;
-
-  display: flex;
-  align-items: center;
-
-  gap: 26px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #1d4ed8,
-      #2d86d6
-    );
-
-  border-radius: 22px;
-
-  color: #ffffff;
-
-  box-shadow:
-    0 18px 40px rgba(37, 99, 235, 0.25);
-
-  overflow: hidden;
-
-  position: relative;
-}
-
-.escola-sistema-card::after {
-  content: "";
-
-  position: absolute;
-
-  width: 260px;
-  height: 260px;
-
-  border-radius: 50%;
-
-  right: -100px;
-  top: -120px;
-
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.escola-sistema-icone {
-  width: 90px;
-  height: 90px;
-
-  flex-shrink: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 22px;
-
-  background: rgba(255, 255, 255, 0.15);
-
-  border: 1px solid rgba(255, 255, 255, 0.23);
-
-  font-size: 43px;
-
-  z-index: 2;
-}
-
-.escola-sistema-texto {
-  flex: 1;
-
-  z-index: 2;
-}
-
-.escola-mini-titulo {
-  display: block;
-
-  margin-bottom: 6px;
-
-  color: #2563eb;
-
-  font-size: 12px;
-  font-weight: 800;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.7px;
-}
-
-.escola-sistema-texto
-.escola-mini-titulo {
-  color: #bfdbfe;
-}
-
-.escola-sistema-texto h2 {
-  margin: 0 0 8px;
-
-  font-size: 27px;
-
-  color: #ffffff;
-}
-
-.escola-sistema-texto p {
-  max-width: 650px;
-
-  margin: 0;
-
-  color: rgba(255, 255, 255, 0.90);
-
-  line-height: 1.6;
-}
-
-.escola-sistema-botao {
-  position: relative;
-
-  z-index: 2;
-
-  flex-shrink: 0;
-
-  border: none;
-
-  padding: 14px 22px;
-
-  border-radius: 11px;
-
-  background: #ffffff;
-
-  color: #1d4ed8;
-
-  font-size: 14px;
-  font-weight: 800;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.escola-sistema-botao:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 10px 25px rgba(15, 23, 42, 0.16);
-}
-
-
-/* =========================================================
+/* =====================================================
    NOVIDADES
-========================================================= */
+===================================================== */
 
 .escola-novidades {
-  padding-top: 5px;
+  width: calc(100% - 150px);
+  max-width: 1400px;
+
+  margin: 0 auto 80px;
 }
 
-.escola-novidade-card {
+.escola-novidades-card {
   max-width: 900px;
 
   margin: 0 auto;
@@ -656,30 +477,30 @@
 
   gap: 25px;
 
-  background: #ffffff;
+  background: white;
 
-  border: 1px solid #edf0f4;
+  border-radius: 18px;
 
-  border-radius: 20px;
+  border: 1px solid #eef1f5;
 
   box-shadow:
-    0 12px 35px rgba(15, 23, 42, 0.08);
+    0 10px 30px rgba(15, 23, 42, 0.07);
 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
 }
 
-.escola-novidade-card:hover {
+.escola-novidades-card:hover {
   transform: translateY(-5px);
 
   box-shadow:
-    0 20px 45px rgba(15, 23, 42, 0.12);
+    0 18px 40px rgba(15, 23, 42, 0.12);
 }
 
-.escola-novidade-icone {
-  width: 78px;
-  height: 78px;
+.escola-novidades-icon {
+  width: 74px;
+  height: 74px;
 
   flex-shrink: 0;
 
@@ -691,26 +512,18 @@
 
   background: #eaf3ff;
 
-  font-size: 35px;
-
-  transition:
-    transform 0.25s ease;
+  font-size: 33px;
 }
 
-.escola-novidade-card:hover
-.escola-novidade-icone {
-  transform: scale(1.08);
-}
-
-.escola-novidade-card h3 {
-  margin: 3px 0 8px;
-
-  font-size: 21px;
+.escola-novidades-card h3 {
+  margin: 0 0 8px;
 
   color: #172033;
+
+  font-size: 20px;
 }
 
-.escola-novidade-card p {
+.escola-novidades-card p {
   margin: 0;
 
   color: #64748b;
@@ -719,19 +532,22 @@
 }
 
 
-/* =========================================================
+/* =====================================================
    SOBRE NÓS
-========================================================= */
-
-#sobre {
-  scroll-margin-top: 30px;
-}
+===================================================== */
 
 .escola-sobre {
-  padding-top: 10px;
+  width: calc(100% - 150px);
+  max-width: 1400px;
+
+  margin: 0 auto 80px;
+
+  scroll-margin-top: 25px;
 }
 
-.escola-sobre-grid {
+.escola-sobre-card {
+  padding: 38px;
+
   display: grid;
 
   grid-template-columns:
@@ -739,144 +555,128 @@
 
   align-items: center;
 
-  gap: 45px;
+  gap: 40px;
 
-  padding: 40px;
+  background: white;
 
-  background: #ffffff;
-
-  border-radius: 22px;
+  border-radius: 20px;
 
   box-shadow:
-    0 12px 40px rgba(15, 23, 42, 0.08);
+    0 10px 35px rgba(15, 23, 42, 0.08);
 }
 
 .escola-sobre-texto h2 {
-  margin: 5px 0 20px;
+  margin-top: 0;
 
   color: #172033;
 
-  font-size: 29px;
+  font-size: 28px;
 }
 
-.escola-sobre-texto > p {
-  margin: 0 0 15px;
-
+.escola-sobre-texto p {
   color: #64748b;
 
-  font-size: 15px;
   line-height: 1.8;
+
+  font-size: 14px;
 }
 
+.escola-info-grid {
+  margin-top: 25px;
 
-/* DADOS DA ESCOLA */
-
-.escola-sobre-dados {
   display: grid;
 
   grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+    repeat(3, 1fr);
 
   gap: 12px;
-
-  margin-top: 25px;
 }
 
-.escola-sobre-dados > div {
-  padding: 16px;
-
-  border-radius: 12px;
+.escola-info-grid div {
+  padding: 15px;
 
   background: #f8fafc;
 
-  border: 1px solid #e9eef5;
+  border-radius: 11px;
+
+  border: 1px solid #edf1f5;
 }
 
-.escola-sobre-dados strong {
+.escola-info-grid span {
   display: block;
 
   margin-bottom: 5px;
 
   color: #2563eb;
 
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
-.escola-sobre-dados span {
+.escola-info-grid strong {
   color: #475569;
 
   font-size: 13px;
 }
 
-
-/* IMAGEM SOBRE */
-
-.escola-sobre-imagem {
-  width: 100%;
-  height: 380px;
-
-  border-radius: 18px;
+.escola-sobre-foto {
+  height: 330px;
 
   overflow: hidden;
 
-  background: #e8edf3;
-
-  box-shadow:
-    0 12px 30px rgba(15, 23, 42, 0.10);
+  border-radius: 16px;
 }
 
-.escola-sobre-imagem img {
+.escola-sobre-foto img {
   width: 100%;
   height: 100%;
 
   object-fit: cover;
 
-  display: block;
-
-  transition: transform 0.5s ease;
+  transition:
+    transform 0.4s ease;
 }
 
-.escola-sobre-imagem:hover img {
+.escola-sobre-foto:hover img {
   transform: scale(1.04);
 }
 
 
-/* =========================================================
+/* =====================================================
    CONTATOS
-========================================================= */
-
-#contatos {
-  scroll-margin-top: 30px;
-}
+===================================================== */
 
 .escola-contatos {
-  padding-top: 10px;
+  width: calc(100% - 150px);
+  max-width: 1400px;
+
+  margin: 0 auto 80px;
+
+  scroll-margin-top: 25px;
 }
 
 .escola-contatos-grid {
   display: grid;
 
   grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+    repeat(4, 1fr);
 
   gap: 20px;
 }
 
 .escola-contato-card {
-  min-height: 225px;
+  padding: 27px 20px;
 
-  padding: 28px 22px;
-
-  background: #ffffff;
-
-  border: 1px solid #edf0f4;
-
-  border-radius: 17px;
+  background: white;
 
   text-align: center;
 
+  border-radius: 16px;
+
+  border: 1px solid #eef1f5;
+
   box-shadow:
-    0 8px 28px rgba(15, 23, 42, 0.06);
+    0 8px 25px rgba(15, 23, 42, 0.06);
 
   transition:
     transform 0.25s ease,
@@ -887,14 +687,14 @@
   transform: translateY(-5px);
 
   box-shadow:
-    0 18px 38px rgba(15, 23, 42, 0.11);
+    0 17px 35px rgba(15, 23, 42, 0.11);
 }
 
-.escola-contato-icone {
-  width: 62px;
-  height: 62px;
+.escola-contato-icon {
+  width: 60px;
+  height: 60px;
 
-  margin: 0 auto 16px;
+  margin: 0 auto 15px;
 
   display: flex;
   align-items: center;
@@ -904,15 +704,13 @@
 
   background: #eaf3ff;
 
-  font-size: 28px;
+  font-size: 27px;
 }
 
 .escola-contato-card h3 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 
   color: #172033;
-
-  font-size: 18px;
 }
 
 .escola-contato-card p {
@@ -921,22 +719,17 @@
   color: #64748b;
 
   font-size: 13px;
-  line-height: 1.5;
 
-  overflow-wrap: anywhere;
+  line-height: 1.5;
 }
 
 .escola-contato-card a {
-  display: inline-block;
-
-  margin-top: 10px;
-
   color: #2563eb;
+
+  text-decoration: none;
 
   font-size: 13px;
   font-weight: 700;
-
-  text-decoration: none;
 }
 
 .escola-contato-card a:hover {
@@ -944,84 +737,62 @@
 }
 
 
-/* REDES SOCIAIS */
-
-.escola-redes {
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: 4px;
-}
-
-
-/* =========================================================
+/* =====================================================
    RODAPÉ
-========================================================= */
+===================================================== */
 
 .escola-footer {
-  width: 100%;
-
   margin-top: 100px;
 
   background: #15243b;
 
-  color: #ffffff;
+  color: white;
 }
 
-.escola-footer-conteudo {
+.escola-footer-container {
   width: calc(100% - 150px);
   max-width: 1400px;
 
   margin: 0 auto;
 
-  padding: 55px 0 45px;
+  padding: 52px 0 42px;
 
   display: grid;
 
   grid-template-columns:
-    1.25fr 1fr 1fr 1fr;
+    1.2fr 1fr 1fr 1fr;
 
-  gap: 45px;
+  gap: 40px;
 }
 
-.escola-footer-coluna h3 {
-  margin: 0 0 17px;
+.escola-footer h3 {
+  margin-top: 0;
 
-  font-size: 17px;
-
-  color: #ffffff;
+  font-size: 16px;
 }
 
-.escola-footer-coluna p {
+.escola-footer p {
   margin: 7px 0;
 
   color: #cbd5e1;
 
   font-size: 13px;
-  line-height: 1.6;
+
+  line-height: 1.5;
 }
 
-
-/* PARTE FINAL DO RODAPÉ */
-
-.escola-footer-final {
+.escola-footer-bottom {
   width: calc(100% - 150px);
   max-width: 1400px;
 
-  margin: 0 auto;
+  margin: auto;
 
   padding: 20px 0;
 
   border-top:
-    1px solid rgba(255, 255, 255, 0.10);
+    1px solid rgba(255, 255, 255, 0.1);
 
   text-align: center;
-}
-
-.escola-footer-final p {
-  margin: 0;
 
   color: #94a3b8;
 
@@ -1029,11 +800,22 @@
 }
 
 
-/* =========================================================
-   TABLETS GRANDES
-========================================================= */
+/* =====================================================
+   RESPONSIVO
+===================================================== */
 
 @media (max-width: 1100px) {
+
+  .escola-topbar-container,
+  .escola-header-container,
+  .escola-servicos,
+  .escola-novidades,
+  .escola-sobre,
+  .escola-contatos,
+  .escola-footer-container,
+  .escola-footer-bottom {
+    width: calc(100% - 50px);
+  }
 
   .escola-banner-principal {
     width: calc(100vw - 50px);
@@ -1041,39 +823,17 @@
     height: 380px;
   }
 
-  .escola-secao {
-    width: calc(100% - 50px);
-  }
-
-  .escola-footer-conteudo,
-  .escola-footer-final {
-    width: calc(100% - 50px);
-  }
-
-  .escola-banner-conteudo {
-    left: 50px;
-  }
-
-  .escola-banner-conteudo h1 {
-    font-size: 36px;
-  }
-
   .escola-contatos-grid {
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      repeat(2, 1fr);
   }
 
-  .escola-footer-conteudo {
+  .escola-footer-container {
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      repeat(2, 1fr);
   }
-
 }
 
-
-/* =========================================================
-   TABLETS / CELULAR
-========================================================= */
 
 @media (max-width: 850px) {
 
@@ -1081,290 +841,96 @@
     width: calc(100vw - 30px);
 
     height: 320px;
-
-    margin-bottom: 55px;
-
-    border-radius: 14px;
   }
 
-  .escola-banner-conteudo {
-    left: 35px;
+  .escola-header {
+    height: auto;
 
-    max-width: 70%;
+    padding: 15px 0;
   }
 
-  .escola-banner-conteudo h1 {
-    font-size: 30px;
+  .escola-header-container {
+    flex-direction: column;
+
+    gap: 15px;
   }
 
-  .escola-banner-conteudo p {
-    font-size: 14px;
+  .escola-menu {
+    flex-wrap: wrap;
 
-    line-height: 1.5;
-  }
-
-  .escola-banner-botao {
-    padding: 11px 17px;
-
-    font-size: 13px;
-  }
-
-  .escola-banner-seta {
-    width: 39px;
-    height: 39px;
-
-    font-size: 28px;
-  }
-
-  .escola-secao {
-    width: calc(100% - 30px);
-
-    margin-bottom: 60px;
+    justify-content: center;
   }
 
   .escola-servicos-grid {
     grid-template-columns: 1fr;
   }
 
-  .escola-servico-card {
-    min-height: auto;
-  }
-
-  .escola-sistema-card {
-    flex-direction: column;
-
-    text-align: center;
-
-    padding: 30px 25px;
-  }
-
-  .escola-sistema-texto p {
-    margin: 0 auto;
-  }
-
-  .escola-novidade-card {
-    flex-direction: column;
-
-    text-align: center;
-  }
-
-  .escola-sobre-grid {
+  .escola-sobre-card {
     grid-template-columns: 1fr;
-
-    padding: 30px;
   }
-
-  .escola-sobre-imagem {
-    height: 320px;
-  }
-
 }
 
 
-/* =========================================================
-   CELULAR
-========================================================= */
-
 @media (max-width: 600px) {
+
+  .escola-topbar {
+    height: auto;
+
+    padding: 10px 0;
+  }
+
+  .escola-topbar-container {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .escola-topbar-left {
+    flex-direction: column;
+
+    gap: 4px;
+
+    text-align: center;
+  }
 
   .escola-banner-principal {
     width: calc(100vw - 26px);
 
     height: 235px;
-
-    margin-bottom: 45px;
   }
 
-  .escola-banner-overlay {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(15, 23, 42, 0.76),
-        rgba(15, 23, 42, 0.30)
-      );
+  .escola-servicos,
+  .escola-novidades,
+  .escola-sobre,
+  .escola-contatos {
+    width: calc(100% - 26px);
   }
 
-  .escola-banner-conteudo {
-    left: 25px;
+  .escola-novidades-card {
+    flex-direction: column;
 
-    max-width: calc(100% - 75px);
+    text-align: center;
   }
 
-  .escola-banner-tag {
-    padding: 5px 9px;
-
-    margin-bottom: 8px;
-
-    font-size: 10px;
-  }
-
-  .escola-banner-conteudo h1 {
-    margin-bottom: 8px;
-
-    font-size: 23px;
-  }
-
-  .escola-banner-conteudo p {
-    margin-bottom: 13px;
-
-    font-size: 11px;
-
-    line-height: 1.4;
-
-    display: -webkit-box;
-
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-
-    overflow: hidden;
-  }
-
-  .escola-banner-botao {
-    padding: 9px 12px;
-
-    font-size: 11px;
-
-    border-radius: 8px;
-  }
-
-  .escola-banner-seta {
-    width: 32px;
-    height: 32px;
-
-    font-size: 22px;
-  }
-
-  .escola-banner-seta-esquerda {
-    left: 8px;
-  }
-
-  .escola-banner-seta-direita {
-    right: 8px;
-  }
-
-  .escola-banner-indicadores {
-    bottom: 9px;
-  }
-
-  .escola-banner-indicador {
-    width: 7px;
-    height: 7px;
-  }
-
-  .escola-banner-indicador.ativo {
-    width: 20px;
-  }
-
-
-  /* TÍTULOS */
-
-  .escola-titulo-icone {
-    width: 50px;
-    height: 50px;
-
-    font-size: 23px;
-  }
-
-  .escola-titulo-secao h2 {
-    font-size: 25px;
-  }
-
-  .escola-titulo-secao p {
-    font-size: 13px;
-  }
-
-
-  /* SERVIÇOS */
-
-  .escola-servico-card {
-    padding: 28px 22px;
-  }
-
-
-  /* SISTEMA */
-
-  .escola-sistema-card {
-    border-radius: 17px;
-  }
-
-  .escola-sistema-icone {
-    width: 75px;
-    height: 75px;
-
-    font-size: 36px;
-  }
-
-  .escola-sistema-texto h2 {
-    font-size: 23px;
-  }
-
-  .escola-sistema-texto p {
-    font-size: 13px;
-  }
-
-
-  /* SOBRE */
-
-  .escola-sobre-grid {
-    padding: 23px;
-
-    border-radius: 17px;
-  }
-
-  .escola-sobre-texto h2 {
-    font-size: 24px;
-  }
-
-  .escola-sobre-texto > p {
-    font-size: 13px;
-  }
-
-  .escola-sobre-dados {
+  .escola-info-grid {
     grid-template-columns: 1fr;
   }
-
-  .escola-sobre-imagem {
-    height: 240px;
-  }
-
-
-  /* CONTATOS */
 
   .escola-contatos-grid {
     grid-template-columns: 1fr;
   }
 
-  .escola-contato-card {
-    min-height: auto;
-  }
-
-
-  /* RODAPÉ */
-
-  .escola-footer {
-    margin-top: 70px;
-  }
-
-  .escola-footer-conteudo {
+  .escola-footer-container {
     width: calc(100% - 40px);
 
     grid-template-columns: 1fr;
-
-    gap: 30px;
-
-    padding: 40px 0 30px;
   }
 
-  .escola-footer-final {
+  .escola-footer-bottom {
     width: calc(100% - 40px);
   }
-
 }
 
-
-/* =========================================================
-   CELULAR PEQUENO
-========================================================= */
 
 @media (max-width: 420px) {
 
@@ -1372,47 +938,12 @@
     height: 200px;
   }
 
-  .escola-banner-conteudo {
-    left: 20px;
-
-    max-width: calc(100% - 55px);
+  .escola-logo {
+    width: 58px;
+    height: 58px;
   }
 
-  .escola-banner-conteudo h1 {
-    font-size: 20px;
+  .escola-logo-area h1 {
+    font-size: 18px;
   }
-
-  .escola-banner-conteudo p {
-    display: none;
-  }
-
-  .escola-banner-tag {
-    font-size: 9px;
-  }
-
-  .escola-banner-botao {
-    margin-top: 3px;
-  }
-
-  .escola-banner-seta {
-    display: none;
-  }
-
-  .escola-secao {
-    width: calc(100% - 24px);
-  }
-
-  .escola-titulo-secao h2 {
-    font-size: 22px;
-  }
-
-}
-
-
-/* =========================================================
-   ROLAGEM
-========================================================= */
-
-html {
-  scroll-behavior: smooth;
 }

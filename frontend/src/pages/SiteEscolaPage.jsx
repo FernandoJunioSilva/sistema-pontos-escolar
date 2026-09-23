@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
 import './SiteEscolaPage.css';
 
-/* =========================================
-   IMAGENS
-========================================= */
+import logoEscola from '../assets/zinha/imagens/logo escola.png';
 
 import foto1 from '../assets/zinha/imagens/foto1.jpg';
 import foto2 from '../assets/zinha/imagens/foto2.jpg';
@@ -16,14 +15,10 @@ import foto8 from '../assets/zinha/imagens/foto8.jpg';
 import foto9 from '../assets/zinha/imagens/foto9.jpg';
 import foto10 from '../assets/zinha/imagens/foto10.jpg';
 
-
-export default function SiteEscolaPage({ mudarPagina }) {
-
-  /* =========================================
-     CARROSSEL
-  ========================================= */
-
-  const imagens = [
+export default function SiteEscolaPage({
+  mudarPagina
+}) {
+  const fotos = [
     foto1,
     foto2,
     foto3,
@@ -36,177 +31,272 @@ export default function SiteEscolaPage({ mudarPagina }) {
     foto10
   ];
 
-  const [imagemAtual, setImagemAtual] = useState(0);
+  const [fotoAtual, setFotoAtual] =
+    useState(0);
+
+  const [
+    menuSistemaAberto,
+    setMenuSistemaAberto
+  ] = useState(false);
 
 
-  /* =========================================
-     TROCA AUTOMÁTICA DAS IMAGENS
-  ========================================= */
+  /* =====================================================
+     CARROSSEL
+  ===================================================== */
 
   useEffect(() => {
-
     const intervalo = setInterval(() => {
-
-      setImagemAtual((anterior) =>
-        anterior === imagens.length - 1
+      setFotoAtual((anterior) =>
+        anterior === fotos.length - 1
           ? 0
           : anterior + 1
       );
-
     }, 5000);
 
-
-    return () => clearInterval(intervalo);
-
-  }, [imagens.length]);
-
-
-  /* =========================================
-     FUNÇÕES DO CARROSSEL
-  ========================================= */
-
-  function imagemAnterior() {
-
-    setImagemAtual((anterior) =>
-      anterior === 0
-        ? imagens.length - 1
-        : anterior - 1
-    );
-
-  }
+    return () =>
+      clearInterval(intervalo);
+  }, [fotos.length]);
 
 
-  function proximaImagem() {
+  /* =====================================================
+     ROLAGEM
+  ===================================================== */
 
-    setImagemAtual((anterior) =>
-      anterior === imagens.length - 1
-        ? 0
-        : anterior + 1
-    );
+  function rolarPara(id) {
+    const elemento =
+      document.getElementById(id);
 
-  }
-
-
-  /* =========================================
-     ABRIR SISTEMA DE PONTOS
-  ========================================= */
-
-  function abrirSistema() {
-
-    mudarPagina('inicio');
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-
+    if (elemento) {
+      elemento.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   }
 
 
   return (
-
-    <div className="site-escola">
-
-
-      {/* ==================================================
-          IMPORTANTE
-
-          O CABEÇALHO NÃO FICA MAIS AQUI.
-
-          Agora ele é exibido pelo App.jsx através do:
-
-          <CabecalhoEscola />
-
-          Isso permite usar o mesmo cabeçalho em:
-          - Site da escola
-          - Sistema de Pontos
-          - Ranking
-          - Telão
-      =================================================== */}
+    <div className="site-escola-page">
 
 
+      {/* =================================================
+          BARRA SUPERIOR
+      ================================================= */}
 
-      {/* ==================================================
-          BANNER / CARROSSEL
-      =================================================== */}
+      <div className="escola-topbar">
+
+        <div className="escola-topbar-container">
+
+          <div className="escola-topbar-left">
+
+            <span>
+              ✉ Escola.79383@educacao.mg.gov.br
+            </span>
+
+            <span>
+              📍 Bocaiúva - MG
+            </span>
+
+          </div>
+
+
+          <div className="escola-topbar-right">
+
+            <a
+              href="https://www.instagram.com/terceirao.inf26/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Instagram
+            </a>
+
+            <a
+              href="https://web.facebook.com/E.E.ZinhaMeira/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Facebook
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* =================================================
+          CABEÇALHO ORIGINAL
+      ================================================= */}
+
+      <header className="escola-header">
+
+        <div className="escola-header-container">
+
+
+          {/* LOGO */}
+
+          <div
+            className="escola-logo-area"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            }}
+          >
+
+            <img
+              src={logoEscola}
+              alt="E.E. Zinha Meira"
+              className="escola-logo"
+            />
+
+            <div>
+
+              <h1>
+                E.E. Zinha Meira
+              </h1>
+
+              <p>
+                Escola Estadual • Bocaiúva/MG
+              </p>
+
+            </div>
+
+          </div>
+
+
+          {/* MENU */}
+
+          <nav className="escola-menu">
+
+
+            <button
+              type="button"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }}
+            >
+              Início
+            </button>
+
+
+            {/* SISTEMA DE PONTOS */}
+
+            <div
+              className="escola-menu-dropdown"
+              onMouseEnter={() =>
+                setMenuSistemaAberto(true)
+              }
+              onMouseLeave={() =>
+                setMenuSistemaAberto(false)
+              }
+            >
+
+              <button
+                type="button"
+                onClick={() =>
+                  mudarPagina('inicio')
+                }
+              >
+                Sistema de Pontos
+
+                <span className="escola-menu-seta">
+                  ▾
+                </span>
+              </button>
+
+
+              {menuSistemaAberto && (
+
+                <div className="escola-submenu">
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      mudarPagina('ranking')
+                    }
+                  >
+                    🏆 Ranking
+                  </button>
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      mudarPagina('telao')
+                    }
+                  >
+                    📺 Telão
+                  </button>
+
+                </div>
+
+              )}
+
+            </div>
+
+
+            <button
+              type="button"
+              onClick={() =>
+                rolarPara('contatos')
+              }
+            >
+              Contatos
+            </button>
+
+
+            <button
+              type="button"
+              onClick={() =>
+                rolarPara('sobre')
+              }
+            >
+              Sobre Nós
+            </button>
+
+          </nav>
+
+        </div>
+
+      </header>
+
+
+      {/* =================================================
+          BANNER
+      ================================================= */}
 
       <section className="escola-banner-principal">
 
         <img
-          src={imagens[imagemAtual]}
-          alt={`E.E. Zinha Meira ${imagemAtual + 1}`}
+          src={fotos[fotoAtual]}
+          alt="E.E. Zinha Meira"
         />
 
 
-        {/* SOMBRA */}
-        <div className="escola-banner-overlay" />
+        <div className="escola-banner-dots">
 
-
-        {/* TEXTO */}
-        <div className="escola-banner-conteudo">
-
-          <span className="escola-banner-tag">
-            Educação que transforma
-          </span>
-
-          <h1>
-            Escola Estadual Zinha Meira
-          </h1>
-
-          <p>
-            Educação, conhecimento, participação e oportunidades
-            para construir um futuro melhor.
-          </p>
-
-
-          <button
-            type="button"
-            className="escola-banner-botao"
-            onClick={abrirSistema}
-          >
-            Acessar Sistema de Pontos
-          </button>
-
-        </div>
-
-
-        {/* SETA ESQUERDA */}
-        <button
-          type="button"
-          className="escola-banner-seta escola-banner-seta-esquerda"
-          onClick={imagemAnterior}
-          aria-label="Imagem anterior"
-        >
-          ‹
-        </button>
-
-
-        {/* SETA DIREITA */}
-        <button
-          type="button"
-          className="escola-banner-seta escola-banner-seta-direita"
-          onClick={proximaImagem}
-          aria-label="Próxima imagem"
-        >
-          ›
-        </button>
-
-
-        {/* INDICADORES */}
-        <div className="escola-banner-indicadores">
-
-          {imagens.map((_, index) => (
+          {fotos.map((_, index) => (
 
             <button
               key={index}
               type="button"
-              aria-label={`Mostrar imagem ${index + 1}`}
-              className={
-                index === imagemAtual
-                  ? 'escola-banner-indicador ativo'
-                  : 'escola-banner-indicador'
+              aria-label={
+                `Mostrar imagem ${index + 1}`
               }
-              onClick={() => setImagemAtual(index)}
+              className={
+                fotoAtual === index
+                  ? 'escola-banner-dot ativo'
+                  : 'escola-banner-dot'
+              }
+              onClick={() =>
+                setFotoAtual(index)
+              }
             />
 
           ))}
@@ -216,16 +306,15 @@ export default function SiteEscolaPage({ mudarPagina }) {
       </section>
 
 
-
-      {/* ==================================================
+      {/* =================================================
           SERVIÇOS
-      =================================================== */}
+      ================================================= */}
 
-      <section className="escola-secao escola-servicos">
+      <section className="escola-servicos">
 
-        <div className="escola-titulo-secao">
+        <div className="escola-section-title">
 
-          <div className="escola-titulo-icone">
+          <div className="escola-section-icon">
             📚
           </div>
 
@@ -233,12 +322,7 @@ export default function SiteEscolaPage({ mudarPagina }) {
             Serviços Oferecidos
           </h2>
 
-          <div className="escola-titulo-linha" />
-
-          <p>
-            Conheça algumas das ações desenvolvidas pela
-            E.E. Zinha Meira para apoiar nossos estudantes.
-          </p>
+          <div className="escola-section-line" />
 
         </div>
 
@@ -246,11 +330,9 @@ export default function SiteEscolaPage({ mudarPagina }) {
         <div className="escola-servicos-grid">
 
 
-          {/* CARD 1 */}
+          <div className="escola-servico-card">
 
-          <article className="escola-servico-card">
-
-            <div className="escola-servico-icone">
+            <div className="escola-servico-icon">
               📖
             </div>
 
@@ -259,19 +341,17 @@ export default function SiteEscolaPage({ mudarPagina }) {
             </h3>
 
             <p>
-              Apoio pedagógico para fortalecer a aprendizagem
-              e auxiliar os estudantes em suas dificuldades.
+              Apoio pedagógico para auxiliar
+              os estudantes no desenvolvimento
+              da aprendizagem.
             </p>
 
-          </article>
+          </div>
 
 
+          <div className="escola-servico-card">
 
-          {/* CARD 2 */}
-
-          <article className="escola-servico-card">
-
-            <div className="escola-servico-icone">
+            <div className="escola-servico-icon">
               🎓
             </div>
 
@@ -280,19 +360,17 @@ export default function SiteEscolaPage({ mudarPagina }) {
             </h3>
 
             <p>
-              Projetos, atividades e experiências que estimulam
-              a criatividade, o conhecimento e a participação.
+              Projetos e atividades que estimulam
+              conhecimento, criatividade e
+              participação.
             </p>
 
-          </article>
+          </div>
 
 
+          <div className="escola-servico-card">
 
-          {/* CARD 3 */}
-
-          <article className="escola-servico-card">
-
-            <div className="escola-servico-icone">
+            <div className="escola-servico-icon">
               🤝
             </div>
 
@@ -301,75 +379,27 @@ export default function SiteEscolaPage({ mudarPagina }) {
             </h3>
 
             <p>
-              Acompanhamento e orientação para contribuir
-              com o desenvolvimento acadêmico e pessoal
+              Acompanhamento e orientação para
+              contribuir com o desenvolvimento
               dos estudantes.
             </p>
 
-          </article>
-
+          </div>
 
         </div>
 
       </section>
 
 
-
-      {/* ==================================================
-          SISTEMA DE PONTOS
-      =================================================== */}
-
-      <section className="escola-secao">
-
-        <div className="escola-sistema-card">
-
-          <div className="escola-sistema-icone">
-            🏆
-          </div>
-
-
-          <div className="escola-sistema-texto">
-
-            <span className="escola-mini-titulo">
-              Projeto Escolar
-            </span>
-
-            <h2>
-              Sistema de Pontos
-            </h2>
-
-            <p>
-              Acompanhe a participação das turmas,
-              pontuações, medalhas, conquistas e o ranking
-              da E.E. Zinha Meira.
-            </p>
-
-          </div>
-
-
-          <button
-            type="button"
-            onClick={abrirSistema}
-            className="escola-sistema-botao"
-          >
-            Entrar no sistema
-          </button>
-
-        </div>
-
-      </section>
-
-
-
-      {/* ==================================================
+      {/* =================================================
           NOVIDADES
-      =================================================== */}
+      ================================================= */}
 
-      <section className="escola-secao escola-novidades">
+      <section className="escola-novidades">
 
-        <div className="escola-titulo-secao">
+        <div className="escola-section-title">
 
-          <div className="escola-titulo-icone">
+          <div className="escola-section-icon">
             📢
           </div>
 
@@ -377,31 +407,27 @@ export default function SiteEscolaPage({ mudarPagina }) {
             Novidades
           </h2>
 
-          <div className="escola-titulo-linha" />
+          <div className="escola-section-line" />
 
         </div>
 
 
-        <div className="escola-novidade-card">
+        <div className="escola-novidades-card">
 
-          <div className="escola-novidade-icone">
+          <div className="escola-novidades-icon">
             🏫
           </div>
 
-
           <div>
 
-            <span className="escola-mini-titulo">
-              E.E. Zinha Meira
-            </span>
-
             <h3>
-              Acompanhe nossas atividades
+              Acompanhe as novidades da escola
             </h3>
 
             <p>
-              Projetos, ações pedagógicas, eventos e atividades
-              desenvolvidas pela comunidade escolar.
+              Projetos, atividades, eventos e
+              ações desenvolvidas pela comunidade
+              escolar da E.E. Zinha Meira.
             </p>
 
           </div>
@@ -411,23 +437,18 @@ export default function SiteEscolaPage({ mudarPagina }) {
       </section>
 
 
-
-      {/* ==================================================
+      {/* =================================================
           SOBRE NÓS
-
-          IMPORTANTE:
-          id="sobre" permite que o botão Sobre Nós
-          do cabeçalho venha diretamente para cá.
-      =================================================== */}
+      ================================================= */}
 
       <section
         id="sobre"
-        className="escola-secao escola-sobre"
+        className="escola-sobre"
       >
 
-        <div className="escola-titulo-secao">
+        <div className="escola-section-title">
 
-          <div className="escola-titulo-icone">
+          <div className="escola-section-icon">
             🏫
           </div>
 
@@ -435,80 +456,74 @@ export default function SiteEscolaPage({ mudarPagina }) {
             Sobre Nós
           </h2>
 
-          <div className="escola-titulo-linha" />
+          <div className="escola-section-line" />
 
         </div>
 
 
-        <div className="escola-sobre-grid">
-
-
-          {/* TEXTO */}
+        <div className="escola-sobre-card">
 
           <div className="escola-sobre-texto">
-
-            <span className="escola-mini-titulo">
-              Nossa Escola
-            </span>
 
             <h2>
               Escola Estadual Zinha Meira
             </h2>
 
             <p>
-              A Escola Estadual Zinha Meira está localizada
-              em Bocaiúva, Minas Gerais, e tem como compromisso
-              proporcionar educação de qualidade e contribuir
-              para a formação integral de seus estudantes.
+              A Escola Estadual Zinha Meira,
+              localizada em Bocaiúva/MG, possui
+              como compromisso oferecer educação
+              de qualidade e contribuir para a
+              formação integral dos estudantes.
             </p>
 
             <p>
-              A escola busca incentivar o conhecimento,
-              a participação, o respeito, a responsabilidade
-              e o desenvolvimento de habilidades importantes
-              para a vida acadêmica e profissional.
-            </p>
-
-            <p>
-              Também incentivamos o desenvolvimento de projetos,
-              tecnologia, atividades pedagógicas e iniciativas
-              que aproximem os estudantes de experiências
-              práticas de aprendizagem.
+              A escola incentiva conhecimento,
+              responsabilidade, participação,
+              respeito e desenvolvimento de
+              habilidades para a vida acadêmica
+              e profissional.
             </p>
 
 
-            <div className="escola-sobre-dados">
+            <div className="escola-info-grid">
 
               <div>
-                <strong>
+
+                <span>
                   INEP
-                </strong>
+                </span>
 
-                <span>
+                <strong>
                   31079383
-                </span>
+                </strong>
+
               </div>
 
 
               <div>
-                <strong>
+
+                <span>
                   Município
+                </span>
+
+                <strong>
+                  Bocaiúva - MG
                 </strong>
 
-                <span>
-                  Bocaiúva - MG
-                </span>
               </div>
 
 
               <div>
-                <strong>
-                  Rede
-                </strong>
 
                 <span>
-                  Estadual
+                  Rede
                 </span>
+
+                <strong>
+                  Estadual
+                </strong>
+
               </div>
 
             </div>
@@ -516,10 +531,7 @@ export default function SiteEscolaPage({ mudarPagina }) {
           </div>
 
 
-
-          {/* IMAGEM */}
-
-          <div className="escola-sobre-imagem">
+          <div className="escola-sobre-foto">
 
             <img
               src={foto6}
@@ -528,29 +540,23 @@ export default function SiteEscolaPage({ mudarPagina }) {
 
           </div>
 
-
         </div>
 
       </section>
 
 
-
-      {/* ==================================================
+      {/* =================================================
           CONTATOS
-
-          IMPORTANTE:
-          id="contatos" permite que o botão Contatos
-          do cabeçalho venha diretamente para cá.
-      =================================================== */}
+      ================================================= */}
 
       <section
         id="contatos"
-        className="escola-secao escola-contatos"
+        className="escola-contatos"
       >
 
-        <div className="escola-titulo-secao">
+        <div className="escola-section-title">
 
-          <div className="escola-titulo-icone">
+          <div className="escola-section-icon">
             📞
           </div>
 
@@ -558,24 +564,17 @@ export default function SiteEscolaPage({ mudarPagina }) {
             Contatos
           </h2>
 
-          <div className="escola-titulo-linha" />
-
-          <p>
-            Entre em contato com a Escola Estadual Zinha Meira.
-          </p>
+          <div className="escola-section-line" />
 
         </div>
-
 
 
         <div className="escola-contatos-grid">
 
 
-          {/* ENDEREÇO */}
-
           <div className="escola-contato-card">
 
-            <div className="escola-contato-icone">
+            <div className="escola-contato-icon">
               📍
             </div>
 
@@ -584,30 +583,20 @@ export default function SiteEscolaPage({ mudarPagina }) {
             </h3>
 
             <p>
-              Rua Presidente Juscelino Kubitschek, 615
+              Rua Presidente Juscelino Kubitschek,
+              615 – Pernambuco
             </p>
 
             <p>
-              Pernambuco
-            </p>
-
-            <p>
-              Bocaiúva/MG
-            </p>
-
-            <p>
-              CEP 39390-000
+              Bocaiúva/MG – CEP 39390-000
             </p>
 
           </div>
 
 
-
-          {/* TELEFONE */}
-
           <div className="escola-contato-card">
 
-            <div className="escola-contato-icone">
+            <div className="escola-contato-icon">
               📱
             </div>
 
@@ -619,24 +608,20 @@ export default function SiteEscolaPage({ mudarPagina }) {
               (38) 93251-1732
             </p>
 
-
             <a
               href="https://wa.me/qr/V57FQNNTV7UIP1"
               target="_blank"
               rel="noreferrer"
             >
-              Falar pelo WhatsApp
+              WhatsApp
             </a>
 
           </div>
 
 
-
-          {/* EMAIL */}
-
           <div className="escola-contato-card">
 
-            <div className="escola-contato-icone">
+            <div className="escola-contato-icon">
               ✉️
             </div>
 
@@ -657,12 +642,9 @@ export default function SiteEscolaPage({ mudarPagina }) {
           </div>
 
 
-
-          {/* REDES SOCIAIS */}
-
           <div className="escola-contato-card">
 
-            <div className="escola-contato-icone">
+            <div className="escola-contato-icon">
               🌐
             </div>
 
@@ -670,57 +652,48 @@ export default function SiteEscolaPage({ mudarPagina }) {
               Redes Sociais
             </h3>
 
+            <a
+              href="https://www.instagram.com/terceirao.inf26/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Instagram
+            </a>
 
-            <div className="escola-redes">
+            <br />
 
-              <a
-                href="https://www.instagram.com/terceirao.inf26/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Instagram
-              </a>
-
-
-              <a
-                href="https://web.facebook.com/E.E.ZinhaMeira/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Facebook
-              </a>
-
-            </div>
+            <a
+              href="https://web.facebook.com/E.E.ZinhaMeira/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Facebook
+            </a>
 
           </div>
-
 
         </div>
 
       </section>
 
 
-
-      {/* ==================================================
+      {/* =================================================
           RODAPÉ
-      =================================================== */}
+      ================================================= */}
 
       <footer className="escola-footer">
 
-        <div className="escola-footer-conteudo">
+        <div className="escola-footer-container">
 
 
-          {/* ESCOLA */}
-
-          <div className="escola-footer-coluna">
+          <div>
 
             <h3>
               E.E. Zinha Meira
             </h3>
 
             <p>
-              Educação, conhecimento e oportunidades
-              para nossos estudantes.
+              Escola Estadual
             </p>
 
             <p>
@@ -730,10 +703,7 @@ export default function SiteEscolaPage({ mudarPagina }) {
           </div>
 
 
-
-          {/* EQUIPE */}
-
-          <div className="escola-footer-coluna">
+          <div>
 
             <h3>
               Desenvolvimento
@@ -758,21 +728,21 @@ export default function SiteEscolaPage({ mudarPagina }) {
           </div>
 
 
-
-          {/* PROFESSOR / COORDENAÇÃO */}
-
-          <div className="escola-footer-coluna">
+          <div>
 
             <h3>
               Orientação
             </h3>
 
             <p>
-              Professor: Jader Leal
+              Professor Jader Leal
             </p>
 
             <p>
               Coordenação:
+            </p>
+
+            <p>
               Fernando J. Silva
             </p>
 
@@ -783,10 +753,7 @@ export default function SiteEscolaPage({ mudarPagina }) {
           </div>
 
 
-
-          {/* DIREÇÃO */}
-
-          <div className="escola-footer-coluna">
+          <div>
 
             <h3>
               Gestão Escolar
@@ -815,25 +782,18 @@ export default function SiteEscolaPage({ mudarPagina }) {
 
           </div>
 
-
         </div>
 
 
+        <div className="escola-footer-bottom">
 
-        <div className="escola-footer-final">
-
-          <p>
-            © 2026 Escola Estadual Zinha Meira -
-            Bocaiúva/MG
-          </p>
+          © 2026 Escola Estadual Zinha Meira -
+          Bocaiúva/MG
 
         </div>
 
       </footer>
 
-
     </div>
-
   );
-
 }

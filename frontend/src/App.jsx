@@ -11,14 +11,9 @@ import AlunoPage from './pages/AlunoPage';
 import CabecalhoEscola from './components/CabecalhoEscola';
 
 export default function App() {
-
   const [pagina, setPagina] = useState('site-escola');
-  const [usuarioLogado, setUsuarioLogado] = useState(null);
 
   function fazerLogin(usuario) {
-
-    setUsuarioLogado(usuario);
-
     const tipo = (
       usuario?.tipo ||
       usuario?.Tipo ||
@@ -43,30 +38,22 @@ export default function App() {
     setPagina('inicio');
   }
 
-  function sair() {
-
-    localStorage.removeItem('token');
-    localStorage.removeItem('usuario');
-
-    setUsuarioLogado(null);
-    setPagina('site-escola');
-  }
-
   /*
-    Estas páginas terão o cabeçalho
-    institucional.
+    IMPORTANTE:
+
+    O site institucional NÃO está aqui.
+
+    Ele continua usando o próprio cabeçalho,
+    preservando o layout da página inicial.
   */
   const paginasComCabecalho = [
-    'site-escola',
     'inicio',
     'ranking',
     'telao'
   ];
 
   function renderizarPagina() {
-
     switch (pagina) {
-
       case 'site-escola':
         return (
           <SiteEscolaPage
@@ -83,40 +70,27 @@ export default function App() {
 
       case 'ranking':
         return (
-          <RankingPublicoPage
-            mudarPagina={setPagina}
-          />
+          <RankingPublicoPage />
         );
 
       case 'telao':
         return (
-          <RankingTelaoPage
-            mudarPagina={setPagina}
-          />
+          <RankingTelaoPage />
         );
 
       case 'professor':
         return (
-          <ProfessorPage
-            usuario={usuarioLogado}
-            onSair={sair}
-          />
+          <ProfessorPage />
         );
 
       case 'admin':
         return (
-          <AdminPage
-            usuario={usuarioLogado}
-            onSair={sair}
-          />
+          <AdminPage />
         );
 
       case 'aluno':
         return (
-          <AlunoPage
-            usuario={usuarioLogado}
-            onSair={sair}
-          />
+          <AlunoPage />
         );
 
       default:
