@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SiteEscolaPage.css';
 
 import logoEscola from '../assets/zinha/imagens/logo escola.png';
+import foto1 from '../assets/zinha/imagens/foto1.jpg';
+import foto2 from '../assets/zinha/imagens/foto2.jpg';
+import foto3 from '../assets/zinha/imagens/foto3.jpg';
 import foto4 from '../assets/zinha/imagens/foto4.jpg';
+import foto7 from '../assets/zinha/imagens/foto7.jpg';
+import foto9 from '../assets/zinha/imagens/foto9.jpg';
+import foto10 from '../assets/zinha/imagens/foto10.jpg';
+
+const fotosSobre = [foto10, foto7, foto3, foto4, foto9, foto2, foto1];
 
 export default function SiteEscolaPage({ mudarPagina }) {
   const [abaAtiva, setAbaAtiva] = useState('inicio');
   const [menuSistemaAberto, setMenuSistemaAberto] = useState(false);
   const [mostrarNovidades, setMostrarNovidades] = useState(false);
+  const [indiceGaleria, setIndiceGaleria] = useState(0);
+
+  useEffect(() => {
+    if (abaAtiva !== 'sobre') return undefined;
+
+    const timer = window.setInterval(() => {
+      setIndiceGaleria((indiceAtual) => (indiceAtual + 1) % fotosSobre.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, [abaAtiva]);
 
   function trocarAba(aba) {
     setAbaAtiva(aba);
@@ -22,6 +41,16 @@ export default function SiteEscolaPage({ mudarPagina }) {
       mudarPagina(pagina);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  }
+
+  function fotoAnterior() {
+    setIndiceGaleria((indiceAtual) =>
+      indiceAtual === 0 ? fotosSobre.length - 1 : indiceAtual - 1
+    );
+  }
+
+  function proximaFoto() {
+    setIndiceGaleria((indiceAtual) => (indiceAtual + 1) % fotosSobre.length);
   }
 
   return (
@@ -105,7 +134,7 @@ export default function SiteEscolaPage({ mudarPagina }) {
 
             <button
               type="button"
-              className={abaAtiva === 'sobre' ? 'is-active' : ''}
+              className={abaAtiva === 'sobre' || abaAtiva === 'historia' ? 'is-active' : ''}
               onClick={() => trocarAba('sobre')}
             >
               Sobre Nós
@@ -233,19 +262,266 @@ export default function SiteEscolaPage({ mudarPagina }) {
         )}
 
         {abaAtiva === 'sobre' && (
-          <section className="zm-internal-page">
-            <div className="zm-internal-hero">
-              <h2>Sobre a Escola</h2>
-              <p>Conheça um pouco mais sobre a Escola Estadual Zinha Meira.</p>
-            </div>
+          <section className="zm-about-page">
+            <section className="zm-about-gallery" aria-label="Galeria de fotos da escola">
+              <div
+                className="zm-about-gallery-track"
+                style={{ transform: `translateX(-${indiceGaleria * 100}%)` }}
+              >
+                {fotosSobre.map((foto, index) => (
+                  <img
+                    key={index}
+                    src={foto}
+                    alt={`Foto ${index + 1} da Escola Estadual Zinha Meira`}
+                  />
+                ))}
+              </div>
 
-            <article className="zm-info-card">
-              <h3>Escola Estadual Zinha Meira</h3>
+              <button
+                type="button"
+                className="zm-gallery-arrow zm-gallery-prev"
+                onClick={fotoAnterior}
+                aria-label="Foto anterior"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="m15.5 19-7-7 7-7 1.4 1.4L11.3 12l5.6 5.6L15.5 19Z" />
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                className="zm-gallery-arrow zm-gallery-next"
+                onClick={proximaFoto}
+                aria-label="Próxima foto"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="m8.5 5 7 7-7 7-1.4-1.4 5.6-5.6-5.6-5.6L8.5 5Z" />
+                </svg>
+              </button>
+
+              <div className="zm-gallery-dots" aria-label="Selecionar foto">
+                {fotosSobre.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={index === indiceGaleria ? 'is-active' : ''}
+                    onClick={() => setIndiceGaleria(index)}
+                    aria-label={`Ir para foto ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </section>
+
+            <section className="zm-about-content">
+              <div className="zm-about-title">
+                <h2>Sobre Nossa Escola</h2>
+                <div className="zm-about-title-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12 6.25C10.17 4.63 7.8 4 5.5 4 4.28 4 3.1 4.2 2 4.57v14.52c1.1-.37 2.28-.57 3.5-.57 2.3 0 4.67.63 6.5 2.25V6.25Zm0 0c1.83-1.62 4.2-2.25 6.5-2.25 1.22 0 2.4.2 3.5.57v14.52c-1.1-.37-2.28-.57-3.5-.57-2.3 0-4.67.63-6.5 2.25V6.25Z" />
+                  </svg>
+                </div>
+              </div>
+
+              <div className="zm-about-cards">
+                <article className="zm-about-card">
+                  <h2>História da Escola</h2>
+                  <p>
+                    A Escola Estadual Zinha Meira recebeu esse nome em homenagem à professora{' '}
+                    <strong>Maria do Patrocínio Meira (Zinha Meira)</strong>, educadora que dedicou
+                    quarenta anos ao magistério em Bocaiúva, tornando-se uma das personalidades mais
+                    importantes da educação no município.
+                  </p>
+                  <p>
+                    Criada inicialmente como Jardim de Infância Zinha Meira pelo Decreto nº 10.690,
+                    de 20 de setembro de 1967, a instituição iniciou suas atividades em 31 de março de
+                    1968. Em 1982 passou a denominar-se Escola Estadual Zinha Meira, com a implantação
+                    do Ensino Fundamental, e em 1991 iniciou o Ensino Médio.
+                  </p>
+                  <p>
+                    Desde 1983, funciona em sede própria na Rua Presidente Juscelino Kubitschek,
+                    nº 615, contribuindo para a formação de milhares de estudantes de Bocaiúva e região.
+                  </p>
+                  <div className="zm-about-card-actions">
+                    <button type="button" className="zm-more-button" onClick={() => trocarAba('historia')}>
+                      Saiba mais →
+                    </button>
+                  </div>
+                </article>
+
+                <article className="zm-about-card">
+                  <h2>Modalidades de Ensino</h2>
+
+                  <h3>Ensino Fundamental – Anos Finais</h3>
+                  <p>
+                    Compreende do 6º ao 9º ano, promovendo a consolidação das aprendizagens,
+                    o desenvolvimento das competências básicas e o fortalecimento da autonomia dos estudantes.
+                  </p>
+
+                  <hr />
+
+                  <h3>Ensino Médio</h3>
+                  <p>
+                    Tem como objetivo aprofundar os conhecimentos adquiridos, preparar os estudantes
+                    para o exercício da cidadania, para o mundo do trabalho e para a continuidade dos estudos.
+                  </p>
+
+                  <hr />
+
+                  <h3>Ensino Médio Integral</h3>
+                  <p>
+                    O Programa de Ensino Médio Integral busca desenvolver o estudante em todas as suas
+                    dimensões, tendo como foco o Projeto de Vida, o protagonismo juvenil, a autonomia e a formação cidadã.
+                  </p>
+
+                  <hr />
+
+                  <h3>Educação de Jovens e Adultos (EJA)</h3>
+                  <p>
+                    Modalidade destinada às pessoas que não tiveram acesso ou continuidade dos estudos na idade
+                    apropriada, valorizando suas experiências de vida e oferecendo flexibilidade curricular.
+                  </p>
+
+                  <hr />
+
+                  <h3>Educação Especial</h3>
+                  <p>
+                    A escola oferece Atendimento Educacional Especializado (AEE), Plano de Desenvolvimento
+                    Individual (PDI) e ações voltadas à inclusão dos estudantes com deficiência, TEA e altas
+                    habilidades/superdotação.
+                  </p>
+                </article>
+
+                <article className="zm-about-card">
+                  <h2>Projeto Político-Pedagógico (PPP)</h2>
+                  <p>
+                    O Projeto Político-Pedagógico da escola é elaborado de forma coletiva, garantindo a
+                    participação da comunidade escolar e fortalecendo a gestão democrática.
+                  </p>
+
+                  <h3>Equipe de Elaboração</h3>
+                  <ul>
+                    <li>Direção Escolar</li>
+                    <li>Serviço Pedagógico</li>
+                    <li>Professores e demais servidores</li>
+                    <li>Pais, responsáveis e estudantes</li>
+                  </ul>
+                </article>
+
+                <article className="zm-about-card">
+                  <h2>Território Escolar</h2>
+                  <p>
+                    A Escola Estadual Zinha Meira está inserida em um território que oferece importantes
+                    espaços públicos de aprendizagem, cultura, esporte e saúde, favorecendo o desenvolvimento
+                    integral dos estudantes.
+                  </p>
+                  <p>
+                    Cerca de <strong>70% dos alunos</strong> residem próximos à escola, fortalecendo a relação
+                    entre instituição, comunidade e família.
+                  </p>
+
+                  <h3>Infraestrutura do Território</h3>
+                  <ul>
+                    <li>Biblioteca pública de acesso à comunidade.</li>
+                    <li>Espaços esportivos e áreas de lazer.</li>
+                    <li>Espaços públicos com acesso à internet.</li>
+                    <li>Equipamentos culturais, como teatro e cinema.</li>
+                    <li>Duas Unidades Básicas de Saúde (UBS).</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+          </section>
+        )}
+
+        {abaAtiva === 'historia' && (
+          <section className="zm-history-page">
+            <section className="zm-history-hero">
+              <h2>Escola Estadual Zinha Meira</h2>
               <p>
-                A escola atende a comunidade de Bocaiúva/MG e desenvolve ações voltadas à
-                aprendizagem, à convivência e ao desenvolvimento dos estudantes.
+                Mais de meio século de dedicação à educação, formando cidadãos com responsabilidade,
+                conhecimento e compromisso com o futuro.
               </p>
-            </article>
+            </section>
+
+            <div className="zm-history-container">
+              <button type="button" className="zm-back-button" onClick={() => trocarAba('sobre')}>
+                ← Voltar para Sobre Nós
+              </button>
+
+              <article className="zm-history-card">
+                <h2>Maria do Patrocínio Meira – Zinha Meira</h2>
+                <p>
+                  Maria do Patrocínio Meira, conhecida por Zinha Meira, nasceu em Bocaiúva em 22 de junho de 1888.
+                  Filha de Manoel Otaviano Meira e Tereza Caldeira Meira, realizou seus primeiros estudos na escola
+                  da professora Belmira, concluindo o curso primário.
+                </p>
+                <p>
+                  Mesmo diante das dificuldades de acesso à educação na época, destacou-se pela inteligência e
+                  vocação para o ensino, dedicando-se ao magistério ainda muito jovem.
+                </p>
+                <p>
+                  Em 1918 assumiu a escola mista do bairro Pernambuco e, posteriormente, tornou-se professora do
+                  Grupo Escolar Coronel Fulgêncio, atual Escola Estadual Genesco Augusto Caldeira Brant, onde também
+                  exerceu a função de diretora até sua aposentadoria, após quarenta anos de serviços prestados à educação.
+                </p>
+                <p>
+                  Católica dedicada, atuou intensamente na Igreja do Senhor do Bonfim como catequista, zeladora da igreja,
+                  presidente da Pia União das Filhas de Maria e integrante da Irmandade do Sagrado Coração de Jesus.
+                </p>
+                <p>
+                  Zinha Meira nunca se casou, dedicando sua vida ao ensino e ao serviço religioso. Faleceu em 8 de julho
+                  de 1959, deixando um legado que inspira gerações.
+                </p>
+              </article>
+
+              <article className="zm-history-card">
+                <h2>Fundação da Escola</h2>
+                <p>
+                  O Jardim de Infância Zinha Meira foi criado pelo Decreto nº 10.690, de 20 de setembro de 1967,
+                  em homenagem à professora Maria do Patrocínio Meira.
+                </p>
+                <p>
+                  As atividades escolares tiveram início em 31 de março de 1968, funcionando inicialmente na
+                  Rua Pires e Albuquerque, nº 96, tendo como primeira diretora Maria de Lourdes Ribeiro.
+                </p>
+                <p>
+                  Em 1982 foi implantado o Ensino Fundamental e a instituição passou a denominar-se Escola Estadual
+                  Zinha Meira. Em 1991 foi autorizado o funcionamento do Ensino Médio, ampliando as oportunidades de
+                  formação para os estudantes de Bocaiúva.
+                </p>
+                <p>
+                  Desde 1983 a escola possui sede própria localizada na Rua Presidente Juscelino Kubitschek, nº 615.
+                </p>
+              </article>
+
+              <article className="zm-history-card">
+                <h2>Linha do Tempo</h2>
+                <div className="zm-timeline">
+                  <div className="zm-timeline-item"><span>1967</span><p>Criação do Jardim de Infância Zinha Meira.</p></div>
+                  <div className="zm-timeline-item"><span>1968</span><p>Início das atividades escolares.</p></div>
+                  <div className="zm-timeline-item"><span>1982</span><p>Criação da Escola Estadual Zinha Meira e implantação do Ensino Fundamental.</p></div>
+                  <div className="zm-timeline-item"><span>1983</span><p>Inauguração do prédio próprio.</p></div>
+                  <div className="zm-timeline-item"><span>1991</span><p>Implantação do Ensino Médio.</p></div>
+                  <div className="zm-timeline-item"><span>2013</span><p>Início da gestão do diretor Ataíde Alves Barroso.</p></div>
+                </div>
+              </article>
+
+              <article className="zm-history-card">
+                <h2>Ensino Médio Integral</h2>
+                <p>
+                  O Programa de Ensino Médio em Tempo Integral de Minas Gerais promove uma formação completa,
+                  preparando os estudantes para os desafios acadêmicos, profissionais e sociais do século XXI.
+                </p>
+                <p>
+                  O modelo pedagógico coloca o estudante como protagonista do seu Projeto de Vida, incentivando
+                  autonomia, liderança, responsabilidade, solidariedade e participação ativa na comunidade escolar.
+                </p>
+                <p>
+                  A integração entre gestão e práticas pedagógicas possibilita uma educação de excelência, formando
+                  jovens competentes, comprometidos com a cidadania e preparados para construir um futuro melhor.
+                </p>
+              </article>
+            </div>
           </section>
         )}
 

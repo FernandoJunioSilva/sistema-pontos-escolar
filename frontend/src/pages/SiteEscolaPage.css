@@ -715,3 +715,418 @@
     padding-right: 14px;
   }
 }
+
+/* ===================================================== */
+/* SOBRE NÓS - LAYOUT BASEADO NO SITE ORIGINAL           */
+/* ===================================================== */
+
+.zm-about-page,
+.zm-history-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f5f8fc;
+}
+
+.zm-about-gallery {
+  width: min(1300px, 90vw);
+  height: 480px;
+  margin: 10px auto 0;
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+  background: #e8edf3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+}
+
+.zm-about-gallery-track {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: transform 0.55s ease;
+  will-change: transform;
+}
+
+.zm-about-gallery-track img {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.zm-gallery-arrow {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  padding: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.78) !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.58) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.zm-gallery-arrow:hover,
+.zm-gallery-arrow:focus {
+  background: #2d86d6 !important;
+  transform: translateY(-50%) !important;
+}
+
+.zm-gallery-arrow svg {
+  width: 32px;
+  height: 32px;
+}
+
+.zm-gallery-prev {
+  left: 16px;
+}
+
+.zm-gallery-next {
+  right: 16px;
+}
+
+.zm-gallery-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 6;
+}
+
+.zm-gallery-dots button {
+  width: 10px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
+  cursor: pointer;
+}
+
+.zm-gallery-dots button.is-active {
+  width: 28px !important;
+  border-radius: 999px !important;
+  background: #fff !important;
+}
+
+.zm-about-content {
+  width: 100%;
+  margin: 0;
+  padding: 70px 0 15px;
+}
+
+.zm-about-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.zm-site .zm-about-title h2 {
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+  color: #255d99 !important;
+  font-size: 35px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+.zm-about-title-icon {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto;
+  color: #2d86d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zm-about-title-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.zm-about-cards {
+  width: min(1100px, 90vw);
+  margin: 0 auto;
+}
+
+.zm-about-card {
+  width: 100%;
+  margin: 0 0 36px;
+  padding: 35px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.zm-site .zm-about-card > h2 {
+  width: 100%;
+  margin: 0 0 25px !important;
+  padding: 0 15px !important;
+  border-left: 6px solid #2d86d6;
+  color: #2566b2 !important;
+  font-size: 30px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+  text-align: center;
+}
+
+.zm-site .zm-about-card h3 {
+  margin: 26px 0 15px !important;
+  padding: 0 !important;
+  color: #2d86d6 !important;
+  font-size: 22px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+  text-align: center;
+}
+
+.zm-site .zm-about-card p {
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  color: #4f4f4f !important;
+  font-size: 16px !important;
+  line-height: 1.9 !important;
+  font-weight: 400 !important;
+  text-align: justify;
+}
+
+.zm-about-card hr {
+  margin: 30px 0;
+  border: 0;
+  border-top: 1px solid #d9d9d9;
+}
+
+.zm-about-card ul {
+  margin: 16px 0 0 25px;
+  padding: 0;
+}
+
+.zm-about-card li {
+  margin: 0 0 12px;
+  padding: 0;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.zm-about-card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.zm-more-button,
+.zm-back-button {
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 12px 25px !important;
+  border: 0 !important;
+  border-radius: 30px !important;
+  background: #2d86d6 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  font-size: 15px !important;
+  line-height: 1.3 !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transform: none !important;
+}
+
+.zm-more-button:hover,
+.zm-back-button:hover {
+  background: #1d5fa1 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ===================================================== */
+/* HISTÓRIA COMPLETA / SAIBA MAIS                        */
+/* ===================================================== */
+
+.zm-history-hero {
+  width: 100%;
+  padding: 70px 20px;
+  background: linear-gradient(135deg, #2566b2 0%, #2d86d6 100%);
+  color: #fff;
+  text-align: center;
+}
+
+.zm-site .zm-history-hero h2 {
+  margin: 0 0 15px !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-size: 42px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+.zm-site .zm-history-hero p {
+  width: min(800px, 90vw);
+  margin: 0 auto !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-size: 18px !important;
+  line-height: 1.8 !important;
+}
+
+.zm-history-container {
+  width: min(1200px, 90vw);
+  margin: 45px auto 55px;
+}
+
+.zm-back-button {
+  margin-bottom: 25px !important;
+}
+
+.zm-history-card {
+  width: 100%;
+  margin: 0 0 40px;
+  padding: 35px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.zm-site .zm-history-card h2 {
+  margin: 0 0 25px !important;
+  padding: 0 0 0 15px !important;
+  border-left: 6px solid #2d86d6;
+  color: #2d86d6 !important;
+  font-size: 30px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+
+.zm-site .zm-history-card p {
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  color: #444 !important;
+  font-size: 16px !important;
+  line-height: 1.9 !important;
+  text-align: justify;
+}
+
+.zm-timeline {
+  margin: 24px 0 0 12px;
+  padding: 0 0 0 34px;
+  border-left: 4px solid #2d86d6;
+}
+
+.zm-timeline-item {
+  position: relative;
+  margin: 0 0 34px;
+}
+
+.zm-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -45px;
+  top: 7px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2d86d6;
+}
+
+.zm-timeline-item span {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 6px 18px;
+  border-radius: 30px;
+  background: #2d86d6;
+  color: #fff;
+  font-weight: 600;
+}
+
+.zm-site .zm-timeline-item p {
+  margin: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .zm-about-gallery {
+    height: 400px;
+  }
+
+  .zm-about-cards,
+  .zm-history-container {
+    width: min(94vw, 760px);
+  }
+}
+
+@media (max-width: 650px) {
+  .zm-about-gallery {
+    width: calc(100vw - 24px);
+    height: 270px;
+    margin-top: 0;
+    border-radius: 14px;
+  }
+
+  .zm-gallery-arrow {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  .zm-gallery-arrow svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .zm-about-content {
+    padding-top: 44px;
+  }
+
+  .zm-site .zm-about-title h2 {
+    font-size: 28px !important;
+  }
+
+  .zm-about-card,
+  .zm-history-card {
+    padding: 24px 20px;
+  }
+
+  .zm-site .zm-about-card > h2,
+  .zm-site .zm-history-card h2 {
+    font-size: 24px !important;
+  }
+
+  .zm-site .zm-about-card h3 {
+    font-size: 19px !important;
+  }
+
+  .zm-site .zm-about-card p,
+  .zm-site .zm-history-card p,
+  .zm-about-card li {
+    font-size: 14px !important;
+    text-align: left;
+  }
+
+  .zm-history-hero {
+    padding: 50px 18px;
+  }
+
+  .zm-site .zm-history-hero h2 {
+    font-size: 31px !important;
+  }
+
+  .zm-site .zm-history-hero p {
+    font-size: 15px !important;
+  }
+}
