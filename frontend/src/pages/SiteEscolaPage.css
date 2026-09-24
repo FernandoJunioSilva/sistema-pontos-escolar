@@ -601,6 +601,60 @@
   line-height: 1.45 !important;
 }
 
+
+.zm-footer-school {
+  margin-bottom: 14px;
+}
+
+.zm-footer-credits {
+  width: min(1100px, 94vw);
+  margin: 14px auto 12px;
+  padding: 14px 18px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.zm-site .zm-footer-credits h3 {
+  margin: 0 0 12px !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+.zm-footer-credit-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px 18px;
+  align-items: start;
+}
+
+.zm-footer-credit-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zm-footer-credit-grid strong,
+.zm-footer-credit-grid span {
+  color: #fff;
+}
+
+.zm-footer-credit-grid strong {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.zm-footer-credit-grid span {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.zm-site .zm-footer-copy {
+  margin-top: 10px !important;
+}
+
 /* ===================================================== */
 /* RESPONSIVO                                            */
 /* ===================================================== */
@@ -1128,5 +1182,23 @@
 
   .zm-site .zm-history-hero p {
     font-size: 15px !important;
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .zm-footer-credit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .zm-footer-credit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zm-footer-credits {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
