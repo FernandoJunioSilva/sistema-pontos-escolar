@@ -1,0 +1,20 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend .NET
+backend/bin/
+backend/obj/
+
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+
+# IDE / sistema
+.vscode/
+.idea/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
