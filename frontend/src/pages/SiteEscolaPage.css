@@ -1,26 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-/* ===================================================== */
-/* E.E. ZINHA MEIRA - LAYOUT BASEADO NAS IMAGENS         */
-/* ===================================================== */
+/*
+  Página institucional da E.E. Zinha Meira.
+  As classes usam o prefixo zm- para evitar que CSS antigo do sistema
+  altere o layout da página inicial.
+*/
 
-.site-escola {
+.zm-site {
   width: 100%;
   min-height: 100vh;
   margin: 0;
+  padding: 0;
   background: #f5f8fc;
   color: #333;
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
-.site-escola,
-.site-escola * {
+.zm-site,
+.zm-site * {
   box-sizing: border-box;
 }
 
-.site-escola button,
-.site-escola input,
-.site-escola select {
+.zm-site button,
+.zm-site a,
+.zm-site input,
+.zm-site select {
   font-family: inherit;
 }
 
@@ -28,36 +33,36 @@
 /* BARRA AZUL SUPERIOR                                   */
 /* ===================================================== */
 
-.escola-topo {
+.zm-topbar {
   width: 100%;
-  height: 40px;
+  height: 36px;
   margin: 0;
   padding: 0;
   background: #2d86d6;
   color: #fff;
 }
 
-.escola-topo-conteudo {
+.zm-topbar-inner {
   width: 84%;
-  max-width: 1600px;
-  height: 40px;
+  max-width: 1440px;
+  height: 36px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.escola-topo-esquerda,
-.escola-redes {
+.zm-topbar-left,
+.zm-social {
   display: flex;
   align-items: center;
 }
 
-.escola-topo-esquerda {
-  gap: 25px;
+.zm-topbar-left {
+  gap: 22px;
 }
 
-.escola-topo-item {
+.zm-topbar-item {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -69,39 +74,27 @@
   text-decoration: none;
 }
 
-.escola-topo-item:hover {
-  color: #fff;
-  opacity: .9;
+.zm-topbar-item svg {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 11px;
 }
 
-.icone-topo {
-  width: 12px;
-  height: 12px;
-  flex: 0 0 12px;
+.zm-social {
+  gap: 13px;
 }
 
-.escola-redes {
-  gap: 14px;
-}
-
-.escola-redes a {
+.zm-social a {
   width: 14px;
   height: 14px;
-  margin: 0;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
   text-decoration: none;
-  transition: opacity .2s ease, transform .2s ease;
 }
 
-.escola-redes a:hover {
-  opacity: .82;
-  transform: translateY(-1px);
-}
-
-.escola-redes svg {
+.zm-social svg {
   width: 13px;
   height: 13px;
 }
@@ -110,98 +103,104 @@
 /* CABEÇALHO PRINCIPAL                                   */
 /* ===================================================== */
 
-.escola-cabecalho {
+.zm-header {
   width: 100%;
-  height: 88px;
+  height: 80px;
   margin: 0;
   padding: 0;
   background: #fff;
-  border: 0;
-  box-shadow: 0 9px 18px rgba(25, 63, 96, .09);
+  box-shadow: 0 8px 18px rgba(25, 63, 96, 0.09);
   position: relative;
   z-index: 50;
 }
 
-.escola-cabecalho-conteudo {
+.zm-header-inner {
   width: 84%;
-  max-width: 1600px;
-  height: 88px;
+  max-width: 1440px;
+  height: 80px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.escola-logo-area {
+.zm-brand {
   width: auto !important;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  min-width: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
+  outline: 0 !important;
   background: transparent !important;
-  color: inherit;
   box-shadow: none !important;
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  color: inherit !important;
   cursor: pointer;
   text-align: left;
   transform: none !important;
 }
 
-.escola-logo-area:hover {
+.zm-brand:hover,
+.zm-brand:focus,
+.zm-brand:active {
   background: transparent !important;
-  opacity: 1 !important;
+  box-shadow: none !important;
   transform: none !important;
 }
 
-.escola-logo-area img {
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
+.zm-brand img {
+  width: 54px;
+  height: 54px;
   display: block;
-  border-radius: 50%;
+  object-fit: contain;
 }
 
-.escola-identidade {
+.zm-brand-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
 
-.site-escola .escola-logo-area h1 {
-  margin: 0;
-  color: #255d99;
-  font-size: 25px;
-  font-weight: 700;
-  line-height: 1.05;
+.zm-site .zm-brand-text h1 {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #255d99 !important;
+  font-size: 23px !important;
+  font-weight: 700 !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0 !important;
 }
 
-.site-escola .escola-logo-area p {
-  margin: 5px 0 0;
-  color: #7d89a2;
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1;
+.zm-site .zm-brand-text p {
+  margin: 5px 0 0 !important;
+  padding: 0 !important;
+  color: #7d89a2 !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
 }
 
 /* ===================================================== */
 /* MENU                                                  */
 /* ===================================================== */
 
-.escola-menu-abas {
+.zm-nav {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 34px;
+  gap: 30px;
 }
 
-.escola-menu-abas > button,
-.escola-menu-sistema-botao {
+.zm-nav > button,
+.zm-system-trigger {
   width: auto !important;
-  min-width: 0;
+  min-width: 0 !important;
+  height: auto !important;
   margin: 0 !important;
   padding: 8px 0 !important;
   border: 0 !important;
@@ -210,124 +209,117 @@
   background: transparent !important;
   color: #074e96 !important;
   box-shadow: none !important;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.1;
-  cursor: pointer;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
   white-space: nowrap;
+  cursor: pointer;
   transform: none !important;
-  transition: color .2s ease, border-color .2s ease;
 }
 
-.escola-menu-abas > button:hover,
-.escola-menu-abas > button.ativo,
-.escola-menu-sistema-botao:hover,
-.escola-menu-sistema.aberto .escola-menu-sistema-botao {
+.zm-nav > button:hover,
+.zm-nav > button.is-active,
+.zm-system-trigger:hover,
+.zm-system-menu.is-open .zm-system-trigger {
   color: #2d86d6 !important;
   border-bottom-color: #2d86d6 !important;
   background: transparent !important;
-  opacity: 1 !important;
   transform: none !important;
 }
 
-/* Menu suspenso do Sistema Escolar */
-.escola-menu-sistema {
+.zm-system-menu {
   position: relative;
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-.escola-menu-sistema-botao {
+.zm-system-trigger {
   display: inline-flex !important;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
-.escola-menu-seta {
-  display: inline-block;
-  font-size: 10px;
-  line-height: 1;
-  transition: transform .2s ease;
+.zm-system-trigger span {
+  font-size: 9px;
+  transition: transform 0.2s ease;
 }
 
-.escola-menu-sistema.aberto .escola-menu-seta,
-.escola-menu-sistema:hover .escola-menu-seta {
+.zm-system-menu.is-open .zm-system-trigger span,
+.zm-system-menu:hover .zm-system-trigger span {
   transform: rotate(180deg);
 }
 
-.escola-submenu-sistema {
+.zm-system-dropdown {
   position: absolute;
-  top: calc(100% - 14px);
+  top: calc(100% - 8px);
   right: 0;
   z-index: 100;
-  width: 178px;
-  padding: 8px;
-  border: 1px solid #e5edf5;
-  border-radius: 12px;
+  width: 170px;
+  padding: 7px;
+  border: 1px solid #e4edf6;
+  border-radius: 11px;
   background: #fff;
-  box-shadow: 0 12px 28px rgba(28, 65, 100, .16);
+  box-shadow: 0 12px 28px rgba(28, 65, 100, 0.16);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-6px);
   pointer-events: none;
-  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+  transform: translateY(-5px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
 }
 
-.escola-menu-sistema.aberto .escola-submenu-sistema,
-.escola-menu-sistema:hover .escola-submenu-sistema,
-.escola-menu-sistema:focus-within .escola-submenu-sistema {
+.zm-system-menu.is-open .zm-system-dropdown,
+.zm-system-menu:hover .zm-system-dropdown,
+.zm-system-menu:focus-within .zm-system-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
   pointer-events: auto;
+  transform: translateY(0);
 }
 
-.escola-submenu-sistema button {
+.zm-system-dropdown button {
   width: 100% !important;
   margin: 0 !important;
-  padding: 10px 12px !important;
+  padding: 10px 11px !important;
   border: 0 !important;
-  border-radius: 8px !important;
+  border-radius: 7px !important;
   background: #fff !important;
   color: #074e96 !important;
   box-shadow: none !important;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px !important;
+  font-weight: 600 !important;
   text-align: left;
   cursor: pointer;
   transform: none !important;
 }
 
-.escola-submenu-sistema button:hover {
+.zm-system-dropdown button:hover {
   background: #eef7ff !important;
   color: #2d86d6 !important;
-  transform: none !important;
 }
 
 /* ===================================================== */
-/* CONTEÚDO GERAL                                        */
+/* CONTEÚDO                                              */
 /* ===================================================== */
 
-.escola-conteudo {
+.zm-main {
   width: 100%;
-  max-width: none;
   margin: 0;
-  padding: 32px 0 0;
+  padding: 30px 0 0;
   background: #f5f8fc;
 }
 
-.pagina-inicio-escola {
+.zm-home {
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
 /* ===================================================== */
-/* BANNER                                                */
+/* FOTO PRINCIPAL                                        */
 /* ===================================================== */
 
-.escola-banner-principal {
+.zm-banner {
   width: min(1040px, calc(100vw - 40px));
   height: 382px;
   margin: 0 auto;
@@ -336,7 +328,7 @@
   background: #e9edf2;
 }
 
-.escola-banner-principal img {
+.zm-banner img {
   width: 100%;
   height: 100%;
   display: block;
@@ -348,55 +340,54 @@
 /* SERVIÇOS                                              */
 /* ===================================================== */
 
-.secao-servicos {
+.zm-services {
   width: 100%;
   margin: 0;
-  padding: 63px 0 54px;
+  padding: 58px 0 54px;
   text-align: center;
 }
 
-.titulo-secao-servicos {
-  width: 100%;
-  margin: 0;
+.zm-section-title {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.site-escola .titulo-secao-servicos h2 {
-  margin: 0 0 12px;
-  color: #255d99;
-  font-size: 30px;
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -.4px;
+.zm-site .zm-section-title h2 {
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+  color: #255d99 !important;
+  font-size: 27px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.4px !important;
 }
 
-.titulo-icone-livro {
+.zm-title-icon {
   width: 28px;
   height: 28px;
-  margin: 0 0 12px;
+  margin: 0 0 11px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #2d86d6;
 }
 
-.titulo-icone-livro svg {
+.zm-title-icon svg {
   width: 24px;
   height: 24px;
 }
 
-.titulo-linha {
-  width: 64px;
+.zm-title-line {
+  width: 61px;
   height: 3px;
-  margin: 0 0 39px;
+  margin: 0 0 38px;
   border-radius: 999px;
   background: #5aaaf4;
 }
 
-.servicos-grid {
+.zm-service-grid {
   width: min(850px, calc(100vw - 40px));
   margin: 0 auto;
   display: grid;
@@ -404,28 +395,22 @@
   gap: 28px;
 }
 
-.servico-card {
+.zm-service-card {
   height: 264px;
   margin: 0;
   padding: 32px 22px 24px;
   border: 0;
   border-radius: 16px;
   background: #fff;
-  box-shadow: 0 8px 20px rgba(28, 65, 100, .09);
+  box-shadow: 0 8px 20px rgba(28, 65, 100, 0.09);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  transition: transform .25s ease, box-shadow .25s ease;
 }
 
-.servico-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(28, 65, 100, .14);
-}
-
-.servico-icone {
+.zm-service-icon {
   width: 72px;
   height: 72px;
   flex: 0 0 72px;
@@ -438,68 +423,61 @@
   justify-content: center;
 }
 
-.servico-icone svg {
+.zm-service-icon svg {
   width: 34px;
   height: 34px;
 }
 
-.site-escola .servico-card h3 {
-  margin: 0 0 12px;
-  color: #0d4f99;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.25;
+.zm-site .zm-service-card h3 {
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+  color: #0d4f99 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
 }
 
-.site-escola .servico-card p {
+.zm-site .zm-service-card p {
   max-width: 215px;
-  margin: 0;
-  color: #555;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.7;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #555 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
 }
 
 /* ===================================================== */
 /* NOVIDADES                                             */
 /* ===================================================== */
 
-.secao-novidades {
+.zm-news-section {
   width: 100%;
   margin: 0;
   padding: 0 20px 55px;
 }
 
-.novidades-card {
+.zm-news-card {
   width: min(720px, 100%) !important;
-  height: 178px;
-  min-height: 178px;
+  height: 178px !important;
+  min-height: 178px !important;
   margin: 0 auto !important;
   padding: 28px 30px !important;
   border: 0 !important;
   border-radius: 16px !important;
   background: #fff !important;
   color: #333 !important;
-  box-shadow: 0 8px 20px rgba(28, 65, 100, .09) !important;
-  display: flex;
+  box-shadow: 0 8px 20px rgba(28, 65, 100, 0.09) !important;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   cursor: pointer;
-  transform: none;
-  transition: transform .25s ease, box-shadow .25s ease;
+  transform: none !important;
 }
 
-.novidades-card:hover {
-  background: #fff !important;
-  color: #333 !important;
-  opacity: 1 !important;
-  transform: translateY(-4px) !important;
-  box-shadow: 0 14px 28px rgba(28, 65, 100, .14) !important;
-}
-
-.novidades-icone {
+.zm-news-icon {
   width: 39px;
   height: 39px;
   margin: 0 0 10px;
@@ -509,66 +487,67 @@
   justify-content: center;
 }
 
-.novidades-icone svg {
+.zm-news-icon svg {
   width: 36px;
   height: 36px;
 }
 
-.site-escola .novidades-card h2 {
-  margin: 0 0 8px;
-  color: #175bb0;
-  font-size: 25px;
-  font-weight: 800;
-  line-height: 1.2;
+.zm-site .zm-news-card h2 {
+  margin: 0 0 8px !important;
+  padding: 0 !important;
+  color: #175bb0 !important;
+  font-size: 25px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
 }
 
-.site-escola .novidades-card p {
-  margin: 0;
-  color: #555;
-  font-size: 13px;
-  line-height: 1.5;
+.zm-site .zm-news-card p {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #555 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
 }
 
-.novidades-lista {
+.zm-news-list {
   width: min(720px, 100%);
   margin: 18px auto 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 12px;
 }
 
-.novidade-item {
+.zm-news-list article,
+.zm-info-card {
   padding: 18px 22px;
-  background: #fff;
   border: 1px solid #e5edf5;
   border-radius: 13px;
-  box-shadow: 0 5px 16px rgba(30, 70, 110, .07);
-  animation: aparecerNoticia .25s ease;
+  background: #fff;
+  box-shadow: 0 5px 16px rgba(30, 70, 110, 0.07);
 }
 
-.site-escola .novidade-item h3 {
+.zm-site .zm-news-list h3,
+.zm-site .zm-info-card h3 {
   margin: 0 0 7px;
   color: #255d99;
-  font-size: 16px;
 }
 
-.site-escola .novidade-item p {
+.zm-site .zm-news-list p,
+.zm-site .zm-info-card p {
   margin: 0;
   color: #555;
-  font-size: 13px;
   line-height: 1.7;
 }
 
 /* ===================================================== */
-/* PÁGINAS SOBRE E CONTATOS                              */
+/* SOBRE / CONTATOS                                      */
 /* ===================================================== */
 
-.escola-conteudo > section:not(.pagina-inicio-escola) {
+.zm-internal-page {
   width: min(1040px, calc(100vw - 40px));
   margin: 0 auto 55px;
 }
 
-.escola-hero {
+.zm-internal-hero {
   margin: 0 0 28px;
   padding: 38px 30px;
   border-radius: 18px;
@@ -577,148 +556,49 @@
   text-align: center;
 }
 
-.site-escola .escola-hero h2 {
+.zm-site .zm-internal-hero h2 {
   margin: 0 0 10px;
   color: #fff;
   font-size: 28px;
 }
 
-.site-escola .escola-hero p {
-  max-width: 760px;
-  margin: 0 auto;
+.zm-site .zm-internal-hero p {
+  margin: 0;
   color: #fff;
 }
 
-.escola-cards {
+.zm-contact-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  margin: 0 0 28px;
+  gap: 20px;
 }
 
-.escola-card {
-  margin: 0;
-  padding: 24px;
-  background: #fff;
-  border: 1px solid #e5edf5;
-  border-radius: 16px;
-  box-shadow: 0 7px 20px rgba(24, 62, 98, .08);
-}
-
-.site-escola .escola-card h2,
-.site-escola .escola-card h3 {
-  color: #255d99;
-}
-
-.site-escola .escola-card p,
-.site-escola .escola-card li {
-  color: #4f5b67;
-  line-height: 1.8;
-}
-
-.escola-card a {
+.zm-info-card a {
   color: #2563aa;
   font-weight: 700;
   text-decoration: none;
-}
-
-.escola-card a:hover {
-  text-decoration: underline;
-}
-
-.escola-texto-card {
-  margin-bottom: 24px;
-}
-
-.escola-galeria {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin: 0 0 28px;
-}
-
-.escola-galeria img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 15px;
-  box-shadow: 0 7px 20px rgba(25, 66, 105, .12);
-}
-
-.escola-lista {
-  line-height: 1.9;
-}
-
-.escola-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.escola-timeline .item {
-  padding: 14px 18px;
-  border-left: 5px solid #2d86d6;
-  border-radius: 10px;
-  background: #eff8ff;
-}
-
-.escola-timeline .item span {
-  color: #2563aa;
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.acesso-sistema-area {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0 0;
-}
-
-.acesso-sistema-botao {
-  width: auto !important;
-  margin: 0 !important;
-  padding: 12px 22px !important;
-  border: 0 !important;
-  border-radius: 999px !important;
-  background: #2d86d6 !important;
-  color: #fff !important;
-  font-size: 14px;
-  font-weight: 700;
 }
 
 /* ===================================================== */
 /* RODAPÉ                                                */
 /* ===================================================== */
 
-.escola-rodape {
+.zm-footer {
   width: 100%;
   margin: 0;
-  padding: 19px 20px 20px;
+  padding: 18px 20px 19px;
   background: #2d86d6;
   color: #fff;
   text-align: center;
 }
 
-.site-escola .escola-rodape p {
-  margin: 2px 0;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.45;
-}
-
-.site-escola .escola-rodape .escola-copy {
-  margin-top: 2px !important;
-  font-weight: 500;
-}
-
-/* ===================================================== */
-/* ANIMAÇÃO                                              */
-/* ===================================================== */
-
-@keyframes aparecerNoticia {
-  from { opacity: 0; transform: translateY(-7px); }
-  to   { opacity: 1; transform: translateY(0); }
+.zm-site .zm-footer p {
+  margin: 2px 0 !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
 }
 
 /* ===================================================== */
@@ -726,157 +606,112 @@
 /* ===================================================== */
 
 @media (max-width: 900px) {
-  .escola-topo {
+  .zm-topbar {
     height: auto;
   }
 
-  .escola-topo-conteudo {
+  .zm-topbar-inner {
     width: calc(100% - 30px);
-    min-height: 40px;
+    min-height: 36px;
     height: auto;
     padding: 7px 0;
     gap: 12px;
   }
 
-  .escola-topo-esquerda {
-    gap: 12px;
+  .zm-topbar-left {
+    gap: 10px;
     flex-wrap: wrap;
   }
 
-  .escola-cabecalho {
+  .zm-header {
     height: auto;
   }
 
-  .escola-cabecalho-conteudo {
+  .zm-header-inner {
     width: calc(100% - 30px);
     height: auto;
-    min-height: 88px;
+    min-height: 80px;
     padding: 12px 0;
     gap: 15px;
   }
 
-  .escola-menu-abas {
-    gap: 18px;
+  .zm-nav {
+    gap: 16px;
   }
 
-  .escola-conteudo {
-    padding-top: 24px;
+  .zm-banner {
+    height: 330px;
   }
 
-  .escola-banner-principal {
-    width: calc(100vw - 30px);
-    height: 310px;
-  }
-
-  .secao-servicos {
-    padding-top: 52px;
-  }
-
-  .servicos-grid {
-    width: min(570px, calc(100vw - 30px));
+  .zm-service-grid,
+  .zm-contact-grid {
     grid-template-columns: 1fr;
+    width: min(420px, calc(100vw - 40px));
   }
 
-  .servico-card {
+  .zm-service-card {
     height: auto;
-    min-height: 245px;
-  }
-
-  .escola-cards,
-  .escola-galeria {
-    grid-template-columns: 1fr 1fr;
+    min-height: 250px;
   }
 }
 
-@media (max-width: 600px) {
-  .escola-topo-conteudo {
+@media (max-width: 650px) {
+  .zm-topbar-left .zm-topbar-item:first-child {
+    display: none;
+  }
+
+  .zm-header-inner {
     flex-direction: column;
-    justify-content: center;
+    align-items: stretch;
   }
 
-  .escola-topo-esquerda {
-    justify-content: center;
+  .zm-brand {
+    align-self: center;
   }
 
-  .escola-cabecalho-conteudo {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .escola-logo-area img {
-    width: 54px;
-    height: 54px;
-  }
-
-  .site-escola .escola-logo-area h1 {
-    font-size: 23px;
-  }
-
-  .escola-menu-abas {
+  .zm-nav {
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px 20px;
+    padding-bottom: 4px;
   }
 
-  .escola-menu-sistema {
+  .zm-system-menu {
     height: auto;
   }
 
-  .escola-submenu-sistema {
-    top: calc(100% + 4px);
+  .zm-system-dropdown {
+    top: calc(100% + 6px);
     right: 50%;
-    transform: translate(50%, -6px);
+    transform: translate(50%, -5px);
   }
 
-  .escola-menu-sistema.aberto .escola-submenu-sistema,
-  .escola-menu-sistema:hover .escola-submenu-sistema,
-  .escola-menu-sistema:focus-within .escola-submenu-sistema {
+  .zm-system-menu.is-open .zm-system-dropdown,
+  .zm-system-menu:hover .zm-system-dropdown,
+  .zm-system-menu:focus-within .zm-system-dropdown {
     transform: translate(50%, 0);
   }
 
-  .escola-conteudo {
-    padding-top: 16px;
+  .zm-main {
+    padding-top: 20px;
   }
 
-  .escola-banner-principal {
+  .zm-banner {
     width: calc(100vw - 24px);
-    height: 225px;
-    border-radius: 14px;
+    height: 250px;
+    border-radius: 13px;
   }
 
-  .secao-servicos {
-    padding: 44px 0 42px;
+  .zm-services {
+    padding-top: 42px;
   }
 
-  .site-escola .titulo-secao-servicos h2 {
-    font-size: 26px;
+  .zm-site .zm-section-title h2 {
+    font-size: 24px !important;
   }
 
-  .titulo-linha {
-    margin-bottom: 30px;
-  }
-
-  .servicos-grid {
-    width: calc(100vw - 30px);
-  }
-
-  .novidades-card {
-    height: auto;
-    min-height: 170px;
-    padding: 25px 20px !important;
-  }
-
-  .escola-cards,
-  .escola-galeria {
-    grid-template-columns: 1fr;
-  }
-
-  .escola-galeria img {
-    height: 215px;
-  }
-
-  .site-escola .escola-rodape p {
-    font-size: 11px;
+  .zm-footer {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }
