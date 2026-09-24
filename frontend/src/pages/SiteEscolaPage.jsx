@@ -600,7 +600,7 @@ export default function SiteEscolaPage({ mudarPagina }) {
           <div className="zm-footer-credit-grid">
             <div>
               <strong>Alunos criadores</strong>
-              <span>Beatriz G. Cardoso, Bruna E. M. Silva, Lara Bragança C. Rosa, Thalisson R. A. Rosa e Ana Julia A. Souza</span>
+              <span>Beatriz G. Cardoso, Bruna E. M. Silva, Lara Bragança C. Rosa, Thallisson R. A. Rosa e Ana Julia A. Souza</span>
             </div>
 
             <div>
