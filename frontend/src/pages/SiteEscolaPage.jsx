@@ -526,28 +526,63 @@ export default function SiteEscolaPage({ mudarPagina }) {
         )}
 
         {abaAtiva === 'contatos' && (
-          <section className="zm-internal-page">
-            <div className="zm-internal-hero">
-              <h2>Entre em Contato</h2>
-              <p>Acompanhe a escola pelos canais oficiais de comunicação.</p>
-            </div>
+          <section className="zm-contact-page">
+            <div className="zm-contact-panel">
+              <div className="zm-contact-heading">
+                <h2>Entre em Contato</h2>
+                <div className="zm-contact-book" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12 6.25C10.17 4.63 7.8 4 5.5 4 4.28 4 3.1 4.2 2 4.57v14.52c1.1-.37 2.28-.57 3.5-.57 2.3 0 4.67.63 6.5 2.25V6.25Zm0 0c1.83-1.62 4.2-2.25 6.5-2.25 1.22 0 2.4.2 3.5.57v14.52c-1.1-.37-2.28-.57-3.5-.57-2.3 0-4.67.63-6.5 2.25V6.25Z" />
+                  </svg>
+                </div>
+                <span className="zm-contact-line" />
+              </div>
 
-            <div className="zm-contact-grid">
-              <article className="zm-info-card">
-                <h3>E-mail</h3>
-                <p>Escola.79383@educacao.mg.gov.br</p>
-                <a href="mailto:Escola.79383@educacao.mg.gov.br">Enviar e-mail</a>
-              </article>
+              <div className="zm-contact-cards">
+                <a
+                  className="zm-contact-card"
+                  href="https://www.instagram.com/terceirao.inf26/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Abrir Instagram da escola"
+                >
+                  <div className="zm-contact-icon zm-contact-icon--instagram" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm10.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+                    </svg>
+                  </div>
+                  <h3>Instagram</h3>
+                  <p>@terceirao.inf26</p>
+                </a>
 
-              <article className="zm-info-card">
-                <h3>Localização</h3>
-                <p>Bocaiúva - Minas Gerais</p>
-              </article>
+                <a
+                  className="zm-contact-card"
+                  href="tel:+5538932511732"
+                  aria-label="Ligar para a escola"
+                >
+                  <div className="zm-contact-icon zm-contact-icon--blue" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.21 2.2Z" />
+                    </svg>
+                  </div>
+                  <h3>Telefone</h3>
+                  <p>(38)932511732</p>
+                </a>
 
-              <article className="zm-info-card">
-                <h3>Redes sociais</h3>
-                <p>Instagram e Facebook da comunidade escolar.</p>
-              </article>
+                <a
+                  className="zm-contact-card"
+                  href="mailto:Escola.79383@educacao.mg.gov.br"
+                  aria-label="Enviar e-mail para a escola"
+                >
+                  <div className="zm-contact-icon zm-contact-icon--blue" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />
+                    </svg>
+                  </div>
+                  <h3>E-mail</h3>
+                  <p>Escola.79383@educacao.mg.gov.br</p>
+                </a>
+              </div>
             </div>
           </section>
         )}

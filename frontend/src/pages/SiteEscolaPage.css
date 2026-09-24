@@ -1202,3 +1202,195 @@
     padding-right: 8px;
   }
 }
+
+/* ===================================================== */
+/* CONTATOS - LAYOUT DO SITE ORIGINAL                    */
+/* ===================================================== */
+
+.zm-contact-page {
+  width: 100%;
+  margin: 0;
+  padding: 40px 0 60px;
+  background: #f5f8fc;
+}
+
+.zm-contact-panel {
+  width: 90%;
+  max-width: 1200px;
+  min-height: 560px;
+  margin: 0 auto;
+  padding: 60px 40px 150px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.zm-contact-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.zm-site .zm-contact-heading h2 {
+  margin: 0 0 15px !important;
+  padding: 0 !important;
+  color: #255d99 !important;
+  font-size: 35px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.4px;
+}
+
+.zm-contact-book {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: #2d86d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zm-contact-book svg {
+  width: 25px;
+  height: 25px;
+}
+
+.zm-contact-line {
+  width: 80px;
+  height: 4px;
+  margin: 15px auto 50px;
+  border-radius: 999px;
+  background: #4da4ef;
+}
+
+.zm-contact-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.zm-contact-card {
+  min-height: 260px;
+  padding: 45px 25px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  transition: box-shadow 0.28s ease, transform 0.28s ease;
+}
+
+.zm-contact-card:hover,
+.zm-contact-card:focus-visible {
+  box-shadow: 0 14px 32px rgba(35, 72, 110, 0.17);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.zm-contact-icon {
+  width: 120px;
+  height: 120px;
+  flex: 0 0 120px;
+  margin-bottom: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zm-contact-card:hover .zm-contact-icon,
+.zm-contact-card:focus-visible .zm-contact-icon {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 26px rgba(35, 72, 110, 0.22);
+}
+
+.zm-contact-icon--blue {
+  background: #2d86d6;
+}
+
+.zm-contact-icon--instagram {
+  background: radial-gradient(circle at 30% 105%, #feda75 0 15%, #fa7e1e 28%, #d62976 52%, #962fbf 72%, #4f5bd5 100%);
+}
+
+.zm-contact-icon svg {
+  width: 55px;
+  height: 55px;
+}
+
+.zm-site .zm-contact-card h3 {
+  margin: 0 0 11px !important;
+  padding: 0 !important;
+  color: #0d4f99 !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+}
+
+.zm-site .zm-contact-card p {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #5b5b5b !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .zm-contact-panel {
+    min-height: 0;
+    padding: 46px 38px 52px;
+  }
+
+  .zm-contact-cards {
+    grid-template-columns: 1fr;
+    width: min(390px, 100%);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .zm-contact-page {
+    padding: 12px 12px 42px;
+  }
+
+  .zm-contact-panel {
+    padding: 36px 18px 40px;
+    border-radius: 14px;
+  }
+
+  .zm-site .zm-contact-heading h2 {
+    font-size: 26px !important;
+  }
+
+  .zm-contact-line {
+    margin-bottom: 34px;
+  }
+
+  .zm-contact-card {
+    min-height: 235px;
+  }
+
+  .zm-contact-icon {
+    width: 92px;
+    height: 92px;
+    flex-basis: 92px;
+  }
+
+  .zm-contact-icon svg {
+    width: 46px;
+    height: 46px;
+  }
+}
