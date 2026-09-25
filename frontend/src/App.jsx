@@ -1,96 +1,41 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-// ======================================================
-// PÁGINAS
-// ======================================================
-
-import AdminPage from './pages/AdminPage';
-import AlunoPage from './pages/AlunoPage';
 import ProfessorPage from './pages/ProfessorPage';
+import AlunoPage from './pages/AlunoPage';
+import AdminPage from './pages/AdminPage';
 import RankingPublicoPage from './pages/RankingPublicoPage';
 import HomePage from './pages/HomePage';
 import RankingTelaoPage from './pages/RankingTelaoPage';
 import SiteEscolaPage from './pages/SiteEscolaPage';
 
-// ======================================================
-// COMPONENTES
-// ======================================================
+import ProtectedRoute from './components/ProtectedRoute';
 
-import VoltarSiteButton from './components/VoltarSiteButton';
-
-// ======================================================
-// AUTENTICAÇÃO
-// ======================================================
-
-import { obterUsuario } from './services/auth';
+import {
+  obterUsuario,
+  estaAutenticado,
+  logout
+} from './services/auth';
 
 
-// ======================================================
-// DESCOBRIR PARA QUAL PÁGINA O USUÁRIO DEVE IR
-// ======================================================
+export default function App() {
 
-function obterPaginaDoUsuario(usuario) {
-  if (!usuario) {
-    return 'inicio';
-  }
+  const [usuario, setUsuario] =
+    useState(obterUsuario());
 
-  const tipo =
-    String(usuario.tipo || '').toLowerCase();
-
-  if (tipo === 'admin') {
-    return 'admin';
-  }
-
-  if (tipo === 'professor') {
-    return 'professor';
-  }
-
-  if (tipo === 'aluno') {
-    return 'aluno';
-  }
-
-  return 'inicio';
-}
-
-
-// ======================================================
-// APP
-// ======================================================
-
-function App() {
-
-  // ====================================================
-  // USUÁRIO LOGADO
-  // ====================================================
-
-  const [usuario, setUsuario] = useState(() => {
-    try {
-      return obterUsuario();
-    } catch (error) {
-      console.error(
-        'Erro ao recuperar usuário:',
-        error
-      );
-
-      return null;
-    }
-  });
-
-
-  // ====================================================
-  // PÁGINA ATUAL
-  // ====================================================
-
-  // A página inicial será o site institucional.
+  // Página inicial do projeto
   const [pagina, setPagina] =
-    useState('site');
+    useState('site-escola');
+
+  const autenticado =
+    estaAutenticado();
 
 
-  // ====================================================
+  // =====================================================
   // TROCAR DE PÁGINA
-  // ====================================================
+  // =====================================================
 
   function mudarPagina(novaPagina) {
+
     setPagina(novaPagina);
 
     window.scrollTo({
@@ -100,254 +45,250 @@ function App() {
   }
 
 
-  // ====================================================
-  // VOLTAR PARA O SITE DA ESCOLA
-  // ====================================================
+  // =====================================================
+  // SAIR DO SISTEMA
+  // =====================================================
 
-  function voltarParaSite() {
-    setPagina('site');
+  function sair() {
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    logout();
+
+    setUsuario(null);
+
+    mudarPagina('site-escola');
   }
 
 
-  // ====================================================
-  // LOGIN REALIZADO
-  // ====================================================
+  // =====================================================
+  // LOGIN
+  // =====================================================
 
   function aoFazerLogin(usuarioLogado) {
 
     setUsuario(usuarioLogado);
 
-    const paginaDestino =
-      obterPaginaDoUsuario(
-        usuarioLogado
-      );
+    if (
+      usuarioLogado?.tipo ===
+      'professor'
+    ) {
 
-    setPagina(paginaDestino);
+      mudarPagina('professor');
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
-
-
-  // ====================================================
-  // VERIFICAR TIPO DO USUÁRIO
-  // ====================================================
-
-  function usuarioTemTipo(
-    tipoPermitido
-  ) {
-
-    if (!usuario) {
-      return false;
+      return;
     }
 
-    const tipoUsuario =
-      String(
-        usuario.tipo || ''
-      ).toLowerCase();
 
-    return (
-      tipoUsuario === tipoPermitido
-    );
-  }
+    if (
+      usuarioLogado?.tipo ===
+      'aluno'
+    ) {
 
+      mudarPagina('aluno');
 
-  // ====================================================
-  // MOSTRAR BOTÃO VOLTAR
-  // ====================================================
-
-  // O botão aparecerá somente nestas três páginas:
-  //
-  // inicio  = Sistema de Pontos
-  // ranking = Ranking
-  // telao   = Telão
-
-  const mostrarBotaoVoltar =
-    pagina === 'inicio' ||
-    pagina === 'ranking' ||
-    pagina === 'telao';
-
-
-  // ====================================================
-  // RENDERIZAR PÁGINA
-  // ====================================================
-
-  function renderizarPagina() {
-
-    switch (pagina) {
-
-      // =================================================
-      // SITE INSTITUCIONAL
-      // =================================================
-
-      case 'site':
-
-        return (
-          <SiteEscolaPage
-            mudarPagina={mudarPagina}
-          />
-        );
-
-
-      // =================================================
-      // SISTEMA DE PONTOS / LOGIN
-      // =================================================
-
-      case 'inicio':
-
-        return (
-          <HomePage
-            onLogin={aoFazerLogin}
-          />
-        );
-
-
-      // =================================================
-      // RANKING PÚBLICO
-      // =================================================
-
-      case 'ranking':
-
-        return (
-          <RankingPublicoPage />
-        );
-
-
-      // =================================================
-      // TELÃO
-      // =================================================
-
-      case 'telao':
-
-        return (
-          <RankingTelaoPage />
-        );
-
-
-      // =================================================
-      // PROFESSOR
-      // =================================================
-
-      case 'professor':
-
-        if (
-          !usuarioTemTipo(
-            'professor'
-          )
-        ) {
-
-          return (
-            <HomePage
-              onLogin={
-                aoFazerLogin
-              }
-            />
-          );
-        }
-
-        return (
-          <ProfessorPage />
-        );
-
-
-      // =================================================
-      // ADMINISTRADOR
-      // =================================================
-
-      case 'admin':
-
-        if (
-          !usuarioTemTipo(
-            'admin'
-          )
-        ) {
-
-          return (
-            <HomePage
-              onLogin={
-                aoFazerLogin
-              }
-            />
-          );
-        }
-
-        return (
-          <AdminPage />
-        );
-
-
-      // =================================================
-      // ALUNO
-      // =================================================
-
-      case 'aluno':
-
-        if (
-          !usuarioTemTipo(
-            'aluno'
-          )
-        ) {
-
-          return (
-            <HomePage
-              onLogin={
-                aoFazerLogin
-              }
-            />
-          );
-        }
-
-        return (
-          <AlunoPage />
-        );
-
-
-      // =================================================
-      // PÁGINA NÃO ENCONTRADA
-      // =================================================
-
-      default:
-
-        return (
-          <SiteEscolaPage
-            mudarPagina={
-              mudarPagina
-            }
-          />
-        );
+      return;
     }
+
+
+    if (
+      usuarioLogado?.tipo ===
+      'admin'
+    ) {
+
+      mudarPagina('admin');
+
+      return;
+    }
+
+
+    mudarPagina('inicio');
   }
 
-
-  // ====================================================
-  // INTERFACE PRINCIPAL
-  // ====================================================
 
   return (
-    <>
-      {mostrarBotaoVoltar && (
-        <VoltarSiteButton
-          onVoltar={
-            voltarParaSite
-          }
+
+    <div>
+
+      {/* ============================================ */}
+      {/* SITE INSTITUCIONAL                          */}
+      {/* ============================================ */}
+
+      {pagina === 'site-escola' && (
+
+        <SiteEscolaPage
+          mudarPagina={mudarPagina}
         />
+
       )}
 
-      {renderizarPagina()}
-    </>
+
+      {/* ============================================ */}
+      {/* SISTEMA DE PONTOS / LOGIN                   */}
+      {/* ============================================ */}
+
+      {pagina === 'inicio' && (
+
+        <HomePage
+
+          onLogin={
+            aoFazerLogin
+          }
+
+          mudarPagina={
+            mudarPagina
+          }
+
+        />
+
+      )}
+
+
+      {/* ============================================ */}
+      {/* PROFESSOR                                   */}
+      {/* ============================================ */}
+
+      {
+        pagina === 'professor' &&
+        autenticado &&
+        usuario?.tipo === 'professor' && (
+
+          <ProtectedRoute
+            role="professor"
+          >
+
+            <ProfessorPage />
+
+          </ProtectedRoute>
+
+        )
+      }
+
+
+      {/* ============================================ */}
+      {/* ALUNO                                       */}
+      {/* ============================================ */}
+
+      {
+        pagina === 'aluno' &&
+        autenticado &&
+        usuario?.tipo === 'aluno' && (
+
+          <ProtectedRoute
+            role="aluno"
+          >
+
+            <AlunoPage />
+
+          </ProtectedRoute>
+
+        )
+      }
+
+
+      {/* ============================================ */}
+      {/* ADMINISTRADOR                               */}
+      {/* ============================================ */}
+
+      {
+        pagina === 'admin' &&
+        autenticado &&
+        usuario?.tipo === 'admin' && (
+
+          <ProtectedRoute
+            role="admin"
+          >
+
+            <AdminPage />
+
+          </ProtectedRoute>
+
+        )
+      }
+
+
+      {/* ============================================ */}
+      {/* RANKING                                     */}
+      {/* ============================================ */}
+
+      {pagina === 'ranking' && (
+
+        <RankingPublicoPage
+
+          mudarPagina={
+            mudarPagina
+          }
+
+        />
+
+      )}
+
+
+      {/* ============================================ */}
+      {/* TELÃO                                       */}
+      {/* ============================================ */}
+
+      {pagina === 'telao' && (
+
+        <RankingTelaoPage
+
+          mudarPagina={
+            mudarPagina
+          }
+
+        />
+
+      )}
+
+
+      {/* ============================================ */}
+      {/* CONTROLES DAS ÁREAS AUTENTICADAS            */}
+      {/* ============================================ */}
+
+      {
+        (
+          pagina === 'professor' ||
+          pagina === 'aluno' ||
+          pagina === 'admin'
+        ) && (
+
+          <div
+            className="botao-voltar-site-area"
+          >
+
+            <button
+              type="button"
+              className="botao-voltar-site"
+              onClick={() =>
+                mudarPagina(
+                  'site-escola'
+                )
+              }
+            >
+
+              ← Site da Escola
+
+            </button>
+
+
+            {autenticado && (
+
+              <button
+                type="button"
+                className="botao-sair-sistema"
+                onClick={sair}
+              >
+
+                Sair
+
+              </button>
+
+            )}
+
+          </div>
+
+        )
+      }
+
+    </div>
+
   );
 }
-
-
-// ======================================================
-// EXPORTAÇÃO
-// ======================================================
-
-export default App;
