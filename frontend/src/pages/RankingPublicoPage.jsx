@@ -16,54 +16,39 @@ function obterMedalhaTurma(
 ) {
 
   if (pontos >= 1000) {
-
     return {
       emoji: '🔥👑',
       nome: 'Turma Lendária'
     };
-
   }
 
-
   if (pontos >= 800) {
-
     return {
       emoji: '💎',
       nome: 'Turma Diamante'
     };
-
   }
 
-
   if (pontos >= 600) {
-
     return {
       emoji: '🥇',
       nome: 'Turma Ouro'
     };
-
   }
 
-
   if (pontos >= 400) {
-
     return {
       emoji: '🥈',
       nome: 'Turma Prata'
     };
-
   }
 
-
   if (pontos >= 200) {
-
     return {
       emoji: '🥉',
       nome: 'Turma Bronze'
     };
-
   }
-
 
   return {
     emoji: '⭐',
@@ -78,39 +63,24 @@ function obterConquistaTurma(
 ) {
 
   if (index === 0) {
-
     return '🏆 Turma da semana';
-
   }
-
 
   if (pontos >= 800) {
-
     return '📈 Mais pontos ganhos';
-
   }
-
 
   if (pontos >= 600) {
-
     return '🧠 Melhor desempenho acadêmico';
-
   }
-
 
   if (pontos >= 400) {
-
     return '🤝 Turma mais colaborativa';
-
   }
-
 
   if (pontos >= 200) {
-
     return '📢 Mais participativa';
-
   }
-
 
   return '🚀 Em evolução';
 }
@@ -126,10 +96,6 @@ export default function RankingPublicoPage({
   ] = useState([]);
 
 
-  // =====================================================
-  // CARREGAR RANKING
-  // =====================================================
-
   async function carregarRanking() {
 
     try {
@@ -140,7 +106,7 @@ export default function RankingPublicoPage({
         );
 
 
-      const ordenado = [
+      const ranking = [
         ...data
       ].sort(
 
@@ -160,8 +126,9 @@ export default function RankingPublicoPage({
 
 
       setTurmas(
-        ordenado
+        ranking
       );
+
 
     } catch (error) {
 
@@ -175,16 +142,12 @@ export default function RankingPublicoPage({
   }
 
 
-  // =====================================================
-  // ATUALIZAÇÃO AUTOMÁTICA
-  // =====================================================
-
   useEffect(() => {
 
     carregarRanking();
 
 
-    const interval =
+    const intervalo =
       setInterval(
 
         carregarRanking,
@@ -196,63 +159,35 @@ export default function RankingPublicoPage({
 
     return () =>
       clearInterval(
-        interval
+        intervalo
       );
 
   }, []);
 
-
-  // =====================================================
-  // VOLTAR
-  // =====================================================
-
-  function voltarParaSite() {
-
-    mudarPagina(
-      'site-escola'
-    );
-
-  }
-
-
-  // =====================================================
-  // INTERFACE
-  // =====================================================
 
   return (
 
     <div className="container">
 
 
-      {/* ============================================== */}
-      {/* CABEÇALHO DO RANKING                          */}
-      {/* ============================================== */}
+      {/* ============================================ */}
+      {/* CABEÇALHO                                   */}
+      {/* ============================================ */}
 
       <section className="ranking-hero">
 
 
-        <div className="painel-topo-acoes">
+        <span className="ranking-hero__tag">
 
+          Painel público
 
-          <p className="ranking-hero__tag">
-
-            Painel público
-
-          </p>
-
-
-          <VoltarSiteButton
-            onVoltar={
-              voltarParaSite
-            }
-          />
-
-
-        </div>
+        </span>
 
 
         <h1>
+
           Ranking das Turmas
+
         </h1>
 
 
@@ -268,15 +203,16 @@ export default function RankingPublicoPage({
       </section>
 
 
-      {/* ============================================== */}
-      {/* LISTA DO RANKING                              */}
-      {/* ============================================== */}
+      {/* ============================================ */}
+      {/* RANKING                                     */}
+      {/* ============================================ */}
 
       <div className="ranking-grid">
 
 
         {
           turmas.map(
+
             (
               turma,
               index
@@ -301,6 +237,15 @@ export default function RankingPublicoPage({
                   0
 
                 );
+
+
+              const totalAlunos =
+
+                turma.quantidadeAlunos ??
+
+                turma.totalAlunos ??
+
+                0;
 
 
               return (
@@ -336,6 +281,7 @@ export default function RankingPublicoPage({
 
                     {
                       turma.iconeUrl
+
                         ? (
 
                           <img
@@ -353,6 +299,7 @@ export default function RankingPublicoPage({
                           />
 
                         )
+
                         : (
 
                           <div
@@ -361,7 +308,9 @@ export default function RankingPublicoPage({
                               ranking-card__icon--fallback
                             "
                           >
+
                             🎓
+
                           </div>
 
                         )
@@ -372,7 +321,9 @@ export default function RankingPublicoPage({
 
 
                       <h3>
+
                         {turma.nome}
+
                       </h3>
 
 
@@ -382,10 +333,7 @@ export default function RankingPublicoPage({
 
                         {' • '}
 
-                        {
-                          turma.quantidadeAlunos ||
-                          0
-                        }
+                        {totalAlunos}
 
                         {' alunos'}
 
@@ -417,7 +365,9 @@ export default function RankingPublicoPage({
 
 
                     <span>
+
                       Pontuação
+
                     </span>
 
 
@@ -439,8 +389,32 @@ export default function RankingPublicoPage({
               );
 
             }
+
           )
         }
+
+
+      </div>
+
+
+      {/* ============================================ */}
+      {/* VOLTAR DEPOIS DA ÚLTIMA TURMA               */}
+      {/* ============================================ */}
+
+      <div className="ranking-voltar-area">
+
+
+        <VoltarSiteButton
+
+          modo="ranking"
+
+          onVoltar={() =>
+            mudarPagina(
+              'site'
+            )
+          }
+
+        />
 
 
       </div>

@@ -1,6 +1,8 @@
+import './VoltarSiteButton.css';
+
 export default function VoltarSiteButton({
   onVoltar,
-  modo = 'painel'
+  modo = 'normal'
 }) {
   return (
     <button

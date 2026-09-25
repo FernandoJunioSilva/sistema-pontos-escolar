@@ -13,59 +13,41 @@ import VoltarSiteButton
   from '../components/VoltarSiteButton';
 
 
-function obterMedalhaTurma(
-  pontos
-) {
-
+function obterMedalhaTurma(pontos) {
   if (pontos >= 1000) {
-
     return {
       emoji: '🔥👑',
       nome: 'Turma Lendária'
     };
-
   }
 
-
   if (pontos >= 800) {
-
     return {
       emoji: '💎',
       nome: 'Turma Diamante'
     };
-
   }
 
-
   if (pontos >= 600) {
-
     return {
       emoji: '🥇',
       nome: 'Turma Ouro'
     };
-
   }
 
-
   if (pontos >= 400) {
-
     return {
       emoji: '🥈',
       nome: 'Turma Prata'
     };
-
   }
 
-
   if (pontos >= 200) {
-
     return {
       emoji: '🥉',
       nome: 'Turma Bronze'
     };
-
   }
-
 
   return {
     emoji: '⭐',
@@ -78,66 +60,39 @@ function obterConquistaTurma(
   index,
   pontos
 ) {
-
   if (index === 0) {
-
     return '🏆 Turma da semana';
-
   }
-
 
   if (pontos >= 800) {
-
     return '📈 Mais pontos ganhos';
-
   }
-
 
   if (pontos >= 600) {
-
     return '🧠 Melhor desempenho acadêmico';
-
   }
-
 
   if (pontos >= 400) {
-
     return '🤝 Turma mais colaborativa';
-
   }
-
 
   if (pontos >= 200) {
-
     return '📢 Mais participativa';
-
   }
-
 
   return '🚀 Em evolução';
 }
 
 
-function obterCorTurma(
-  index
-) {
-
+function obterCorTurma(index) {
   const cores = [
-
     'from-blue-700 to-cyan-500',
-
     'from-red-700 to-orange-500',
-
     'from-yellow-500 to-amber-400',
-
     'from-violet-700 to-fuchsia-500',
-
     'from-emerald-700 to-lime-500',
-
     'from-slate-700 to-slate-500'
-
   ];
-
 
   return cores[
     index %
@@ -149,7 +104,6 @@ function obterCorTurma(
 export default function RankingTelaoPage({
   mudarPagina
 }) {
-
   const [
     turmas,
     setTurmas
@@ -199,13 +153,9 @@ export default function RankingTelaoPage({
 
 
   const paineis = [
-
     'turmas',
-
     'alunos',
-
     'conquistas'
-
   ];
 
 
@@ -214,67 +164,45 @@ export default function RankingTelaoPage({
   // =====================================================
 
   async function carregarDados() {
-
     try {
-
       const [
-
         dadosTurmas,
-
         dadosAlunos,
-
         dadosConquistas
-
       ] = await Promise.all([
-
         apiGet('/turmas'),
-
-        apiGet(
-          '/ranking/alunos'
-        ),
-
-        apiGet(
-          '/conquistas/recentes'
-        )
-
+        apiGet('/ranking/alunos'),
+        apiGet('/conquistas/recentes')
       ]);
 
 
       const rankingTurmas = [
         ...dadosTurmas
       ].sort(
-
         (a, b) =>
-
           (
             b.pontuacao ||
             0
           ) -
-
           (
             a.pontuacao ||
             0
           )
-
       );
 
 
       const rankingAlunos = [
         ...dadosAlunos
       ].sort(
-
         (a, b) =>
-
           (
             b.pontos ||
             0
           ) -
-
           (
             a.pontos ||
             0
           )
-
       );
 
 
@@ -298,28 +226,21 @@ export default function RankingTelaoPage({
       );
 
     } catch (error) {
-
       console.error(
-
         'Erro ao carregar telão:',
-
         error
-
       );
-
     }
-
   }
 
 
   // =====================================================
-  // DETECTAR MUDANÇA NO RANKING
+  // DETECTAR ALTERAÇÃO NO RANKING
   // =====================================================
 
   function detectarMudancaRanking(
     novoRanking
   ) {
-
     const rankingAnterior =
       rankingAnteriorRef.current;
 
@@ -327,7 +248,6 @@ export default function RankingTelaoPage({
     if (
       !rankingAnterior.length
     ) {
-
       rankingAnteriorRef.current =
         novoRanking.map(
           (t) => t.id
@@ -348,7 +268,6 @@ export default function RankingTelaoPage({
       i < novoIds.length;
       i++
     ) {
-
       const idAtual =
         novoIds[i];
 
@@ -360,13 +279,9 @@ export default function RankingTelaoPage({
 
 
       if (
-
         posicaoAnterior !== -1 &&
-
         posicaoAnterior > i
-
       ) {
-
         const turma =
           novoRanking.find(
             (t) =>
@@ -376,86 +291,64 @@ export default function RankingTelaoPage({
 
 
         if (turma) {
-
           setDestaqueTroca(
-
             `🔥 ${turma.nome} subiu para ${i + 1}º lugar!`
-
           );
 
 
           setTimeout(
-
             () =>
               setDestaqueTroca(
                 null
               ),
-
             3500
-
           );
 
 
           break;
-
         }
-
       }
-
     }
 
 
     rankingAnteriorRef.current =
       novoIds;
-
   }
 
 
   // =====================================================
-  // INTERVALOS
+  // INTERVALOS AUTOMÁTICOS
   // =====================================================
 
   useEffect(() => {
-
     carregarDados();
 
 
     const intervalDados =
       setInterval(
-
         carregarDados,
-
         5000
-
       );
 
 
     const intervalHora =
       setInterval(
-
         () =>
           setHoraAtual(
             new Date()
           ),
-
         1000
-
       );
 
 
     const intervalPainel =
       setInterval(() => {
-
         setPainelAtual(
-
           (prev) =>
-
             (
               prev + 1
             ) %
-
             paineis.length
-
         );
 
 
@@ -466,19 +359,14 @@ export default function RankingTelaoPage({
 
     const intervalItem =
       setInterval(() => {
-
         setItemAtual(
-
           (prev) =>
             prev + 1
-
         );
-
       }, 3000);
 
 
     return () => {
-
       clearInterval(
         intervalDados
       );
@@ -494,7 +382,6 @@ export default function RankingTelaoPage({
       clearInterval(
         intervalItem
       );
-
     };
 
   }, []);
@@ -512,24 +399,17 @@ export default function RankingTelaoPage({
 
   const tituloPainel =
     useMemo(() => {
-
       if (
-        painel ===
-        'turmas'
+        painel === 'turmas'
       ) {
-
         return '🏆 Ranking das Melhores Turmas';
-
       }
 
 
       if (
-        painel ===
-        'alunos'
+        painel === 'alunos'
       ) {
-
         return '🎓 Ranking dos Melhores Alunos';
-
       }
 
 
@@ -540,24 +420,17 @@ export default function RankingTelaoPage({
 
   const subtituloPainel =
     useMemo(() => {
-
       if (
-        painel ===
-        'turmas'
+        painel === 'turmas'
       ) {
-
         return 'Pontuação total • medalhas • conquistas';
-
       }
 
 
       if (
-        painel ===
-        'alunos'
+        painel === 'alunos'
       ) {
-
         return 'Destaques individuais da semana';
-
       }
 
 
@@ -567,39 +440,33 @@ export default function RankingTelaoPage({
 
 
   // =====================================================
-  // ITENS EM DESTAQUE
+  // ITENS PRINCIPAIS
   // =====================================================
 
   const itemPrincipalTurma =
     turmas.length
-
       ? turmas[
           itemAtual %
           turmas.length
         ]
-
       : null;
 
 
   const itemPrincipalAluno =
     alunos.length
-
       ? alunos[
           itemAtual %
           alunos.length
         ]
-
       : null;
 
 
   const itemPrincipalConquista =
     conquistas.length
-
       ? conquistas[
           itemAtual %
           conquistas.length
         ]
-
       : null;
 
 
@@ -625,15 +492,18 @@ export default function RankingTelaoPage({
 
 
   // =====================================================
-  // VOLTAR
+  // VOLTAR PARA O SITE
   // =====================================================
 
   function voltarParaSite() {
-
-    mudarPagina(
-      'site-escola'
-    );
-
+    if (
+      typeof mudarPagina ===
+      'function'
+    ) {
+      mudarPagina(
+        'site'
+      );
+    }
   }
 
 
@@ -642,9 +512,7 @@ export default function RankingTelaoPage({
   // =====================================================
 
   return (
-
     <div className="telao-evento">
-
 
       <div
         className="telao-evento__bg"
@@ -661,13 +529,12 @@ export default function RankingTelaoPage({
         <header className="telao-evento__header">
 
 
+          {/* LADO ESQUERDO */}
+
           <div>
 
-
             <span className="telao-evento__tag">
-
               Modo Telão • Evento
-
             </span>
 
 
@@ -685,11 +552,11 @@ export default function RankingTelaoPage({
               {subtituloPainel}
             </small>
 
-
           </div>
 
 
           {/* ========================================== */}
+          {/* LADO DIREITO                              */}
           {/* RELÓGIO + BOTÃO VOLTAR                    */}
           {/* ========================================== */}
 
@@ -707,13 +574,10 @@ export default function RankingTelaoPage({
 
 
             <VoltarSiteButton
-
               modo="telao"
-
               onVoltar={
                 voltarParaSite
               }
-
             />
 
 
@@ -724,7 +588,7 @@ export default function RankingTelaoPage({
 
 
         {/* ============================================ */}
-        {/* ALERTA                                      */}
+        {/* ALERTA DE MUDANÇA                           */}
         {/* ============================================ */}
 
         {
@@ -741,11 +605,10 @@ export default function RankingTelaoPage({
 
 
         {/* ============================================ */}
-        {/* INDICADORES                                 */}
+        {/* INDICADORES DOS PAINÉIS                     */}
         {/* ============================================ */}
 
         <div className="telao-paineis-indicadores">
-
 
           {
             paineis.map(
@@ -755,34 +618,28 @@ export default function RankingTelaoPage({
               ) => (
 
                 <span
-
                   key={
                     item
                   }
-
                   className={
-
                     index ===
                     painelAtual
 
                       ? 'telao-painel-dot ativo'
 
                       : 'telao-painel-dot'
-
                   }
-
                 />
 
               )
             )
           }
 
-
         </div>
 
 
         {/* ============================================ */}
-        {/* PAINEL TURMAS                               */}
+        {/* PAINEL DE TURMAS                            */}
         {/* ============================================ */}
 
         {
@@ -858,10 +715,8 @@ export default function RankingTelaoPage({
 
                         {
                           obterMedalhaTurma(
-
                             itemPrincipalTurma.pontuacao ||
                             0
-
                           ).emoji
                         }
 
@@ -869,10 +724,8 @@ export default function RankingTelaoPage({
 
                         {
                           obterMedalhaTurma(
-
                             itemPrincipalTurma.pontuacao ||
                             0
-
                           ).nome
                         }
 
@@ -891,20 +744,16 @@ export default function RankingTelaoPage({
 
                         {
                           topTurmas.findIndex(
-
                             (t) =>
                               t.id ===
                               itemPrincipalTurma.id
-
                           ) >= 0
 
                             ? `${
                                 topTurmas.findIndex(
-
                                   (t) =>
                                     t.id ===
                                     itemPrincipalTurma.id
-
                                 ) + 1
                               }º lugar`
 
@@ -926,17 +775,13 @@ export default function RankingTelaoPage({
 
                         {
                           obterConquistaTurma(
-
                             itemAtual %
-
                             Math.max(
                               turmas.length,
                               1
                             ),
-
                             itemPrincipalTurma.pontuacao ||
                             0
-
                           )
                         }
 
@@ -959,28 +804,19 @@ export default function RankingTelaoPage({
                       ? (
 
                         <img
-
                           src={
                             itemPrincipalTurma.iconeUrl
                           }
-
                           alt={
                             itemPrincipalTurma.nome
                           }
-
                           className="telao-principal-card__icon"
-
                         />
 
                       )
                       : (
 
-                        <div
-                          className="
-                            telao-principal-card__icon
-                            fallback
-                          "
-                        >
+                        <div className="telao-principal-card__icon fallback">
 
                           🏫
 
@@ -997,7 +833,7 @@ export default function RankingTelaoPage({
 
 
               {/* ====================================== */}
-              {/* RANKING DAS TURMAS                    */}
+              {/* TOP 5 TURMAS                          */}
               {/* ====================================== */}
 
               <div className="telao-secundario-grid">
@@ -1010,45 +846,34 @@ export default function RankingTelaoPage({
                       index
                     ) => {
 
-
                       const medalha =
                         obterMedalhaTurma(
-
                           turma.pontuacao ||
                           0
-
                         );
 
 
                       const conquista =
                         obterConquistaTurma(
-
                           index,
-
                           turma.pontuacao ||
                           0
-
                         );
 
 
                       return (
 
                         <div
-
                           key={
                             turma.id
                           }
-
                           className={
-
                             index === 0
 
                               ? 'telao-ranking-card lider'
 
                               : 'telao-ranking-card'
-
                           }
-
                         >
 
 
@@ -1119,7 +944,7 @@ export default function RankingTelaoPage({
 
 
         {/* ============================================ */}
-        {/* PAINEL ALUNOS                               */}
+        {/* PAINEL DE ALUNOS                            */}
         {/* ============================================ */}
 
         {
@@ -1242,12 +1067,7 @@ export default function RankingTelaoPage({
                 <div className="telao-principal-card__right">
 
 
-                  <div
-                    className="
-                      telao-principal-card__icon
-                      fallback
-                    "
-                  >
+                  <div className="telao-principal-card__icon fallback">
 
                     🎓
 
@@ -1260,6 +1080,10 @@ export default function RankingTelaoPage({
               </div>
 
 
+              {/* ====================================== */}
+              {/* TOP 5 ALUNOS                          */}
+              {/* ====================================== */}
+
               <div className="telao-secundario-grid">
 
 
@@ -1271,21 +1095,16 @@ export default function RankingTelaoPage({
                     ) => (
 
                       <div
-
                         key={
                           aluno.id
                         }
-
                         className={
-
                           index === 0
 
                             ? 'telao-ranking-card lider'
 
                             : 'telao-ranking-card'
-
                         }
-
                       >
 
 
@@ -1310,12 +1129,16 @@ export default function RankingTelaoPage({
 
 
                         <h3>
+
                           {aluno.nome}
+
                         </h3>
 
 
                         <p>
+
                           {aluno.turma}
+
                         </p>
 
 
@@ -1348,7 +1171,7 @@ export default function RankingTelaoPage({
 
 
         {/* ============================================ */}
-        {/* PAINEL CONQUISTAS                           */}
+        {/* PAINEL DE CONQUISTAS                        */}
         {/* ============================================ */}
 
         {
@@ -1420,10 +1243,8 @@ export default function RankingTelaoPage({
 
                         {
                           obterMedalhaTurma(
-
                             itemPrincipalConquista.pontuacao ||
                             0
-
                           ).emoji
                         }
 
@@ -1431,10 +1252,8 @@ export default function RankingTelaoPage({
 
                         {
                           obterMedalhaTurma(
-
                             itemPrincipalConquista.pontuacao ||
                             0
-
                           ).nome
                         }
 
@@ -1482,19 +1301,12 @@ export default function RankingTelaoPage({
                 <div className="telao-principal-card__right">
 
 
-                  <div
-                    className="
-                      telao-principal-card__icon
-                      fallback
-                    "
-                  >
+                  <div className="telao-principal-card__icon fallback">
 
                     {
                       obterMedalhaTurma(
-
                         itemPrincipalConquista.pontuacao ||
                         0
-
                       ).emoji
                     }
 
@@ -1507,6 +1319,10 @@ export default function RankingTelaoPage({
               </div>
 
 
+              {/* ====================================== */}
+              {/* TOP CONQUISTAS                        */}
+              {/* ====================================== */}
+
               <div className="telao-secundario-grid">
 
 
@@ -1517,34 +1333,26 @@ export default function RankingTelaoPage({
                       index
                     ) => {
 
-
                       const medalha =
                         obterMedalhaTurma(
-
                           item.pontuacao ||
                           0
-
                         );
 
 
                       return (
 
                         <div
-
                           key={
                             item.id
                           }
-
                           className={
-
                             index === 0
 
                               ? 'telao-ranking-card lider'
 
                               : 'telao-ranking-card'
-
                           }
-
                         >
 
 
@@ -1620,6 +1428,5 @@ export default function RankingTelaoPage({
 
 
     </div>
-
   );
 }

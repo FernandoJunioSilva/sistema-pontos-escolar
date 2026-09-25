@@ -1,0 +1,307 @@
+/* ===================================================== */
+/* BOTÃO VOLTAR - PADRÃO                                */
+/* ===================================================== */
+
+.voltar-site-btn {
+  display: inline-flex !important;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: none !important;
+
+  border-radius: 10px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    ) !important;
+
+  color: #ffffff !important;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 14px !important;
+
+  font-weight: bold !important;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
+
+  box-shadow:
+    0 5px 14px
+    rgba(
+      37,
+      99,
+      235,
+      0.18
+    );
+}
+
+
+.voltar-site-btn:hover {
+  transform: translateY(-1px);
+
+  opacity: 0.95;
+}
+
+
+.voltar-site-btn__seta {
+  font-size: 17px;
+
+  line-height: 1;
+}
+
+
+/* ===================================================== */
+/* COLUNA DO LOGIN                                      */
+/* ===================================================== */
+
+.home-login-coluna {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  position: sticky;
+
+  top: 100px;
+}
+
+
+/*
+  O sticky passa para a coluna inteira.
+  Assim o card e o botão Voltar permanecem juntos.
+*/
+
+.home-login-coluna
+.home-login-card {
+  position: static;
+}
+
+
+/* ===================================================== */
+/* BOTÃO VOLTAR DA TELA DE LOGIN                        */
+/* ===================================================== */
+
+/*
+  O card de login possui 24px de padding
+  no lado esquerdo e 24px no lado direito.
+
+  Por isso usamos:
+
+  100% - 48px
+
+  Dessa maneira o botão Voltar fica exatamente
+  alinhado com o botão Entrar.
+*/
+
+.voltar-site-btn--login {
+  width:
+    calc(100% - 48px) !important;
+
+  height: 40px !important;
+
+  min-height: 40px !important;
+
+  align-self: center;
+
+  margin:
+    0 auto !important;
+
+  padding:
+    0 12px !important;
+
+  border-radius:
+    10px !important;
+
+  font-size:
+    14px !important;
+
+  font-weight:
+    bold !important;
+}
+
+
+/* ===================================================== */
+/* BOTÃO VOLTAR DO RANKING                              */
+/* ===================================================== */
+
+.ranking-voltar-area {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: 22px;
+
+  margin-bottom: 24px;
+}
+
+
+.voltar-site-btn--ranking {
+  width: 190px !important;
+
+  height: 42px !important;
+
+  min-height: 42px !important;
+
+  margin: 0 !important;
+
+  padding:
+    0 16px !important;
+}
+
+
+/* ===================================================== */
+/* ÁREA DO RELÓGIO NO TELÃO                             */
+/* ===================================================== */
+
+.telao-evento__acoes-direita {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: stretch;
+
+  justify-content: flex-start;
+
+  gap: 10px;
+
+  min-width: 180px;
+}
+
+
+/*
+  Faz o relógio ocupar toda
+  a largura da coluna.
+*/
+
+.telao-evento__acoes-direita
+.telao-evento__clock {
+  width: 100% !important;
+
+  min-width: 0 !important;
+
+  margin: 0 !important;
+
+  box-sizing: border-box;
+}
+
+
+/* ===================================================== */
+/* BOTÃO VOLTAR DO TELÃO                                */
+/* ===================================================== */
+
+/*
+  Como relógio e botão estão dentro
+  da mesma coluna e ambos possuem
+  width: 100%, ficam exatamente
+  com a mesma largura.
+*/
+
+.voltar-site-btn--telao {
+  width: 100% !important;
+
+  height: 46px !important;
+
+  min-height: 46px !important;
+
+  margin: 0 !important;
+
+  padding:
+    0 14px !important;
+
+  box-sizing: border-box;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.10
+    ) !important;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    ) !important;
+
+  color:
+    #ffffff !important;
+
+  box-shadow:
+    0 8px 20px
+    rgba(
+      0,
+      0,
+      0,
+      0.14
+    );
+}
+
+
+.voltar-site-btn--telao:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    ) !important;
+}
+
+
+/* ===================================================== */
+/* RESPONSIVO                                           */
+/* ===================================================== */
+
+@media (max-width: 900px) {
+
+  .home-login-coluna {
+    position: static;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .voltar-site-btn {
+    font-size:
+      13px !important;
+  }
+
+
+  .voltar-site-btn--ranking {
+    width:
+      100% !important;
+  }
+
+
+  .telao-evento__acoes-direita {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+}
