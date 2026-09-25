@@ -1,15 +1,12 @@
 using System.Text;
 using System.Text.Json.Serialization;
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-
 using SistemaPontosEscolar.Data;
 using SistemaPontosEscolar.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 // ======================================================
 // CONTROLLERS
@@ -25,22 +22,37 @@ builder.Services
 
 
 // ======================================================
-// SWAGGER
+// CORS
 // ======================================================
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+const string CorsPolicy = "AllowFrontend";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(CorsPolicy, policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:5173",
+
+                // Vercel antigo
+                "https://sistema-pontos-escolar.vercel.app",
+
+                // Frontend do Render
+                "https://sistema-pontos-escolar-frontend.onrender.com",
+
+                // Domínio oficial
+                "https://zinhameira.com",
+                "https://www.zinhameira.com"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 
 // ======================================================
-// SERVIÇOS
-// ======================================================
-
-builder.Services.AddScoped<TokenService>();
-
-
-// ======================================================
-// BANCO DE DADOS
+// BANCO DE DADOS MYSQL
 // ======================================================
 
 var connectionString =
@@ -53,15 +65,11 @@ if (string.IsNullOrWhiteSpace(connectionString))
     );
 }
 
-
-// O Aiven está usando MySQL 8.4.8.
-// Informamos diretamente a versão para NÃO usar AutoDetect.
-
+// Aiven MySQL 8.4
 var serverVersion =
     new MySqlServerVersion(
         new Version(8, 4, 8)
     );
-
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -76,214 +84,137 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // JWT
 // ======================================================
 
-var jwtKey =
-    builder.Configuration["Jwt:Key"];
-
-var jwtIssuer =
-    builder.Configuration["Jwt:Issuer"];
-
-var jwtAudience =
-    builder.Configuration["Jwt:Audience"];
-
+var jwtKey = builder.Configuration["Jwt:Key"];
+var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+var jwtAudience = builder.Configuration["Jwt:Audience"];
 
 if (string.IsNullOrWhiteSpace(jwtKey))
 {
     throw new Exception(
-        "Jwt__Key não foi configurada."
+        "A variável Jwt__Key não foi configurada."
     );
 }
-
-if (string.IsNullOrWhiteSpace(jwtIssuer))
-{
-    throw new Exception(
-        "Jwt__Issuer não foi configurada."
-    );
-}
-
-if (string.IsNullOrWhiteSpace(jwtAudience))
-{
-    throw new Exception(
-        "Jwt__Audience não foi configurada."
-    );
-}
-
 
 builder.Services
-    .AddAuthentication(
-        JwtBearerDefaults.AuthenticationScheme
-    )
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme =
+            JwtBearerDefaults.AuthenticationScheme;
+
+        options.DefaultChallengeScheme =
+            JwtBearerDefaults.AuthenticationScheme;
+    })
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters =
             new TokenValidationParameters
             {
                 ValidateIssuer = true,
-
                 ValidateAudience = true,
-
                 ValidateLifetime = true,
-
                 ValidateIssuerSigningKey = true,
 
                 ValidIssuer = jwtIssuer,
-
                 ValidAudience = jwtAudience,
 
                 IssuerSigningKey =
                     new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(jwtKey)
-                    )
+                    ),
+
+                ClockSkew = TimeSpan.Zero
             };
     });
 
+
+// ======================================================
+// AUTORIZAÇÃO
+// ======================================================
 
 builder.Services.AddAuthorization();
 
 
 // ======================================================
-// CORS
+// SERVIÇOS
 // ======================================================
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(
-        "frontend",
-        policy =>
-        {
-            policy
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowAnyOrigin();
-        }
-    );
-});
+builder.Services.AddScoped<TokenService>();
 
 
 // ======================================================
-// APP
+// CRIAR APLICAÇÃO
 // ======================================================
 
 var app = builder.Build();
 
 
 // ======================================================
-// SWAGGER
+// TESTAR CONEXÃO COM MYSQL
 // ======================================================
 
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Console.WriteLine("Tentando conectar ao banco MySQL...");
+
+    using var scope = app.Services.CreateScope();
+
+    var db =
+        scope.ServiceProvider
+            .GetRequiredService<AppDbContext>();
+
+    if (db.Database.CanConnect())
+    {
+        Console.WriteLine(
+            "Conexão com MySQL realizada com sucesso."
+        );
+    }
+    else
+    {
+        Console.WriteLine(
+            "Não foi possível conectar ao MySQL."
+        );
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine(
+        "Erro ao conectar ao MySQL:"
+    );
+
+    Console.WriteLine(ex.Message);
 }
 
 
 // ======================================================
-// MIDDLEWARE
+// PIPELINE
 // ======================================================
 
-app.UseStaticFiles();
+app.UseRouting();
 
-app.UseCors("frontend");
+// IMPORTANTE:
+// CORS deve ficar antes da autenticação/autorização.
+app.UseCors(CorsPolicy);
 
 app.UseAuthentication();
 
 app.UseAuthorization();
 
-
-// ======================================================
-// ROTA DE TESTE
-// ======================================================
-
-app.MapGet("/", () =>
-{
-    return "Backend online - Aiven MySQL";
-});
-
-
-// ======================================================
-// CONTROLLERS
-// ======================================================
-
 app.MapControllers();
 
 
 // ======================================================
-// CRIAR BANCO / TABELAS
+// ROTA PARA TESTAR SE O BACKEND ESTÁ ONLINE
 // ======================================================
 
-using (var scope = app.Services.CreateScope())
+app.MapGet("/", () =>
 {
-    try
+    return Results.Ok(new
     {
-        Console.WriteLine(
-            "Tentando conectar ao banco MySQL..."
-        );
-
-        var db =
-            scope.ServiceProvider
-                .GetRequiredService<AppDbContext>();
-
-
-        var conseguiuConectar =
-            db.Database.CanConnect();
-
-
-        if (conseguiuConectar)
-        {
-            Console.WriteLine(
-                "Conexão com MySQL realizada com sucesso."
-            );
-
-
-            var criado =
-                db.Database.EnsureCreated();
-
-
-            if (criado)
-            {
-                Console.WriteLine(
-                    "Banco/tabelas criados com sucesso."
-                );
-            }
-            else
-            {
-                Console.WriteLine(
-                    "Banco já existe. Estrutura verificada."
-                );
-            }
-        }
-        else
-        {
-            Console.WriteLine(
-                "Não foi possível conectar ao MySQL."
-            );
-        }
-
-
-        // NÃO executar por enquanto.
-        // Queremos o banco novo sem dados antigos.
-
-        // DbInitializer.Seed(db);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(
-            "=================================="
-        );
-
-        Console.WriteLine(
-            "ERRO AO INICIALIZAR O BANCO:"
-        );
-
-        Console.WriteLine(
-            ex.ToString()
-        );
-
-        Console.WriteLine(
-            "=================================="
-        );
-    }
-}
+        status = "online",
+        sistema = "Sistema de Pontos Escolar",
+        escola = "E.E. Zinha Meira"
+    });
+});
 
 
 // ======================================================
