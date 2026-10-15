@@ -21,9 +21,11 @@ import {
 } from './services/auth';
 
 
-function obterPaginaDoUsuario(
-  usuario
-) {
+/* ===================================================== */
+/* DESCOBRIR QUAL PÁGINA ABRIR DEPOIS DO LOGIN          */
+/* ===================================================== */
+
+function obterPaginaDoUsuario(usuario) {
   if (!usuario) {
     return 'inicio';
   }
@@ -33,45 +35,73 @@ function obterPaginaDoUsuario(
       usuario.tipo || ''
     ).toLowerCase();
 
+
   if (tipo === 'admin') {
     return 'admin';
   }
+
 
   if (tipo === 'professor') {
     return 'professor';
   }
 
+
   if (tipo === 'aluno') {
     return 'aluno';
   }
+
 
   return 'inicio';
 }
 
 
+/* ===================================================== */
+/* APP                                                   */
+/* ===================================================== */
+
 function App() {
+
+  /* =================================================== */
+  /* USUÁRIO LOGADO                                      */
+  /* =================================================== */
+
   const [
     usuario,
     setUsuario
   ] = useState(() => {
+
     try {
+
       return obterUsuario();
+
     } catch (error) {
+
       console.error(
         'Erro ao recuperar usuário:',
         error
       );
 
       return null;
+
     }
+
   });
 
 
+  /* =================================================== */
+  /* PÁGINA ATUAL                                        */
+  /* =================================================== */
+
   /*
-    site = site institucional
-    inicio = sistema de pontos
-    ranking = ranking público
-    telao = modo telão
+    Páginas usadas:
+
+    site      = Site institucional da escola
+    inicio    = Sistema de Pontos / Login
+    ranking   = Ranking público
+    telao     = Modo Telão
+    professor = Página de lançamento de pontuação
+    admin     = Administração
+    aluno     = Área do aluno
   */
 
   const [
@@ -80,81 +110,114 @@ function App() {
   ] = useState('site');
 
 
-  function mudarPagina(
-    novaPagina
-  ) {
+  /* =================================================== */
+  /* TROCAR DE PÁGINA                                    */
+  /* =================================================== */
+
+  function mudarPagina(novaPagina) {
+
     setPagina(
       novaPagina
     );
+
 
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
+
   }
 
 
-  function aoFazerLogin(
-    usuarioLogado
-  ) {
+  /* =================================================== */
+  /* LOGIN REALIZADO                                     */
+  /* =================================================== */
+
+  function aoFazerLogin(usuarioLogado) {
+
     setUsuario(
       usuarioLogado
     );
+
 
     const paginaDestino =
       obterPaginaDoUsuario(
         usuarioLogado
       );
 
+
     setPagina(
       paginaDestino
     );
+
 
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
+
   }
 
 
-  function usuarioTemTipo(
-    tipoPermitido
-  ) {
+  /* =================================================== */
+  /* VERIFICAR PERFIL                                    */
+  /* =================================================== */
+
+  function usuarioTemTipo(tipoPermitido) {
+
     if (!usuario) {
       return false;
     }
+
 
     const tipoUsuario =
       String(
         usuario.tipo || ''
       ).toLowerCase();
 
+
     return (
       tipoUsuario ===
       tipoPermitido
     );
+
   }
 
 
+  /* =================================================== */
+  /* RENDERIZAR PÁGINA                                   */
+  /* =================================================== */
+
   function renderizarPagina() {
+
     switch (pagina) {
 
-      /* SITE DA ESCOLA */
+
+      /* =============================================== */
+      /* SITE INSTITUCIONAL                              */
+      /* =============================================== */
 
       case 'site':
+
         return (
+
           <SiteEscolaPage
             mudarPagina={
               mudarPagina
             }
           />
+
         );
 
 
-      /* SISTEMA DE PONTOS */
+      /* =============================================== */
+      /* SISTEMA DE PONTOS / LOGIN                       */
+      /* =============================================== */
 
       case 'inicio':
+
         return (
+
           <HomePage
             onLogin={
               aoFazerLogin
@@ -163,43 +226,63 @@ function App() {
               mudarPagina
             }
           />
+
         );
 
 
-      /* RANKING */
+      /* =============================================== */
+      /* RANKING PÚBLICO                                 */
+      /* =============================================== */
 
       case 'ranking':
+
         return (
+
           <RankingPublicoPage
             mudarPagina={
               mudarPagina
             }
           />
+
         );
 
 
-      /* TELÃO */
+      /* =============================================== */
+      /* MODO TELÃO                                      */
+      /* =============================================== */
 
       case 'telao':
+
         return (
+
           <RankingTelaoPage
             mudarPagina={
               mudarPagina
             }
           />
+
         );
 
 
-      /* PROFESSOR */
+      /* =============================================== */
+      /* PÁGINA DE PONTUAÇÃO                             */
+      /* =============================================== */
 
       case 'professor':
+
+        /*
+          Se não houver usuário professor logado,
+          volta para a tela de login.
+        */
 
         if (
           !usuarioTemTipo(
             'professor'
           )
         ) {
+
           return (
+
             <HomePage
               onLogin={
                 aoFazerLogin
@@ -208,15 +291,37 @@ function App() {
                 mudarPagina
               }
             />
+
           );
+
         }
 
+
+        /*
+          IMPORTANTE:
+
+          Aqui passamos mudarPagina
+          para ProfessorPage.
+
+          Isso permite que o botão
+          "← Voltar" da nova página
+          funcione corretamente.
+        */
+
         return (
-          <ProfessorPage />
+
+          <ProfessorPage
+            mudarPagina={
+              mudarPagina
+            }
+          />
+
         );
 
 
-      /* ADMIN */
+      /* =============================================== */
+      /* ADMINISTRADOR                                   */
+      /* =============================================== */
 
       case 'admin':
 
@@ -225,7 +330,9 @@ function App() {
             'admin'
           )
         ) {
+
           return (
+
             <HomePage
               onLogin={
                 aoFazerLogin
@@ -234,15 +341,22 @@ function App() {
                 mudarPagina
               }
             />
+
           );
+
         }
 
+
         return (
+
           <AdminPage />
+
         );
 
 
-      /* ALUNO */
+      /* =============================================== */
+      /* ALUNO                                           */
+      /* =============================================== */
 
       case 'aluno':
 
@@ -251,7 +365,9 @@ function App() {
             'aluno'
           )
         ) {
+
           return (
+
             <HomePage
               onLogin={
                 aoFazerLogin
@@ -260,32 +376,57 @@ function App() {
                 mudarPagina
               }
             />
+
           );
+
         }
 
+
         return (
+
           <AlunoPage />
+
         );
 
 
+      /* =============================================== */
+      /* PÁGINA DESCONHECIDA                             */
+      /* =============================================== */
+
       default:
+
         return (
+
           <SiteEscolaPage
             mudarPagina={
               mudarPagina
             }
           />
+
         );
+
     }
+
   }
 
 
+  /* =================================================== */
+  /* RETORNO PRINCIPAL                                   */
+  /* =================================================== */
+
   return (
     <>
-      {renderizarPagina()}
+      {
+        renderizarPagina()
+      }
     </>
   );
+
 }
 
+
+/* ===================================================== */
+/* EXPORTAÇÃO                                            */
+/* ===================================================== */
 
 export default App;

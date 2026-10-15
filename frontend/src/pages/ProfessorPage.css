@@ -1,0 +1,1846 @@
+/* ===================================================== */
+/* PÁGINA DE PONTUAÇÃO                                  */
+/* ===================================================== */
+
+.pontuacao-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(59, 130, 246, 0.10),
+      transparent 30%
+    ),
+    #f4f7fb;
+
+  padding:
+    28px 18px 60px;
+
+  color:
+    #1e293b;
+}
+
+
+.pontuacao-page * {
+  box-sizing: border-box;
+}
+
+
+.pontuacao-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+
+/* ===================================================== */
+/* TOPO                                                 */
+/* ===================================================== */
+
+.pontuacao-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 24px;
+
+  padding: 30px 32px;
+
+  border-radius: 28px;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #172554,
+      #1d4ed8 55%,
+      #0ea5e9
+    );
+
+  box-shadow:
+    0 20px 45px
+    rgba(30, 64, 175, 0.22);
+}
+
+
+.pontuacao-header__conteudo {
+  min-width: 0;
+}
+
+
+.pontuacao-header__tag {
+  display: inline-flex;
+
+  margin-bottom: 10px;
+
+  padding:
+    7px 12px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.4px;
+
+  text-transform:
+    uppercase;
+}
+
+
+.pontuacao-header h1 {
+  margin:
+    0 0 8px;
+
+  font-size:
+    clamp(
+      30px,
+      4vw,
+      46px
+    );
+
+  line-height:
+    1.05;
+}
+
+
+.pontuacao-header p {
+  max-width:
+    720px;
+
+  margin: 0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.85
+    );
+
+  font-size:
+    15px;
+
+  line-height:
+    1.6;
+}
+
+
+/* ===================================================== */
+/* BOTÃO VOLTAR                                         */
+/* ===================================================== */
+
+.pontuacao-voltar {
+  width: auto !important;
+
+  min-width:
+    120px;
+
+  flex:
+    0 0 auto;
+
+  display:
+    inline-flex !important;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    8px;
+
+  margin:
+    0 !important;
+
+  padding:
+    11px 16px !important;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    ) !important;
+
+  border-radius:
+    12px !important;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    ) !important;
+
+  color:
+    white !important;
+
+  font-size:
+    14px !important;
+
+  font-weight:
+    800 !important;
+
+  box-shadow:
+    none !important;
+
+  backdrop-filter:
+    blur(8px);
+
+  cursor:
+    pointer;
+
+  transition:
+    0.2s ease;
+}
+
+
+.pontuacao-voltar:hover {
+  transform:
+    translateY(-1px);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    ) !important;
+}
+
+
+.pontuacao-voltar span {
+  font-size:
+    18px;
+}
+
+
+/* ===================================================== */
+/* CARD PRINCIPAL                                       */
+/* ===================================================== */
+
+.pontuacao-card {
+  margin-bottom:
+    20px;
+
+  padding:
+    26px;
+
+  border:
+    1px solid
+    #e2e8f0;
+
+  border-radius:
+    24px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.96
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      15,
+      23,
+      42,
+      0.06
+    );
+}
+
+
+/* ===================================================== */
+/* TÍTULO DO CARD                                       */
+/* ===================================================== */
+
+.pontuacao-card__titulo {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  gap:
+    14px;
+
+  margin-bottom:
+    22px;
+}
+
+
+.pontuacao-card__titulo--contador {
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+}
+
+
+.pontuacao-card__titulo-esquerda {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  gap:
+    14px;
+}
+
+
+.pontuacao-numero {
+  width:
+    42px;
+
+  height:
+    42px;
+
+  flex:
+    0 0 42px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #0ea5e9
+    );
+
+  color:
+    #ffffff;
+
+  font-size:
+    18px;
+
+  font-weight:
+    900;
+
+  box-shadow:
+    0 7px 16px
+    rgba(
+      37,
+      99,
+      235,
+      0.20
+    );
+}
+
+
+.pontuacao-numero--historico {
+  background:
+    linear-gradient(
+      135deg,
+      #475569,
+      #64748b
+    );
+}
+
+
+.pontuacao-card__titulo span {
+  display:
+    block;
+
+  margin-bottom:
+    3px;
+
+  color:
+    #2563eb;
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.5px;
+}
+
+
+.pontuacao-card__titulo h2 {
+  margin:
+    0;
+
+  color:
+    #0f172a;
+
+  font-size:
+    23px;
+}
+
+
+.pontuacao-card__titulo p {
+  margin:
+    5px 0 0;
+
+  color:
+    #64748b;
+
+  font-size:
+    14px;
+
+  line-height:
+    1.5;
+}
+
+
+/* ===================================================== */
+/* FORMULÁRIOS                                          */
+/* ===================================================== */
+
+.pontuacao-form-grid,
+.pontuacao-conferencia-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    16px;
+}
+
+
+.pontuacao-campo label {
+  display:
+    block;
+
+  margin-bottom:
+    7px;
+
+  color:
+    #334155;
+
+  font-size:
+    13px;
+
+  font-weight:
+    800;
+}
+
+
+.pontuacao-campo label span {
+  color:
+    #94a3b8;
+
+  font-weight:
+    500;
+}
+
+
+.pontuacao-campo input,
+.pontuacao-campo select,
+.pontuacao-tabela input,
+.pontuacao-tabela select {
+  width:
+    100%;
+
+  margin:
+    0 !important;
+
+  padding:
+    12px 13px !important;
+
+  border:
+    1px solid
+    #cbd5e1;
+
+  border-radius:
+    11px;
+
+  outline:
+    none;
+
+  background:
+    #ffffff;
+
+  color:
+    #0f172a;
+
+  font-size:
+    14px;
+
+  transition:
+    0.2s;
+}
+
+
+.pontuacao-campo input:focus,
+.pontuacao-campo select:focus,
+.pontuacao-tabela input:focus,
+.pontuacao-tabela select:focus {
+  border-color:
+    #3b82f6;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      59,
+      130,
+      246,
+      0.12
+    );
+}
+
+
+/* ===================================================== */
+/* RESUMO DA TURMA                                      */
+/* ===================================================== */
+
+.pontuacao-resumo-turma {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    18px;
+
+  padding:
+    13px 15px;
+
+  border-radius:
+    13px;
+
+  background:
+    #eff6ff;
+
+  border:
+    1px solid
+    #dbeafe;
+}
+
+
+.pontuacao-resumo-turma span {
+  color:
+    #64748b;
+
+  font-size:
+    13px;
+}
+
+
+.pontuacao-resumo-turma strong {
+  color:
+    #1d4ed8;
+}
+
+
+.pontuacao-resumo-turma small {
+  margin-left:
+    auto;
+
+  color:
+    #64748b;
+}
+
+
+/* ===================================================== */
+/* LEGENDA                                              */
+/* ===================================================== */
+
+.pontuacao-legenda {
+  display:
+    flex;
+
+  gap:
+    10px;
+
+  flex-wrap:
+    wrap;
+
+  margin-bottom:
+    15px;
+}
+
+
+.pontuacao-legenda span {
+  padding:
+    7px 11px;
+
+  border-radius:
+    999px;
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+}
+
+
+.pontuacao-legenda__positivo {
+  background:
+    #ecfdf5;
+
+  color:
+    #047857;
+}
+
+
+.pontuacao-legenda__negativo {
+  background:
+    #fef2f2;
+
+  color:
+    #b91c1c;
+}
+
+
+/* ===================================================== */
+/* CRITÉRIOS COLETIVOS                                  */
+/* ===================================================== */
+
+.pontuacao-criterios-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+}
+
+
+.pontuacao-criterio {
+  width:
+    100% !important;
+
+  min-height:
+    104px;
+
+  display:
+    flex !important;
+
+  align-items:
+    flex-start !important;
+
+  gap:
+    12px;
+
+  margin:
+    0 !important;
+
+  padding:
+    15px !important;
+
+  text-align:
+    left;
+
+  border:
+    1px solid
+    #e2e8f0 !important;
+
+  border-radius:
+    16px !important;
+
+  background:
+    #ffffff !important;
+
+  color:
+    #334155 !important;
+
+  box-shadow:
+    none !important;
+
+  cursor:
+    pointer;
+
+  transition:
+    0.2s ease;
+}
+
+
+.pontuacao-criterio:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(
+      15,
+      23,
+      42,
+      0.06
+    ) !important;
+}
+
+
+.pontuacao-criterio__check {
+  width:
+    25px;
+
+  height:
+    25px;
+
+  flex:
+    0 0 25px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    2px solid
+    #cbd5e1;
+
+  border-radius:
+    8px;
+
+  color:
+    #ffffff;
+
+  font-size:
+    14px;
+
+  font-weight:
+    900;
+}
+
+
+.pontuacao-criterio__conteudo {
+  flex:
+    1;
+}
+
+
+.pontuacao-criterio__topo {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  margin-bottom:
+    6px;
+}
+
+
+.pontuacao-criterio__topo strong {
+  font-size:
+    16px;
+}
+
+
+.pontuacao-criterio__topo span {
+  color:
+    #0f172a;
+
+  font-size:
+    14px;
+
+  font-weight:
+    800;
+
+  text-transform:
+    none;
+
+  letter-spacing:
+    0;
+
+  margin:
+    0;
+}
+
+
+.pontuacao-criterio small {
+  display:
+    block;
+
+  color:
+    #64748b;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.45;
+}
+
+
+.pontuacao-criterio--positivo
+.pontuacao-criterio__topo strong {
+  color:
+    #059669;
+}
+
+
+.pontuacao-criterio--negativo
+.pontuacao-criterio__topo strong {
+  color:
+    #dc2626;
+}
+
+
+/* SELECIONADO POSITIVO */
+
+.pontuacao-criterio--positivo.pontuacao-criterio--marcado {
+  border-color:
+    #6ee7b7 !important;
+
+  background:
+    #ecfdf5 !important;
+}
+
+
+.pontuacao-criterio--positivo.pontuacao-criterio--marcado
+.pontuacao-criterio__check {
+  background:
+    #10b981;
+
+  border-color:
+    #10b981;
+}
+
+
+/* SELECIONADO NEGATIVO */
+
+.pontuacao-criterio--negativo.pontuacao-criterio--marcado {
+  border-color:
+    #fca5a5 !important;
+
+  background:
+    #fef2f2 !important;
+}
+
+
+.pontuacao-criterio--negativo.pontuacao-criterio--marcado
+.pontuacao-criterio__check {
+  background:
+    #ef4444;
+
+  border-color:
+    #ef4444;
+}
+
+
+/* ===================================================== */
+/* TOTAL COLETIVO                                       */
+/* ===================================================== */
+
+.pontuacao-total-coletivo {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    12px;
+
+  margin-top:
+    18px;
+
+  padding:
+    15px 17px;
+
+  border-radius:
+    14px;
+
+  background:
+    #f8fafc;
+
+  border:
+    1px solid
+    #e2e8f0;
+}
+
+
+.pontuacao-total-coletivo span {
+  color:
+    #475569;
+
+  font-size:
+    13px;
+
+  font-weight:
+    800;
+}
+
+
+.pontuacao-total-coletivo strong {
+  font-size:
+    25px;
+}
+
+
+.pontuacao-total-coletivo
+.positivo {
+  color:
+    #059669;
+}
+
+
+.pontuacao-total-coletivo
+.negativo {
+  color:
+    #dc2626;
+}
+
+
+/* ===================================================== */
+/* CONTADOR INDIVIDUAL                                  */
+/* ===================================================== */
+
+.pontuacao-contador {
+  min-width:
+    82px;
+
+  padding:
+    10px 15px;
+
+  text-align:
+    center;
+
+  border-radius:
+    15px;
+
+  background:
+    #eff6ff;
+
+  border:
+    1px solid
+    #bfdbfe;
+}
+
+
+.pontuacao-contador strong {
+  display:
+    block;
+
+  color:
+    #1d4ed8;
+
+  font-size:
+    23px;
+}
+
+
+.pontuacao-contador span {
+  margin:
+    0;
+
+  color:
+    #64748b;
+
+  font-size:
+    11px;
+
+  text-transform:
+    none;
+
+  letter-spacing:
+    0;
+}
+
+
+.pontuacao-contador--cheio {
+  background:
+    #fef2f2;
+
+  border-color:
+    #fecaca;
+}
+
+
+.pontuacao-contador--cheio strong {
+  color:
+    #dc2626;
+}
+
+
+/* ===================================================== */
+/* AVISO                                                */
+/* ===================================================== */
+
+.pontuacao-aviso {
+  margin-bottom:
+    16px;
+
+  padding:
+    12px 14px;
+
+  border-radius:
+    12px;
+
+  background:
+    #fffbeb;
+
+  border:
+    1px solid
+    #fde68a;
+
+  color:
+    #92400e;
+
+  font-size:
+    13px;
+
+  line-height:
+    1.5;
+}
+
+
+/* ===================================================== */
+/* INDIVIDUAIS                                          */
+/* ===================================================== */
+
+.pontuacao-individuais {
+  display:
+    grid;
+
+  gap:
+    14px;
+}
+
+
+.pontuacao-individual-card {
+  display:
+    grid;
+
+  grid-template-columns:
+    44px 1fr;
+
+  gap:
+    14px;
+
+  padding:
+    17px;
+
+  border:
+    1px solid
+    #e2e8f0;
+
+  border-radius:
+    17px;
+
+  background:
+    #f8fafc;
+}
+
+
+.pontuacao-individual-card--bloqueado {
+  opacity:
+    0.5;
+}
+
+
+.pontuacao-individual-numero {
+  width:
+    40px;
+
+  height:
+    40px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    12px;
+
+  background:
+    #e0e7ff;
+
+  color:
+    #3730a3;
+
+  font-size:
+    15px;
+
+  font-weight:
+    900;
+}
+
+
+.pontuacao-individual-conteudo {
+  min-width:
+    0;
+}
+
+
+.pontuacao-tipos-individuais {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    10px;
+
+  margin:
+    12px 0;
+}
+
+
+.pontuacao-tipo-btn {
+  width:
+    100% !important;
+
+  min-height:
+    100px;
+
+  display:
+    flex !important;
+
+  flex-direction:
+    column;
+
+  align-items:
+    flex-start !important;
+
+  justify-content:
+    flex-start !important;
+
+  gap:
+    5px;
+
+  margin:
+    0 !important;
+
+  padding:
+    13px !important;
+
+  border-radius:
+    14px !important;
+
+  border:
+    1px solid
+    #e2e8f0 !important;
+
+  background:
+    #ffffff !important;
+
+  color:
+    #334155 !important;
+
+  text-align:
+    left !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.pontuacao-tipo-btn strong {
+  font-size:
+    16px;
+}
+
+
+.pontuacao-tipo-btn span {
+  font-size:
+    14px;
+
+  font-weight:
+    800;
+}
+
+
+.pontuacao-tipo-btn small {
+  color:
+    #64748b;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.4;
+}
+
+
+.pontuacao-tipo-btn--positivo
+strong {
+  color:
+    #059669;
+}
+
+
+.pontuacao-tipo-btn--negativo
+strong {
+  color:
+    #dc2626;
+}
+
+
+.pontuacao-tipo-btn--positivo.ativo {
+  border-color:
+    #6ee7b7 !important;
+
+  background:
+    #ecfdf5 !important;
+}
+
+
+.pontuacao-tipo-btn--negativo.ativo {
+  border-color:
+    #fca5a5 !important;
+
+  background:
+    #fef2f2 !important;
+}
+
+
+/* ===================================================== */
+/* TOTAIS                                               */
+/* ===================================================== */
+
+.pontuacao-totais-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+
+  margin-bottom:
+    20px;
+}
+
+
+.pontuacao-total-card {
+  padding:
+    18px;
+
+  border-radius:
+    16px;
+
+  border:
+    1px solid
+    #e2e8f0;
+}
+
+
+.pontuacao-total-card span {
+  display:
+    block;
+
+  margin-bottom:
+    7px;
+
+  color:
+    #64748b;
+
+  font-size:
+    12px;
+
+  font-weight:
+    700;
+}
+
+
+.pontuacao-total-card strong {
+  font-size:
+    28px;
+}
+
+
+.pontuacao-total-card--positivo {
+  background:
+    #ecfdf5;
+}
+
+
+.pontuacao-total-card--positivo
+strong {
+  color:
+    #059669;
+}
+
+
+.pontuacao-total-card--negativo {
+  background:
+    #fef2f2;
+}
+
+
+.pontuacao-total-card--negativo
+strong {
+  color:
+    #dc2626;
+}
+
+
+.pontuacao-total-card--principal {
+  color:
+    white;
+
+  border-color:
+    transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1d4ed8,
+      #0ea5e9
+    );
+}
+
+
+.pontuacao-total-card--principal
+span {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.78
+    );
+}
+
+
+.pontuacao-total-card--principal
+strong {
+  color:
+    white;
+}
+
+
+/* ===================================================== */
+/* CONFERÊNCIA                                          */
+/* ===================================================== */
+
+.pontuacao-conferencia {
+  margin-top:
+    14px;
+
+  padding:
+    12px 14px;
+
+  border-radius:
+    12px;
+
+  font-size:
+    13px;
+
+  font-weight:
+    700;
+}
+
+
+.pontuacao-conferencia--ok {
+  color:
+    #047857;
+
+  background:
+    #ecfdf5;
+
+  border:
+    1px solid
+    #a7f3d0;
+}
+
+
+.pontuacao-conferencia--erro {
+  color:
+    #b91c1c;
+
+  background:
+    #fef2f2;
+
+  border:
+    1px solid
+    #fecaca;
+}
+
+
+/* ===================================================== */
+/* ASSINATURA                                           */
+/* ===================================================== */
+
+.pontuacao-assinatura {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+
+  margin-top:
+    16px;
+
+  padding:
+    14px 15px;
+
+  border:
+    1px solid
+    #dbeafe;
+
+  border-radius:
+    14px;
+
+  background:
+    #eff6ff;
+
+  cursor:
+    pointer;
+}
+
+
+.pontuacao-assinatura input {
+  width:
+    20px !important;
+
+  height:
+    20px;
+
+  flex:
+    0 0 20px;
+
+  margin:
+    0 !important;
+}
+
+
+.pontuacao-assinatura strong {
+  display:
+    block;
+
+  color:
+    #1e3a8a;
+
+  font-size:
+    14px;
+}
+
+
+.pontuacao-assinatura span {
+  display:
+    block;
+
+  margin-top:
+    2px;
+
+  color:
+    #64748b;
+
+  font-size:
+    12px;
+}
+
+
+/* ===================================================== */
+/* BOTÃO SALVAR                                         */
+/* ===================================================== */
+
+.pontuacao-salvar {
+  width:
+    100% !important;
+
+  margin:
+    18px 0 0 !important;
+
+  padding:
+    14px 18px !important;
+
+  border:
+    none !important;
+
+  border-radius:
+    13px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #16a34a,
+      #059669
+    ) !important;
+
+  color:
+    #ffffff !important;
+
+  font-size:
+    15px !important;
+
+  font-weight:
+    900 !important;
+
+  box-shadow:
+    0 10px 22px
+    rgba(
+      5,
+      150,
+      105,
+      0.2
+    ) !important;
+}
+
+
+.pontuacao-salvar:disabled {
+  cursor:
+    not-allowed;
+
+  opacity:
+    0.6;
+}
+
+
+/* ===================================================== */
+/* HISTÓRICO                                            */
+/* ===================================================== */
+
+.pontuacao-filtro-historico {
+  max-width:
+    280px;
+
+  margin-bottom:
+    18px;
+}
+
+
+.pontuacao-tabela-wrapper {
+  width:
+    100%;
+
+  overflow-x:
+    auto;
+
+  border:
+    1px solid
+    #e2e8f0;
+
+  border-radius:
+    15px;
+}
+
+
+.pontuacao-tabela {
+  width:
+    100%;
+
+  min-width:
+    800px;
+
+  border-collapse:
+    collapse;
+
+  background:
+    #ffffff;
+}
+
+
+.pontuacao-tabela th {
+  padding:
+    13px;
+
+  text-align:
+    left;
+
+  background:
+    #f8fafc;
+
+  color:
+    #475569;
+
+  font-size:
+    12px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.4px;
+}
+
+
+.pontuacao-tabela td {
+  padding:
+    13px;
+
+  border-top:
+    1px solid
+    #e2e8f0;
+
+  color:
+    #334155;
+
+  font-size:
+    13px;
+
+  vertical-align:
+    middle;
+}
+
+
+.pontuacao-pontos {
+  display:
+    inline-flex;
+
+  min-width:
+    46px;
+
+  justify-content:
+    center;
+
+  padding:
+    6px 9px;
+
+  border-radius:
+    999px;
+
+  font-weight:
+    900;
+}
+
+
+.pontuacao-pontos.positivo {
+  background:
+    #ecfdf5;
+
+  color:
+    #047857;
+}
+
+
+.pontuacao-pontos.negativo {
+  background:
+    #fef2f2;
+
+  color:
+    #b91c1c;
+}
+
+
+.pontuacao-btn-editar,
+.pontuacao-btn-salvar-edicao {
+  width:
+    auto !important;
+
+  min-width:
+    75px;
+
+  margin:
+    0 !important;
+
+  padding:
+    8px 12px !important;
+
+  border-radius:
+    9px !important;
+}
+
+
+.pontuacao-btn-editar {
+  background:
+    #e0e7ff !important;
+
+  color:
+    #3730a3 !important;
+}
+
+
+.pontuacao-btn-salvar-edicao {
+  background:
+    #dcfce7 !important;
+
+  color:
+    #166534 !important;
+}
+
+
+.pontuacao-sem-registros {
+  padding:
+    28px !important;
+
+  text-align:
+    center !important;
+
+  color:
+    #94a3b8 !important;
+}
+
+
+/* ===================================================== */
+/* RESPONSIVO                                           */
+/* ===================================================== */
+
+@media (
+  max-width: 800px
+) {
+
+  .pontuacao-page {
+    padding:
+      15px 10px 40px;
+  }
+
+
+  .pontuacao-header {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    padding:
+      24px 20px;
+
+    border-radius:
+      20px;
+  }
+
+
+  .pontuacao-voltar {
+    width:
+      100% !important;
+  }
+
+
+  .pontuacao-card {
+    padding:
+      19px;
+
+    border-radius:
+      18px;
+  }
+
+
+  .pontuacao-form-grid,
+  .pontuacao-conferencia-grid,
+  .pontuacao-criterios-grid,
+  .pontuacao-tipos-individuais,
+  .pontuacao-totais-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .pontuacao-card__titulo--contador {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+
+  .pontuacao-contador {
+    width:
+      100%;
+  }
+
+
+  .pontuacao-individual-card {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .pontuacao-individual-numero {
+    width:
+      34px;
+
+    height:
+      34px;
+  }
+
+
+  .pontuacao-resumo-turma
+  small {
+    width:
+      100%;
+
+    margin-left:
+      0;
+  }
+
+}
